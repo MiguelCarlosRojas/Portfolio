@@ -1,4 +1,4 @@
-/* General */
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -15,7 +15,39 @@ body {
     margin: 0 auto;
   }
   
-  /* Animaciones */
+  /* Barra de navegación */
+  .navbar {
+    background-color: #003366;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .navbar ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar ul li {
+    margin: 0 20px;
+  }
+  
+  .navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+  
+  .navbar ul li a:hover {
+    color: #00bcd4;
+  }
+  
+  /* Efectos de Fade-in */
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -32,22 +64,14 @@ body {
     opacity: 0;
   }
   
-  .delay-1 { animation-delay: 0.5s; }
-  .delay-2 { animation-delay: 1s; }
-  .delay-3 { animation-delay: 1.5s; }
-  .delay-4 { animation-delay: 2s; }
-  .delay-5 { animation-delay: 2.5s; }
-  .delay-6 { animation-delay: 3s; }
-  .delay-7 { animation-delay: 3.5s; }
-  
-  /* Typing Effect */
+  /* Efecto de escritura */
   .typing-text {
     font-size: 1.5rem;
     border-right: 3px solid white;
     white-space: nowrap;
     overflow: hidden;
     display: inline-block;
-    animation: typing 3s steps(30, end), blink 0.5s step-end infinite alternate;
+    animation: typing 2s steps(30, end), blink 0.5s step-end infinite alternate;
   }
   
   @keyframes typing {
@@ -60,7 +84,7 @@ body {
     to { border-color: transparent; }
   }
   
-  /* Header */
+  /* Sección de perfil */
   .header {
     background: #001f3f;
     color: white;
@@ -70,7 +94,7 @@ body {
   .header-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
   }
   
   .profile-photo img {
@@ -78,6 +102,7 @@ body {
     height: 180px;
     border-radius: 50%;
     border: 3px solid white;
+    margin-right: 2rem;
   }
   
   .intro h1 {
@@ -89,7 +114,7 @@ body {
     margin-top: 0.5rem;
   }
   
-  /* Skills */
+  /* Sección de habilidades */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

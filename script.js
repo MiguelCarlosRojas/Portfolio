@@ -1,17 +1,27 @@
-// Simulación de texto escribiéndose dinámicamente
+// Simulación de la escritura palabra por palabra
 document.addEventListener("DOMContentLoaded", () => {
     const typingElement = document.querySelector(".typing-text");
-    const text = typingElement.getAttribute("data-text");
+    const text = ["Desarrollador Web", "Diseñador", "Freelancer"];
     let i = 0;
   
-    function type() {
+    function typeWord() {
       if (i < text.length) {
-        typingElement.textContent += text.charAt(i);
-        i++;
-        setTimeout(type, 100);
+        typingElement.textContent = "";
+        let charIndex = 0;
+        function typeLetter() {
+          if (charIndex < text[i].length) {
+            typingElement.textContent += text[i].charAt(charIndex);
+            charIndex++;
+            setTimeout(typeLetter, 100);
+          } else {
+            i++;
+            setTimeout(typeWord, 1500);  // Espera entre palabras
+          }
+        }
+        typeLetter();
       }
     }
   
-    type();
+    typeWord();
   });
   
