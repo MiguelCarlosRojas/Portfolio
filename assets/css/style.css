@@ -126,10 +126,10 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 16px;
+  gap: 0px;
   position: relative;
   margin-left: auto;
-  padding-right: 10px;
+  padding-right: 50px;
 }
 
 /* Estilo para los íconos sociales */
