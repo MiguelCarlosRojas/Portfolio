@@ -1,4 +1,3 @@
-// Simulación de la escritura palabra por palabra
 document.addEventListener("DOMContentLoaded", () => {
   const typingElement = document.querySelector(".typing-text");
   const text = ["Desarrollador Web", "Diseñador", "Freelancer"];
