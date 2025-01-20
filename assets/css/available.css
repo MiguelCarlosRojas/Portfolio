@@ -1,0 +1,130 @@
+/* Sección disponible para crear proyectos */
+.available {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(145deg, #1a3c6d, #1e5b8f);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de partículas de fondo */
+.available::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: url("https://cdn.pixabay.com/photo/2017/08/30/01/16/particles-2695733_960_720.jpg")
+    no-repeat center center;
+  background-size: cover;
+  filter: blur(5px);
+  z-index: -1;
+  animation: particleMovement 10s infinite linear;
+}
+
+@keyframes particleMovement {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(30%) translateY(30%);
+  }
+}
+
+.available .container {
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  animation: slideIn 1s ease-out;
+}
+
+.available .content {
+  margin-bottom: 30px;
+}
+
+.available .title {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+}
+
+.available .description {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  color: #e1e1e1;
+  line-height: 1.6;
+}
+
+.available .call-to-action {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  color: #e1e1e1;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+/* Botón WhatsApp */
+.available .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  background-color: #25d366;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.available .btn:hover {
+  background-color: #128c7e;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.available .btn:active {
+  transform: translateY(1px);
+}
+
+.available .whatsapp-icon {
+  width: 35px;
+  height: 35px;
+  margin-right: 12px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.available .btn:hover .whatsapp-icon {
+  transform: rotate(15deg);
+}
+
+/* Animación de entrada para la sección */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

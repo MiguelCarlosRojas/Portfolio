@@ -12,13 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (charIndex < text[i].length) {
           typingElement.textContent += text[i].charAt(charIndex);
           charIndex++;
-          setTimeout(typeLetter, 100);  // Velocidad de escritura
+          setTimeout(typeLetter, 100);
         } else {
           i++;
           if (i === text.length) {
-            i = 0;  // Reinicia el índice para comenzar nuevamente
+            i = 0;
           }
-          setTimeout(typeWord, 1500);  // Espera entre palabras
+          setTimeout(typeWord, 1500);
         }
       }
       typeLetter();
