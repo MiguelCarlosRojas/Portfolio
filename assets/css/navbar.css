@@ -9,6 +9,7 @@
   position: relative;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 10;
+  flex-wrap: wrap;
 }
 
 .nav-right {
@@ -101,7 +102,6 @@
   box-shadow: 0 4px 8px rgba(0, 188, 212, 0.6);
 }
 
-/* Ajustes responsivos para pantallas pequeñas */
 @media (max-width: 768px) {
   .nav-right {
     gap: 12px;
@@ -111,6 +111,14 @@
   .social-icon {
     width: 28px;
     height: 28px;
+  }
+
+  .nav-left {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+    flex-direction: column;
   }
 }
 
