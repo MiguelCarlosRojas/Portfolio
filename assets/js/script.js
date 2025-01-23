@@ -49,10 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   typeWord();
 });
 
-
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
-
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
+document.getElementById('menu-icon').addEventListener('click', function () {
+  const navLeft = document.getElementById('nav-left');
+  navLeft.classList.toggle('active');
+});
