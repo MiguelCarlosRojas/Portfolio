@@ -2,7 +2,7 @@
 .about {
   background: linear-gradient(135deg, #eef2f3, #ffffff);
   padding: 60px 20px;
-  min-height: 100vh; /* Asegura que ocupe todo el alto de la ventana */
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
