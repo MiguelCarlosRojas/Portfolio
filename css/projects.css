@@ -1,67 +1,101 @@
 /* Sección de Proyectos */
 .projects {
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
   text-align: center;
+  background-color: #ffffff; /* Fondo blanco */
+  color: #000000; /* Texto en negro */
 }
 
 .section-title {
   font-size: 2.5rem;
   color: #000000;
   margin-bottom: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  padding-top: 2rem;
+  gap: 2.5rem;
+  padding-top: 3rem;
 }
 
 .project-card {
   background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-12px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .project-preview iframe {
   width: 100%;
-  height: 200px;
+  height: 220px;
   border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .project-info {
-  padding: 1.5rem;
+  padding: 1.8rem;
   background-color: #ffffff;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #e0e0e0;
+  border-radius: 0 0 15px 15px;
 }
 
 .project-info h3 {
-  color: #333333;
+  color: #222222;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
 
 .project-info p {
   color: #555555;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .btn-project {
   display: inline-block;
-  padding: 0.8rem 1.5rem;
+  padding: 1rem 2rem;
   background-color: #000000;
   color: #ffffff;
   font-weight: 600;
-  border-radius: 5px;
+  border-radius: 8px;
   text-transform: uppercase;
-  transition: background-color 0.3s ease;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
 }
 
 .btn-project:hover {
   background-color: #333333;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .projects {
+    padding: 3rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .project-card {
+    margin-bottom: 2rem;
+  }
+
+  .btn-project {
+    padding: 0.8rem 1.6rem;
+    font-size: 0.95rem;
+  }
 }
