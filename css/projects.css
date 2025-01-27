@@ -1,101 +1,82 @@
-/* Sección de Proyectos */
+/* Estilo general para la sección */
 .projects {
-  padding: 5rem 2rem;
-  text-align: center;
-  background-color: #ffffff; /* Fondo blanco */
-  color: #000000; /* Texto en negro */
+  padding: 50px 0;
+  background-color: #fff;
+  color: #000;
 }
 
 .section-title {
-  font-size: 2.5rem;
-  color: #000000;
-  margin-bottom: 2rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333;
 }
 
+/* Contenedor de los proyectos */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2.5rem;
-  padding-top: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
+/* Estilo para las tarjetas de proyectos */
 .project-card {
-  background-color: #f9f9f9;
+  background-color: #fff;
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Vista previa más alta (iframe) */
 .project-preview iframe {
   width: 100%;
-  height: 220px;
+  height: 350px; /* Aumentado de 200px a 350px */
   border: none;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* Estilo para la información del proyecto */
 .project-info {
-  padding: 1.8rem;
-  background-color: #ffffff;
-  border-top: 1px solid #e0e0e0;
-  border-radius: 0 0 15px 15px;
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .project-info h3 {
-  color: #222222;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
 }
 
 .project-info p {
-  color: #555555;
   font-size: 1rem;
-  margin-bottom: 1.5rem;
+  color: #555;
+  margin-top: 10px;
 }
 
 .btn-project {
   display: inline-block;
-  padding: 1rem 2rem;
-  background-color: #000000;
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 8px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 25px;
   font-size: 1rem;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
 }
 
 .btn-project:hover {
-  background-color: #333333;
-  transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-  .projects {
-    padding: 3rem 1.5rem;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .project-card {
-    margin-bottom: 2rem;
-  }
-
-  .btn-project {
-    padding: 0.8rem 1.6rem;
-    font-size: 0.95rem;
-  }
+  background-color: #0056b3;
 }
