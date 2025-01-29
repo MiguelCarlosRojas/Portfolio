@@ -1,6 +1,8 @@
 /* Barra de navegación */
 .navbar {
-  background-color: rgba(0, 31, 63, 0.9);
+  background: linear-gradient(135deg, rgb(0, 31, 63) 0%, rgb(0, 77, 122) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
   padding: 1rem 2rem;
   width: 100%;
   display: flex;
@@ -11,6 +13,19 @@
   z-index: 10;
   flex-wrap: wrap;
   transition: all 0.3s ease-in-out;
+}
+
+/* Animación de cambio de degradado */
+@keyframes gradientShift {
+  0% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
 }
 
 .nav-right {
