@@ -5,12 +5,13 @@ body {
   padding: 0;
   line-height: 1.6;
   color: white;
-  background: linear-gradient(135deg, #001f3f 0%, #004d7a 100%);
+  background: linear-gradient(135deg, rgb(0, 31, 63) 0%, rgb(0, 77, 122) 100%);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
   overflow-x: hidden;
 }
 
+/* Animación de cambio de degradado */
 @keyframes gradientShift {
   0% {
     background-position: 100% 0%;
@@ -23,8 +24,52 @@ body {
   }
 }
 
+/* Contenedor */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* Estilos responsivos */
+
+/* Pantallas pequeñas */
+@media (max-width: 767px) {
+  body {
+    background: linear-gradient(
+      135deg,
+      rgb(0, 31, 63) 0%,
+      rgb(0, 77, 122) 100%
+    );
+    background-size: 300% 300%;
+    animation: gradientShift 10s ease infinite;
+  }
+
+  .container {
+    width: 95%;
+  }
+}
+
+/* Pantallas medianas (tabletas y pantallas medianas) */
+@media (max-width: 1024px) {
+  body {
+    background-size: 350% 350%;
+    animation: gradientShift 12s ease infinite;
+  }
+
+  .container {
+    width: 92%;
+  }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1200px) {
+  body {
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  .container {
+    width: 90%;
+  }
 }
