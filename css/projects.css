@@ -1,87 +1,156 @@
 /* Estilo general para la sección */
 .projects {
   padding: 50px 0;
-  background-color: #fff;
+  background-color: #f9f9f9;
   color: #000;
 }
 
 .section-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 30px;
   color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 /* Contenedor de los proyectos */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 30px;
+  justify-items: center;
+  align-items: center;
 }
 
 /* Estilo para las tarjetas de proyectos */
 .project-card {
   background-color: #fff;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
-  flex-direction: row; /* Coloca los elementos en fila */
+  flex-direction: row;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 450px;
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-15px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 /* Vista previa (iframe) */
 .project-preview {
   flex: 1;
-  min-width: 300px;
+  min-width: 350px;
+  border-right: 2px solid #f1f1f1;
 }
 
 .project-preview iframe {
   width: 100%;
-  height: 350px; /* Ajusta la altura como prefieras */
+  height: 100%;
   border: none;
+  border-radius: 15px 0 0 15px;
 }
 
 /* Estilo para la información del proyecto */
 .project-info {
   flex: 1;
-  padding: 20px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: #f7f7f7;
+  border-radius: 0 15px 15px 0;
+  text-align: left;
 }
 
 .project-info h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #333;
+  margin-bottom: 15px;
 }
 
 .project-info p {
   font-size: 1rem;
   color: #555;
-  margin-top: 10px;
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 .btn-project {
   display: inline-block;
-  background-color: #007bff;
+  background: linear-gradient(90deg, #007bff, #00c6ff);
   color: #fff;
-  padding: 12px 25px;
-  font-size: 1rem;
+  padding: 14px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
   border-radius: 30px;
   text-align: center;
   text-decoration: none;
+  transition: all 0.3s ease;
   margin-top: 15px;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+  width: 100%;
+  cursor: pointer;
 }
 
 .btn-project:hover {
-  background-color: #0056b3;
+  background: linear-gradient(90deg, #00c6ff, #007bff);
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+/* Botón de "Ver Proyecto" ajustado */
+.btn-project:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Media Queries para dispositivos móviles y pantallas más pequeñas */
+
+/* En pantallas pequeñas (móviles en modo vertical) */
+@media (max-width: 767px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .project-card {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .project-preview {
+    border-right: none;
+    border-bottom: 2px solid #f1f1f1;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .project-info {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .btn-project {
+    width: auto;
+    margin: 10px auto 0;
+  }
+}
+
+/* En pantallas medianas (tabletas en modo horizontal) */
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .project-card {
+    height: 500px;
+  }
+
+  .project-preview {
+    min-width: 100%;
+  }
 }
