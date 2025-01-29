@@ -7,9 +7,28 @@
   text-align: center;
   position: relative;
   z-index: 1;
-  background: #001f3f;
+  background: linear-gradient(
+    135deg,
+    rgb(0, 31, 63) 0%,
+    rgb(0, 77, 122) 100%
+  ); /* Fondo degradado */
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite; /* Animación de degradado */
   color: white;
   padding: 3rem 0;
+}
+
+/* Animación de cambio de degradado */
+@keyframes gradientShift {
+  0% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
 }
 
 /* Estilo de la foto de perfil */
@@ -95,5 +114,67 @@
   }
   to {
     border-color: transparent;
+  }
+}
+
+/* Media Queries para hacerlo responsive */
+
+/* En pantallas pequeñas (móviles en modo vertical) */
+@media (max-width: 767px) {
+  .header {
+    padding: 2rem 0;
+    background-size: 300% 300%;
+    animation: gradientShift 10s ease infinite;
+  }
+
+  .profile-photo {
+    margin-left: 0;
+  }
+
+  .profile-photo img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .intro h1 {
+    font-size: 2rem;
+  }
+
+  .intro p {
+    font-size: 1.5rem;
+  }
+
+  .typing-text {
+    font-size: 2rem;
+  }
+}
+
+/* En pantallas medianas (tabletas en modo horizontal) */
+@media (max-width: 1024px) {
+  .header {
+    padding: 2.5rem 0;
+    background-size: 350% 350%;
+    animation: gradientShift 12s ease infinite;
+  }
+
+  .profile-photo {
+    margin-left: 2rem;
+  }
+
+  .profile-photo img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .intro h1 {
+    font-size: 2.2rem;
+  }
+
+  .intro p {
+    font-size: 1.7rem;
+  }
+
+  .typing-text {
+    font-size: 2.4rem;
   }
 }
