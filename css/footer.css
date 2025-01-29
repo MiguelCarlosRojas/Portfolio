@@ -1,0 +1,30 @@
+.footer {
+  background: linear-gradient(45deg, rgb(0, 31, 63), rgb(0, 63, 127));
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer .container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Media Query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .footer p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Media Query para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+  .footer p {
+    font-size: 0.8rem;
+  }
+}
