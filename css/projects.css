@@ -1,20 +1,22 @@
 /* Estilo general para la sección */
 .projects {
   padding: 50px 0;
-  background-color: #f9f9f9;
-  color: #000;
+  background: linear-gradient(135deg, rgb(0, 31, 63) 0%, rgb(0, 77, 122) 100%);
+  color: #fff;
 }
 
+/* Título de la sección */
 .section-title {
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 30px;
-  color: #333;
+  color: #fff;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
+/* Grid de proyectos */
 .project-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -23,6 +25,7 @@
   align-items: center;
 }
 
+/* Tarjeta de proyecto */
 .project-card {
   background-color: #fff;
   border-radius: 15px;
@@ -40,6 +43,7 @@
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
+/* Previsualización del proyecto */
 .project-preview {
   flex: 1;
   max-width: 1200px;
@@ -56,6 +60,7 @@
   border-radius: 15px 0 0 15px;
 }
 
+/* Información del proyecto */
 .project-info {
   flex: 1;
   padding: 25px;
@@ -81,6 +86,7 @@
   line-height: 1.6;
 }
 
+/* Botón de proyecto */
 .btn-project {
   display: inline-block;
   background: linear-gradient(90deg, #007bff, #00c6ff);
