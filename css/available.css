@@ -44,6 +44,7 @@
   text-align: center;
   position: relative;
   animation: fadeIn 1.2s ease-out;
+  padding: 0 20px; /* Añadido para mejor responsividad */
 }
 
 .available .content {
@@ -124,5 +125,48 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .available .title {
+    font-size: 2.5rem;
+  }
+
+  .available .description,
+  .available .call-to-action {
+    font-size: 1rem;
+  }
+
+  .available .btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+
+  .available .whatsapp-icon {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .available .title {
+    font-size: 2rem;
+  }
+
+  .available .description,
+  .available .call-to-action {
+    font-size: 0.9rem;
+  }
+
+  .available .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .available .whatsapp-icon {
+    width: 20px;
+    height: 20px;
   }
 }
