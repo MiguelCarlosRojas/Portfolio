@@ -1,8 +1,6 @@
 /* Barra de navegación */
 .navbar {
   background: linear-gradient(135deg, rgb(0, 31, 63) 0%, rgb(0, 77, 122) 100%);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
   padding: 1rem 2rem;
   width: 100%;
   display: flex;
@@ -15,39 +13,21 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Animación de cambio de degradado */
-@keyframes gradientShift {
-  0% {
-    background-position: 100% 0%;
-  }
-  50% {
-    background-position: 0% 100%;
-  }
-  100% {
-    background-position: 100% 0%;
-  }
-}
-
-.nav-right {
+/* Navbar items */
+.navbar .nav-right {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   gap: 16px;
   list-style: none;
   margin: 0;
   padding: 0;
   position: relative;
-}
-
-.navbar .nav-right {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0px;
-  position: relative;
   margin-left: auto;
   padding-right: 50px;
 }
 
+/* Lista de navegación */
 .navbar ul {
   display: flex;
   list-style: none;
@@ -154,7 +134,13 @@
   gap: 15px;
 }
 
+/* Estilos para pantallas pequeñas */
 @media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem 1rem;
+  }
+
   .nav-left {
     display: flex;
     width: 100%;
@@ -191,6 +177,7 @@
   }
 }
 
+/* Estilos para pantallas más pequeñas (menores de 480px) */
 @media (max-width: 480px) {
   .navbar {
     flex-direction: column;
