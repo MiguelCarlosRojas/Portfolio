@@ -81,6 +81,7 @@
   color: #3182ce;
 }
 
+/* Media Queries para Responsividad */
 @media (max-width: 768px) {
   .about-content {
     flex-direction: column;
