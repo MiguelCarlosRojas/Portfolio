@@ -1,7 +1,7 @@
 /* Barra de navegación */
 .navbar {
   background: linear-gradient(135deg, rgb(0, 31, 63) 0%, rgb(0, 77, 122) 100%);
-  padding: 1rem 2rem;
+  padding: 1rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -13,7 +13,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Navbar items */
 .navbar .nav-right {
   display: flex;
   justify-content: flex-start;
@@ -24,10 +23,8 @@
   padding: 0;
   position: relative;
   margin-left: auto;
-  padding-right: 50px;
 }
 
-/* Lista de navegación */
 .navbar ul {
   display: flex;
   list-style: none;
@@ -48,13 +45,13 @@
 }
 
 .navbar ul li {
-  margin: 0 15px;
+  margin: 0 10px;
 }
 
 .navbar ul li a {
   color: white;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -68,15 +65,14 @@
   text-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
 }
 
-/* Logo */
 .logo {
   flex-shrink: 0;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .logo-image {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   transition: transform 0.3s ease;
 }
 
@@ -84,10 +80,9 @@
   transform: scale(1.1);
 }
 
-/* Estilo para los íconos sociales */
 .social-icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   object-fit: cover;
@@ -98,7 +93,6 @@
   box-shadow: 0 4px 8px rgba(0, 188, 212, 0.6);
 }
 
-/* Menu desplegable en móviles */
 .menu-icon {
   display: none;
   cursor: pointer;
@@ -114,7 +108,6 @@
   transition: all 0.3s ease;
 }
 
-/* Mostrar menú en dispositivos móviles */
 #nav-left {
   display: flex;
   list-style: none;
@@ -130,70 +123,31 @@
   left: 0;
   right: 0;
   background-color: rgba(0, 31, 63, 0.9);
-  padding: 10px 20px;
-  gap: 15px;
+  padding: 10px;
+  gap: 10px;
 }
 
-/* Estilos para pantallas pequeñas */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    padding: 1rem 1rem;
+    padding: 0.5rem 1rem;
   }
 
   .nav-left {
-    display: flex;
+    display: none;
     width: 100%;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 0;
     flex-direction: column;
   }
 
   .nav-left li {
-    margin: 10px 0;
+    margin: 5px 0;
   }
 
   .nav-right {
-    gap: 12px;
-    justify-content: center;
-    margin-top: 10px;
-  }
-
-  .social-icon {
-    width: 28px;
-    height: 28px;
-  }
-
-  .navbar ul li a {
-    font-size: 1rem;
-  }
-
-  .menu-icon {
-    display: flex;
-  }
-
-  #nav-left {
-    display: none;
-  }
-}
-
-/* Estilos para pantallas más pequeñas (menores de 480px) */
-@media (max-width: 480px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nav-right {
-    margin-top: 15px;
     gap: 8px;
     justify-content: center;
+    margin-top: 0;
   }
 
   .social-icon {
@@ -203,5 +157,47 @@
 
   .navbar ul li a {
     font-size: 0.9rem;
+  }
+
+  .menu-icon {
+    display: flex;
+  }
+
+  #nav-left {
+    display: none;
+  }
+
+  #nav-left.active {
+    display: flex;
+    top: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .nav-left {
+    display: none;
+  }
+
+  .nav-right {
+    gap: 6px;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .social-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .navbar ul li a {
+    font-size: 0.8rem;
+  }
+
+  #nav-left.active {
+    top: 45px;
   }
 }
