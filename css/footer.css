@@ -3,16 +3,41 @@
   color: white;
   padding: 20px 0;
   text-align: center;
+  font-family: "Arial", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+  animation: rotateBackground 20s linear infinite;
+}
+
+@keyframes rotateBackground {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .footer .container {
   width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .footer p {
   margin: 0;
   font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Media Query para pantallas más pequeñas */
