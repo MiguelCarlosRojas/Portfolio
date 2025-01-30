@@ -157,3 +157,27 @@
     height: 506px;
   }
 }
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .project-preview iframe {
+    height: 300px;
+  }
+
+  .project-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .project-info p {
+    font-size: 0.9rem;
+  }
+
+  .btn-project {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
