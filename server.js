@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors'); // Importa el middleware CORS
 const translate = require('google-translate-api-x');
 
 const app = express();
@@ -7,6 +8,13 @@ const port = 3000;
 
 // Middleware para parsear JSON
 app.use(express.json());
+
+// Configurar CORS para permitir solicitudes desde cualquier origen
+app.use(cors({
+    origin: '*', // Permite solicitudes desde cualquier origen
+    methods: ['GET', 'POST'], // Métodos HTTP permitidos
+    allowedHeaders: ['Content-Type'], // Encabezados permitidos
+}));
 
 // Servir archivos estáticos (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname)));
