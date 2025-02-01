@@ -1,13 +1,15 @@
-import { typeEffect } from './components/js/typingEffect.js';
-import { toggleMenu } from './components/js/menuToggle.js';
-import { toggleLanguage } from './environments/translation.js';
+import { typeEffect } from "./components/js/typingEffect.js";
+import { toggleMenu } from "./components/js/menuToggle.js";
+import { toggleLanguage } from "./environments/translation.js";
 
 export function initializeApp() {
-    document.addEventListener("DOMContentLoaded", () => {
-        typeEffect();
-        toggleMenu();
+  document.addEventListener("DOMContentLoaded", () => {
+    typeEffect();
+    toggleMenu();
 
-        // Agregar el evento para cambiar el idioma
-        document.getElementById('toggle-language').addEventListener('click', toggleLanguage);
-    });
+    // Agregar el evento para cambiar el idioma
+    document
+      .getElementById("toggle-language")
+      .addEventListener("click", toggleLanguage);
+  });
 }
