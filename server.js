@@ -20,9 +20,9 @@ app.use(
 // Servir archivos estáticos (HTML, CSS, JS) desde la raíz del proyecto
 app.use(express.static(path.join(__dirname)));
 
-// Ruta para servir el archivo index.html en la raíz
+// Ruta para servir el archivo app.html en la raíz
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "src", "app", "app.html"));
 });
 
 // Endpoint para traducir texto
