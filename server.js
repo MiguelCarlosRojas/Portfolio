@@ -34,5 +34,5 @@ app.post('/translate', async (req, res) => {
 
 // Iniciar el servidor
 app.listen(port, () => {
-    console.log(`Servidor escuchando en https://portfolio-miguel-carloss-projects.vercel.app:${port}`);
+    console.log(`Servidor escuchando en http://localhost:${port}`);
 });
