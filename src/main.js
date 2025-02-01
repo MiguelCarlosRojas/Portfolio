@@ -1,6 +1,6 @@
 import { typeEffect } from "./components/js/typingEffect.js";
 import { toggleMenu } from "./components/js/menuToggle.js";
-import { toggleLanguage } from "./environments/translation.js";
+import { toggleLanguage } from "./translation/translation.js";
 
 export function initializeApp() {
   document.addEventListener("DOMContentLoaded", () => {
