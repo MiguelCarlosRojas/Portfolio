@@ -4,18 +4,41 @@ document.getElementById('toggle-language').addEventListener('click', async () =>
     // Determinar el idioma objetivo
     const targetLanguage = currentLanguage === 'es' ? 'en' : 'es';
 
-    // Obtener el contenido actual
-    const title = document.getElementById('title').innerText;
-    const content = document.getElementById('content').innerText;
-
     try {
-        // Traducir el título y el contenido
-        const translatedTitle = await translateText(title, targetLanguage);
-        const translatedContent = await translateText(content, targetLanguage);
+        // Traducir cada elemento con un ID
+        const elementsToTranslate = [
+            { id: 'page-title', text: document.title },
+            { id: 'title', text: document.getElementById('title')?.innerText || '' },
+            { id: 'content', text: document.getElementById('content')?.innerText || '' },
+            { id: 'nav-about', text: document.getElementById('nav-about')?.innerText || '' },
+            { id: 'nav-contact', text: document.getElementById('nav-contact')?.innerText || '' },
+            { id: 'nav-skills', text: document.getElementById('nav-skills')?.innerText || '' },
+            { id: 'nav-projects', text: document.getElementById('nav-projects')?.innerText || '' },
+            { id: 'header-greeting', text: document.getElementById('header-greeting')?.innerText || '' },
+            { id: 'header-name', text: document.getElementById('header-name')?.innerText || '' },
+            { id: 'download-cv', text: document.getElementById('download-cv')?.innerText || '' },
+            { id: 'about-title', text: document.getElementById('about-title')?.innerText || '' },
+            { id: 'about-subtitle', text: document.getElementById('about-subtitle')?.innerText || '' },
+            { id: 'about-experience-title', text: document.getElementById('about-experience-title')?.innerText || '' },
+            { id: 'about-experience-text', text: document.getElementById('about-experience-text')?.innerText || '' },
+            { id: 'about-passion-title', text: document.getElementById('about-passion-title')?.innerText || '' },
+            { id: 'about-passion-text', text: document.getElementById('about-passion-text')?.innerText || '' },
+            { id: 'about-teamwork-title', text: document.getElementById('about-teamwork-title')?.innerText || '' },
+            { id: 'about-teamwork-text', text: document.getElementById('about-teamwork-text')?.innerText || '' },
+            { id: 'about-tools-title', text: document.getElementById('about-tools-title')?.innerText || '' },
+            { id: 'about-tools-text', text: document.getElementById('about-tools-text')?.innerText || '' },
+        ];
 
-        // Actualizar el DOM con el texto traducido
-        document.getElementById('title').innerText = translatedTitle;
-        document.getElementById('content').innerText = translatedContent;
+        // Traducir todos los elementos
+        for (const element of elementsToTranslate) {
+            if (!element.text.trim()) continue; // Ignorar elementos vacíos
+            const translatedText = await translateText(element.text, targetLanguage);
+            if (element.id === 'page-title') {
+                document.title = translatedText; // Actualizar el título de la página
+            } else {
+                document.getElementById(element.id).innerText = translatedText;
+            }
+        }
 
         // Cambiar el idioma actual
         currentLanguage = targetLanguage;

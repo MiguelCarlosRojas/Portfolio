@@ -19,7 +19,6 @@
           <span class="bar"></span>
           <span class="bar"></span>
         </div>
-
         <!-- Logo -->
         <div class="logo">
           <a href="#">
@@ -27,15 +26,13 @@
           </a>
         </div>
       </div>
-
       <!-- Enlaces de navegación -->
       <ul class="nav-left" id="nav-left">
-        <li><a href="#about">Sobre mí</a></li>
-        <li><a href="#available">Contactar</a></li>
-        <li><a href="#skills">Habilidades</a></li>
-        <li><a href="#projects">Ir a proyectos</a></li>
+        <li><a id="nav-about" href="#about">Sobre mí</a></li>
+        <li><a id="nav-contact" href="#available">Contactar</a></li>
+        <li><a id="nav-skills" href="#skills">Habilidades</a></li>
+        <li><a id="nav-projects" href="#projects">Ir a proyectos</a></li>
       </ul>
-
       <!-- Contenedor para los íconos sociales -->
       <div class="right-container">
         <!-- Íconos sociales alineados a la derecha -->
@@ -76,14 +73,15 @@
           <img src="../assets/images/profile.jpg" alt="Foto de perfil" />
         </div>
         <div class="intro">
-          <h1>¡Hola!<br />mi nombre es</h1>
-          <h2>Miguel Angel Carlos Rojas</h2>
+          <h1 id="header-greeting">¡Hola!<br />mi nombre es</h1>
+          <h2 id="header-name">Miguel Angel Carlos Rojas</h2>
           <p><span class="typing-text"></span></p>
           <!-- Botón para descargar CV -->
           <a
             href="../components/pdf/CURRICULUM-CARLOS-ROJAS-MIGUEL-ANGEL.pdf"
             class="btn download-btn"
             download
+            id="download-cv"
           >
             <img
               src="https://cdn-icons-png.flaticon.com/512/4726/4726010.png"
@@ -100,8 +98,8 @@
       <!-- Sección Sobre mí -->
       <section id="about" class="about">
         <div class="container">
-          <h2 class="section-title">Sobre mí</h2>
-          <p class="section-subtitle">
+          <h2 class="section-title" id="about-title">Sobre mí</h2>
+          <p class="section-subtitle" id="about-subtitle">
             Soy un desarrollador apasionado por la tecnología y la creación de
             soluciones innovadoras. Mi enfoque es construir aplicaciones
             robustas, eficientes y escalables que mejoren la experiencia del
@@ -109,11 +107,10 @@
             equipo, aprender nuevas herramientas, compartir conocimientos y
             enfrentar desafíos que me permitan crecer profesionalmente.
           </p>
-
           <div class="about-content">
             <div class="about-text">
-              <h3>Experiencia Profesional</h3>
-              <p>
+              <h3 id="about-experience-title">Experiencia Profesional</h3>
+              <p id="about-experience-text">
                 Con más de 3 años de experiencia en diseño y desarrollo de
                 aplicaciones web, he trabajado en proyectos de diversa índole
                 utilizando tecnologías como <strong>React + Vite</strong>,
@@ -129,10 +126,9 @@
                 <strong>SQL Server</strong>.
               </p>
             </div>
-
             <div class="about-text">
-              <h3>Pasión por el Desarrollo</h3>
-              <p>
+              <h3 id="about-passion-title">Pasión por el Desarrollo</h3>
+              <p id="about-passion-text">
                 Mi pasión por el desarrollo me lleva a mantenerme actualizado
                 sobre las últimas tendencias tecnológicas. Disfruto enfrentar
                 nuevos retos, como la creación de soluciones basadas en
@@ -143,10 +139,9 @@
                 aplicaciones rápidas, seguras y escalables.
               </p>
             </div>
-
             <div class="about-text">
-              <h3>Trabajo en Equipo</h3>
-              <p>
+              <h3 id="about-teamwork-title">Trabajo en Equipo</h3>
+              <p id="about-teamwork-text">
                 En el día a día, me gusta trabajar en equipo, compartir
                 conocimientos y aprender de las experiencias de otros. Considero
                 que la comunicación efectiva, el trabajo colaborativo y la
@@ -157,10 +152,9 @@
                 eficiente sin perder calidad en el trabajo.
               </p>
             </div>
-
             <div class="about-text">
-              <h3>Herramientas</h3>
-              <p>
+              <h3 id="about-tools-title">Herramientas</h3>
+              <p id="about-tools-text">
                 Algunas de las herramientas que utilizo habitualmente en mi
                 trabajo incluyen <strong>GitHub</strong> para el control de
                 versiones, <strong>Docker</strong> para la contenedorización de
