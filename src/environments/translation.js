@@ -99,10 +99,10 @@ async function translateAllElements(targetLanguage) {
     ];
 
     for (const element of elementsToTranslate) {
-        if (!element.text.trim()) continue; // Ignorar elementos vacíos
+        if (!element.text.trim()) continue;
         const translatedText = await translateText(element.text, targetLanguage);
         if (element.id === 'page-title') {
-            document.title = translatedText; // Actualizar el título de la página
+            document.title = translatedText;
         } else {
             document.getElementById(element.id).innerText = translatedText;
         }
