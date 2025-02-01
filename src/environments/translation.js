@@ -4,12 +4,23 @@ export async function toggleLanguage() {
     const targetLanguage = currentLanguage === 'es' ? 'en' : 'es';
 
     try {
+        // Mostrar el ícono de carga
+        showLoading();
+
+        // Traducir todos los elementos de la página
         await translateAllElements(targetLanguage);
+
+        // Actualizar el ícono de la bandera
         updateFlagIcon(targetLanguage);
+
+        // Establecer el nuevo idioma actual
         setCurrentLanguage(targetLanguage);
     } catch (error) {
         console.error('Error al traducir:', error);
         alert('Ocurrió un error al traducir el contenido.');
+    } finally {
+        // Ocultar el ícono de carga después de completar el proceso
+        hideLoading();
     }
 }
 
@@ -126,4 +137,16 @@ async function translateText(text, targetLanguage) {
 
     const data = await response.json();
     return data.translatedText;
+}
+
+// Función para mostrar el ícono de carga
+function showLoading() {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    loadingOverlay.classList.add('active');
+}
+
+// Función para ocultar el ícono de carga
+function hideLoading() {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    loadingOverlay.classList.remove('active');
 }
