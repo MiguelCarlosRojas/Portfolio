@@ -2,25 +2,20 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const translate = require("google-translate-api-x");
-const app = express();
 
-// Puerto dinámico (compatible con Vercel)
-const port = process.env.PORT || 3000;
+const app = express();
 
 // Middleware para parsear JSON
 app.use(express.json());
 
-// Configurar CORS para permitir solicitudes desde la URL del frontend
+// Configurar CORS para permitir solicitudes desde el frontend
 app.use(
   cors({
-    origin: "https://portfolio-miguel-carloss-projects.vercel.app", // URL del frontend
+    origin: "https://portfolio-miguel-carloss-projects.vercel.app", // Permite solo este origen
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })
 );
-
-// Servir archivos estáticos (HTML, CSS, JS)
-app.use(express.static(path.join(__dirname)));
 
 // Endpoint para traducir texto
 app.post("/translate", async (req, res) => {
@@ -33,6 +28,9 @@ app.post("/translate", async (req, res) => {
     res.status(500).json({ error: "No se pudo completar la traducción." });
   }
 });
+
+// Puerto dinámico para compatibilidad con Vercel
+const port = process.env.PORT || 3000;
 
 // Iniciar el servidor
 app.listen(port, () => {
