@@ -112,7 +112,7 @@ function updateFlagIcon(language) {
 
 // Función para enviar una solicitud de traducción al backend
 async function translateText(text, targetLanguage) {
-    const response = await fetch('https://portfolio-miguel-carloss-projects.vercel.app/translate', {
+    const response = await fetch('https://portfolio-miguel-carloss-projects.vercel.app:3000/translate', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
