@@ -5,14 +5,27 @@ const translate = require("google-translate-api-x");
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Middleware para parsear JSON
 app.use(express.json());
-app.use(cors({
-  origin: "*",
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
-}));
+
+// Configurar CORS para permitir solicitudes desde cualquier origen
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
+// Servir archivos estáticos (HTML, CSS, JS) desde la raíz del proyecto
 app.use(express.static(path.join(__dirname)));
 
+// Ruta para servir el archivo index.html en la raíz
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// Endpoint para traducir texto
 app.post("/translate", async (req, res) => {
   const { text, targetLanguage } = req.body;
   try {
@@ -24,6 +37,7 @@ app.post("/translate", async (req, res) => {
   }
 });
 
+// Iniciar el servidor
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
 });
