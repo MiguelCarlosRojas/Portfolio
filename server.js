@@ -2,8 +2,9 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const translate = require("google-translate-api-x");
+
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 // Middleware para parsear JSON
 app.use(express.json());
@@ -17,17 +18,13 @@ app.use(
   })
 );
 
-// Servir archivos estáticos (HTML, CSS, JS) desde la raíz del proyecto
+// Servir archivos estáticos (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname)));
-
-// Ruta para servir el archivo app.html en la raíz
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "src", "app", "app.html"));
-});
 
 // Endpoint para traducir texto
 app.post("/translate", async (req, res) => {
   const { text, targetLanguage } = req.body;
+
   try {
     const result = await translate(text, { to: targetLanguage });
     res.json({ translatedText: result.text });
