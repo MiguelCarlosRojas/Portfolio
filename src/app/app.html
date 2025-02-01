@@ -173,27 +173,34 @@
       <section id="available" class="available">
         <div class="container">
           <div class="content">
-            <h2 class="title">¡Vamos a crear algo juntos!</h2>
-            <p class="description">
+            <h2 class="title" id="available-title">
+              ¡Vamos a crear algo juntos!
+            </h2>
+            <p class="description" id="available-description">
               Estoy en búsqueda de nuevos proyectos emocionantes y estaría
               encantado de escuchar tus ideas. Ya sea que tengas un concepto
               claro o solo una idea en mente, podemos trabajar juntos para darle
               vida. ¡No importa el tamaño del proyecto, lo importante es que
               trabajemos juntos para lograrlo!
             </p>
-            <p class="call-to-action">
+            <p class="call-to-action" id="available-call-to-action">
               Tómate un momento para contarme lo que tienes en mente, ¡y
               comencemos a crear algo increíble juntos! Estoy listo para aportar
               mi experiencia y habilidades para hacer que tu visión se haga
               realidad.
             </p>
-            <p class="more-info">
+            <p class="more-info" id="available-more-info">
               Ya sea un sitio web, una aplicación o cualquier otro tipo de
               proyecto, puedo ayudarte a transformar tus ideas en un producto
               final. ¡Hablemos y hagamos que suceda!
             </p>
           </div>
-          <a href="https://wa.me/914793557" class="btn" target="_blank">
+          <a
+            href="https://wa.me/914793557"
+            class="btn"
+            target="_blank"
+            id="whatsapp-button"
+          >
             <img
               src="../assets/icons/whatsapp.webp"
               alt="WhatsApp"
@@ -465,7 +472,9 @@
       <!-- Sección de Proyectos -->
       <section id="projects" class="projects">
         <div class="container">
-          <h2 class="section-title">Proyectos Destacados</h2>
+          <h2 class="section-title" id="projects-title">
+            Proyectos Destacados
+          </h2>
           <div class="project-grid">
             <!-- Proyecto NexCoin -->
             <div class="project-card">
@@ -478,8 +487,8 @@
                 ></iframe>
               </div>
               <div class="project-info">
-                <h3>Proyecto NexCoin</h3>
-                <p>
+                <h3 id="project-nexcoin-title">Proyecto NexCoin</h3>
+                <p id="project-nexcoin-description">
                   Plataforma para gestionar monedas digitales y transacciones de
                   forma segura.
                 </p>
@@ -487,11 +496,11 @@
                   href="https://nex-coin-gamma.vercel.app"
                   class="btn-project"
                   target="_blank"
+                  id="project-nexcoin-button"
                   >Ver Proyecto</a
                 >
               </div>
             </div>
-
             <!-- Proyecto Divinex -->
             <div class="project-card">
               <div class="project-preview">
@@ -503,8 +512,8 @@
                 ></iframe>
               </div>
               <div class="project-info">
-                <h3>Proyecto Divinex</h3>
-                <p>
+                <h3 id="project-divinex-title">Proyecto Divinex</h3>
+                <p id="project-divinex-description">
                   Plataforma interactiva para la gestión de datos y servicios
                   web con enfoque en la experiencia del usuario.
                 </p>
@@ -512,6 +521,7 @@
                   href="https://vg-web-divinex.vercel.app/"
                   class="btn-project"
                   target="_blank"
+                  id="project-divinex-button"
                   >Ver Proyecto</a
                 >
               </div>
@@ -523,7 +533,9 @@
 
     <footer class="footer">
       <div class="container">
-        <p>© 2024 Miguel Carlos Rojas. Todos los derechos reservados.</p>
+        <p id="footer-text">
+          © 2024 Miguel Carlos Rojas. Todos los derechos reservados.
+        </p>
       </div>
     </footer>
 

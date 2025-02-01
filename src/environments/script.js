@@ -27,6 +27,19 @@ document.getElementById('toggle-language').addEventListener('click', async () =>
             { id: 'about-teamwork-text', text: document.getElementById('about-teamwork-text')?.innerText || '' },
             { id: 'about-tools-title', text: document.getElementById('about-tools-title')?.innerText || '' },
             { id: 'about-tools-text', text: document.getElementById('about-tools-text')?.innerText || '' },
+            { id: 'available-title', text: document.getElementById('available-title')?.innerText || '' },
+            { id: 'available-description', text: document.getElementById('available-description')?.innerText || '' },
+            { id: 'available-call-to-action', text: document.getElementById('available-call-to-action')?.innerText || '' },
+            { id: 'available-more-info', text: document.getElementById('available-more-info')?.innerText || '' },
+            { id: 'whatsapp-button', text: document.getElementById('whatsapp-button')?.innerText || '' },
+            { id: 'projects-title', text: document.getElementById('projects-title')?.innerText || '' },
+            { id: 'project-nexcoin-title', text: document.getElementById('project-nexcoin-title')?.innerText || '' },
+            { id: 'project-nexcoin-description', text: document.getElementById('project-nexcoin-description')?.innerText || '' },
+            { id: 'project-nexcoin-button', text: document.getElementById('project-nexcoin-button')?.innerText || '' },
+            { id: 'project-divinex-title', text: document.getElementById('project-divinex-title')?.innerText || '' },
+            { id: 'project-divinex-description', text: document.getElementById('project-divinex-description')?.innerText || '' },
+            { id: 'project-divinex-button', text: document.getElementById('project-divinex-button')?.innerText || '' },
+            { id: 'footer-text', text: document.getElementById('footer-text')?.innerText || '' }, // Nuevo elemento
         ];
 
         // Traducir todos los elementos
