@@ -317,22 +317,31 @@ function updateFlagIcon(language) {
   }
 }
 
+// URL del backend (usa variable de entorno o la URL pública)
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "https://portfolio-miguel-carloss-projects.vercel.app";
+
 // Función para enviar una solicitud de traducción al backend
 async function translateText(text, targetLanguage) {
-  const response = await fetch("http://localhost:3000/translate", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ text, targetLanguage }),
-  });
+  try {
+    const response = await fetch(`${BACKEND_URL}/translate`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ text, targetLanguage }),
+    });
 
-  if (!response.ok) {
-    throw new Error("Error en la solicitud de traducción.");
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || "Error en la solicitud de traducción.");
+    }
+
+    const data = await response.json();
+    return data.translatedText;
+  } catch (error) {
+    console.error("Error durante la traducción:", error.message);
+    throw error;
   }
-
-  const data = await response.json();
-  return data.translatedText;
 }
 
 // Función para mostrar el ícono de carga
