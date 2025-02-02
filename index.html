@@ -45,8 +45,6 @@
         font-weight: bold;
         color: #6200ea;
       }
-
-      /* Responsive Design */
       @media (max-width: 768px) {
         .progress-bar {
           height: 15px;
@@ -74,36 +72,56 @@
         Cargando: <span id="progress-percentage">0%</span>
       </p>
     </div>
-
     <script>
-      function startLoadingAnimation() {
+      document.addEventListener("DOMContentLoaded", () => {
         const progressBar = document.querySelector(".progress");
         const progressText = document.getElementById("progress-percentage");
-        const totalProgress = 100;
-        const intervalDuration = 30;
-        const redirectDelay = 500;
-        let progress = 0;
-
+        let currentProgress = 0;
+        let targetProgress = 0;
         function updateProgress() {
-          progress += 1;
-          progressBar.style.width = `${progress}%`;
-          progressText.textContent = `${progress}%`;
-          if (progress >= totalProgress) stopAnimation();
+          if (currentProgress < targetProgress) {
+            currentProgress += 1;
+            progressBar.style.width = `${currentProgress}%`;
+            progressText.textContent = `${currentProgress}%`;
+            requestAnimationFrame(updateProgress);
+          } else if (currentProgress === 100) {
+            setTimeout(() => {
+              window.location.href = "src/app/app.html";
+            }, 500);
+          }
         }
-
-        function stopAnimation() {
-          clearInterval(intervalId);
-          setTimeout(() => redirectToPage("src/app/app.html"), redirectDelay);
+        function loadApp() {
+          return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "src/app/app.html", true);
+            xhr.onprogress = (event) => {
+              if (event.lengthComputable) {
+                targetProgress = Math.round((event.loaded / event.total) * 100);
+              }
+            };
+            xhr.onload = () => {
+              if (xhr.status === 200) {
+                targetProgress = 100;
+                resolve(xhr.responseText);
+              } else {
+                reject(new Error("Error al cargar el archivo"));
+              }
+            };
+            xhr.onerror = () => {
+              reject(new Error("Error de red"));
+            };
+            xhr.send();
+          });
         }
-
-        function redirectToPage(pageUrl) {
-          window.location.href = pageUrl;
-        }
-
-        const intervalId = setInterval(updateProgress, intervalDuration);
-      }
-
-      document.addEventListener("DOMContentLoaded", startLoadingAnimation);
+        loadApp()
+          .then(() => {
+            updateProgress();
+          })
+          .catch((error) => {
+            console.error(error);
+            progressText.textContent = "Error al cargar";
+          });
+      });
     </script>
   </body>
 </html>
