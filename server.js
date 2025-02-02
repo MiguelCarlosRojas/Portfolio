@@ -4,7 +4,6 @@ const cors = require("cors");
 const translate = require("google-translate-api-x");
 
 const app = express();
-const port = 3000;
 
 // Middleware para parsear JSON
 app.use(express.json());
@@ -25,6 +24,10 @@ app.use(express.static(path.join(__dirname)));
 app.post("/translate", async (req, res) => {
   const { text, targetLanguage } = req.body;
 
+  if (!text || !targetLanguage) {
+    return res.status(400).json({ error: "Faltan parámetros requeridos." });
+  }
+
   try {
     const result = await translate(text, { to: targetLanguage });
     res.json({ translatedText: result.text });
@@ -34,7 +37,5 @@ app.post("/translate", async (req, res) => {
   }
 });
 
-// Iniciar el servidor
-app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
-});
+// Exportar la app para Vercel
+module.exports = app;
