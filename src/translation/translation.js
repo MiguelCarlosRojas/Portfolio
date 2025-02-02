@@ -319,7 +319,8 @@ function updateFlagIcon(language) {
 
 // Función para enviar una solicitud de traducción al backend
 async function translateText(text, targetLanguage) {
-  const response = await fetch("http://localhost:3000/translate", {
+  const baseUrl = window.location.origin; // Obtiene la URL base del sitio
+  const response = await fetch(`${baseUrl}/translate`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
