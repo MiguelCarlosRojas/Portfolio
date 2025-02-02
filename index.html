@@ -1,15 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <title>Redirigiendo...</title>
-    <base href="/" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <!-- Redirigir automáticamente -->
-    <meta http-equiv="refresh" content="0;url=../src/app/app.html" />
+    <title>Cargando...</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f9;
+        font-family: Arial, sans-serif;
+      }
+      .loader-container {
+        text-align: center;
+      }
+      .progress-bar {
+        width: 80%;
+        height: 30px;
+        background-color: #e0e0e0;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+      }
+      .progress {
+        width: 0%;
+        height: 100%;
+        background-color: #6200ea;
+        transition: width 0.3s ease-in-out;
+      }
+      .loading-text {
+        font-size: 18px;
+        color: #333;
+        margin-top: 10px;
+      }
+      #progress-percentage {
+        font-weight: bold;
+        color: #6200ea;
+      }
+    </style>
   </head>
   <body>
-    <p>Redirigiendo al contenido principal...</p>
+    <div class="loader-container">
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+      <p class="loading-text">
+        Cargando: <span id="progress-percentage">0%</span>
+      </p>
+    </div>
+
+    <script>
+      function startLoadingAnimation() {
+        const progressBar = document.querySelector(".progress");
+        const progressText = document.getElementById("progress-percentage");
+        const totalProgress = 100;
+        const intervalDuration = 30;
+        const redirectDelay = 500;
+        let progress = 0;
+
+        function updateProgress() {
+          progress += 1;
+          progressBar.style.width = `${progress}%`;
+          progressText.textContent = `${progress}%`;
+          if (progress >= totalProgress) stopAnimation();
+        }
+
+        function stopAnimation() {
+          clearInterval(intervalId);
+          setTimeout(() => redirectToPage("src/app/app.html"), redirectDelay);
+        }
+
+        function redirectToPage(pageUrl) {
+          window.location.href = pageUrl;
+        }
+
+        const intervalId = setInterval(updateProgress, intervalDuration);
+      }
+
+      document.addEventListener("DOMContentLoaded", startLoadingAnimation);
+    </script>
   </body>
 </html>
