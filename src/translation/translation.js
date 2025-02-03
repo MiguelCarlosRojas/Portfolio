@@ -319,7 +319,7 @@ function updateFlagIcon(language) {
 
 // Función para enviar una solicitud de traducción al backend
 async function translateText(text, targetLanguage) {
-  const response = await fetch("http://localhost:3000/translate", {
+  const response = await fetch("https://cloudtranslator.onrender.com/translate", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
