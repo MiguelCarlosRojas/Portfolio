@@ -4,7 +4,7 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "http-server"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +14,8 @@
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "google-translate-api-x": "^10.7.2"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
   }
 }
