@@ -136,24 +136,25 @@
                 output('clearstorage - Limpia localStorage y sessionStorage');
             },
             clear: () => {
-                consoleElement.innerHTML = ''; // Limpiamos todo el contenido
+                if (inputWrapper && inputWrapper.parentNode) {
+                    inputWrapper.parentNode.removeChild(inputWrapper);
+                }
+
+                consoleElement.innerHTML = '';
+
                 const welcomeMessage = document.createElement('div');
                 welcomeMessage.className = 'output';
                 welcomeMessage.textContent = 'Bienvenido a la Consola Profesional. Escribe \'help\' para ver los comandos disponibles.';
                 consoleElement.appendChild(welcomeMessage);
 
-                // Creamos un nuevo campo de entrada
                 const { inputWrapper: newInputWrapper, inputField: newInputField } = createInputField();
                 consoleElement.appendChild(newInputWrapper);
 
-                // Reasignamos el foco al nuevo campo de entrada
-                newInputField.focus();
-
-                // Actualizamos las referencias globales
                 inputWrapper = newInputWrapper;
                 inputField = newInputField;
 
-                // Volvemos a asignar el evento keypress
+                inputField.focus();
+
                 setupInputListener();
             },
             load: () => {
@@ -464,7 +465,6 @@
             consoleElement.insertBefore(outputElement, inputWrapper);
         }
 
-        // Inicializamos el listener del input
         setupInputListener();
     </script>
 </body>
