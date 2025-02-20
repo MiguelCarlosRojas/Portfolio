@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consola Profesional</title>
+    <title>Consola Full Stack Developer</title>
     <style>
         body {
             margin: 0;
@@ -71,7 +71,7 @@
 </head>
 <body>
     <div class="console" id="console">
-        <div class="output">Bienvenido a la Consola Profesional. Escribe 'help' para ver los comandos disponibles.</div>
+        <div class="output">Bienvenido a la Consola Full Stack Developer. Escribe 'help' para ver los comandos disponibles.</div>
         <div>
             <span class="command">></span>
             <input type="text" id="input" autofocus>
@@ -85,106 +85,168 @@
         const commands = {
             help: () => {
                 output('Comandos disponibles:', 'success');
-                output('help - Muestra esta ayuda');
-                output('clear - Limpia la consola');
-                output('load - Carga la aplicación y muestra el progreso');
-                output('about - Muestra información sobre esta consola');
-                output('time - Muestra la hora actual');
-                output('echo [texto] - Repite el texto ingresado');
-                output('color [color] - Cambia el color del texto de la consola');
+                Object.keys(commands).forEach(cmd => {
+                    output(`${cmd} - ${commands[cmd].description || 'Sin descripción'}`, 'success');
+                });
             },
-            clear: () => {
-                consoleElement.innerHTML = '<div><span class="command">></span><input type="text" id="input" autofocus></div>';
-                inputElement.focus();
+            clear: {
+                execute: () => {
+                    consoleElement.innerHTML = '<div><span class="command">></span><input type="text" id="input" autofocus></div>';
+                    inputElement.focus();
+                },
+                description: 'Limpia la consola'
             },
-            load: () => {
-                output('Cargando aplicación...', 'success');
-                const progressContainer = document.createElement('div');
-                progressContainer.className = 'progress-container';
-                const progressBar = document.createElement('div');
-                progressBar.className = 'progress-bar';
-                const progress = document.createElement('div');
-                progress.className = 'progress';
-                progressBar.appendChild(progress);
-                const progressText = document.createElement('div');
-                progressText.className = 'progress-text';
-                progressText.textContent = '0%';
-                progressContainer.appendChild(progressBar);
-                progressContainer.appendChild(progressText);
-                consoleElement.insertBefore(progressContainer, inputElement.parentNode);
+            load: {
+                execute: () => {
+                    output('Cargando aplicación...', 'success');
+                    const progressContainer = document.createElement('div');
+                    progressContainer.className = 'progress-container';
+                    const progressBar = document.createElement('div');
+                    progressBar.className = 'progress-bar';
+                    const progress = document.createElement('div');
+                    progress.className = 'progress';
+                    progressBar.appendChild(progress);
+                    const progressText = document.createElement('div');
+                    progressText.className = 'progress-text';
+                    progressText.textContent = '0%';
+                    progressContainer.appendChild(progressBar);
+                    progressContainer.appendChild(progressText);
+                    consoleElement.insertBefore(progressContainer, inputElement.parentNode);
 
-                let currentProgress = 0;
-                let targetProgress = 0;
+                    let currentProgress = 0;
+                    let targetProgress = 0;
 
-                function updateProgress() {
-                    if (currentProgress < targetProgress) {
-                        currentProgress += 1;
-                        progress.style.width = `${currentProgress}%`;
-                        progressText.textContent = `${currentProgress}%`;
-                        requestAnimationFrame(updateProgress);
-                    } else if (currentProgress === 100) {
-                        setTimeout(() => {
-                            window.location.href = "src/app/app.html";
-                        }, 500);
+                    function updateProgress() {
+                        if (currentProgress < targetProgress) {
+                            currentProgress += 1;
+                            progress.style.width = `${currentProgress}%`;
+                            progressText.textContent = `${currentProgress}%`;
+                            requestAnimationFrame(updateProgress);
+                        } else if (currentProgress === 100) {
+                            setTimeout(() => {
+                                window.location.href = "src/app/app.html";
+                            }, 500);
+                        }
                     }
-                }
 
-                function loadApp() {
-                    return new Promise((resolve, reject) => {
-                        const xhr = new XMLHttpRequest();
-                        xhr.open("GET", "src/app/app.html", true);
-                        xhr.onprogress = (event) => {
-                            if (event.lengthComputable) {
-                                targetProgress = Math.round((event.loaded / event.total) * 100);
-                            }
-                        };
-                        xhr.onload = () => {
-                            if (xhr.status === 200) {
-                                targetProgress = 100;
-                                resolve(xhr.responseText);
-                            } else {
-                                reject(new Error("Error al cargar el archivo"));
-                            }
-                        };
-                        xhr.onerror = () => {
-                            reject(new Error("Error de red"));
-                        };
-                        xhr.send();
-                    });
-                }
+                    function loadApp() {
+                        return new Promise((resolve, reject) => {
+                            const xhr = new XMLHttpRequest();
+                            xhr.open("GET", "src/app/app.html", true);
+                            xhr.onprogress = (event) => {
+                                if (event.lengthComputable) {
+                                    targetProgress = Math.round((event.loaded / event.total) * 100);
+                                }
+                            };
+                            xhr.onload = () => {
+                                if (xhr.status === 200) {
+                                    targetProgress = 100;
+                                    resolve(xhr.responseText);
+                                } else {
+                                    reject(new Error("Error al cargar el archivo"));
+                                }
+                            };
+                            xhr.onerror = () => {
+                                reject(new Error("Error de red"));
+                            };
+                            xhr.send();
+                        });
+                    }
 
-                loadApp()
-                    .then(() => {
-                        updateProgress();
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                        output('Error al cargar la aplicación', 'error');
-                    });
+                    loadApp()
+                        .then(() => {
+                            updateProgress();
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            output('Error al cargar la aplicación', 'error');
+                        });
+                },
+                description: 'Carga la aplicación y muestra el progreso'
             },
-            about: () => {
-                output('Consola Profesional v1.0', 'success');
-                output('Desarrollada para demostrar habilidades técnicas y de diseño.', 'success');
+            about: {
+                execute: () => {
+                    output('Consola Full Stack Developer v1.0', 'success');
+                    output('Desarrollada para demostrar habilidades técnicas y de diseño.', 'success');
+                },
+                description: 'Muestra información sobre esta consola'
             },
-            time: () => {
-                const now = new Date();
-                output(`Hora actual: ${now.toLocaleTimeString()}`, 'success');
+            time: {
+                execute: () => {
+                    const now = new Date();
+                    output(`Hora actual: ${now.toLocaleTimeString()}`, 'success');
+                },
+                description: 'Muestra la hora actual'
             },
-            echo: (text) => {
-                if (text) {
-                    output(text, 'success');
-                } else {
-                    output('Error: Debes especificar un texto.', 'error');
-                }
+            echo: {
+                execute: (text) => {
+                    if (text) {
+                        output(text, 'success');
+                    } else {
+                        output('Error: Debes especificar un texto.', 'error');
+                    }
+                },
+                description: 'Repite el texto ingresado'
             },
-            color: (color) => {
-                if (color) {
-                    consoleElement.style.color = color;
-                    output(`Color del texto cambiado a: ${color}`, 'success');
-                } else {
-                    output('Error: Debes especificar un color.', 'error');
-                }
-            }
+            color: {
+                execute: (color) => {
+                    if (color) {
+                        consoleElement.style.color = color;
+                        output(`Color del texto cambiado a: ${color}`, 'success');
+                    } else {
+                        output('Error: Debes especificar un color.', 'error');
+                    }
+                },
+                description: 'Cambia el color del texto de la consola'
+            },
+            // Más comandos
+            uppercase: {
+                execute: (text) => {
+                    if (text) {
+                        output(text.toUpperCase(), 'success');
+                    } else {
+                        output('Error: Debes especificar un texto.', 'error');
+                    }
+                },
+                description: 'Convierte el texto a mayúsculas'
+            },
+            lowercase: {
+                execute: (text) => {
+                    if (text) {
+                        output(text.toLowerCase(), 'success');
+                    } else {
+                        output('Error: Debes especificar un texto.', 'error');
+                    }
+                },
+                description: 'Convierte el texto a minúsculas'
+            },
+            reverse: {
+                execute: (text) => {
+                    if (text) {
+                        output(text.split('').reverse().join(''), 'success');
+                    } else {
+                        output('Error: Debes especificar un texto.', 'error');
+                    }
+                },
+                description: 'Invierte el texto ingresado'
+            },
+            fetch: {
+                execute: async (url) => {
+                    if (url) {
+                        try {
+                            const response = await fetch(url);
+                            const data = await response.json();
+                            output(JSON.stringify(data, null, 2), 'success');
+                        } catch (error) {
+                            output('Error al realizar la solicitud.', 'error');
+                        }
+                    } else {
+                        output('Error: Debes especificar una URL.', 'error');
+                    }
+                },
+                description: 'Realiza una solicitud HTTP GET a una URL'
+            },
+            // Agrega más comandos aquí...
         };
 
         inputElement.addEventListener('keypress', function (e) {
@@ -195,7 +257,7 @@
                 const args = inputArray.slice(1);
 
                 if (commands[command]) {
-                    commands[command](...args);
+                    commands[command].execute(...args);
                 } else {
                     output(`Comando no reconocido: ${command}`, 'error');
                 }
