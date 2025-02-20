@@ -60,33 +60,17 @@
         const consoleElement = document.getElementById('console');
         const inputElement = document.getElementById('input');
 
-        // Simulación del sistema de archivos
-        let fileSystem = {
-            '/': {
-                'archivo1.txt': 'Contenido de archivo1',
-                'archivo2.js': 'console.log("Hola Mundo");',
-                'directorio1': {
-                    'archivo3.txt': 'Contenido de archivo3'
-                }
-            }
-        };
-
-        let currentDirectory = '/';
+        // Almacenamiento temporal para archivos seleccionados
+        let selectedFileHandle = null;
 
         const commands = {
             help: () => {
                 output('Comandos disponibles:', 'success');
                 output('help - Muestra esta ayuda');
                 output('clear - Limpia la consola');
-                output('ls - Lista archivos en el directorio actual');
-                output('mkdir [nombre] - Crea un nuevo directorio');
-                output('rm [archivo] - Elimina un archivo');
-                output('mv [origen] [destino] - Mueve un archivo');
-                output('cp [origen] [destino] - Copia un archivo');
-                output('pwd - Muestra el directorio actual');
+                output('open [archivo] - Abre un archivo del sistema');
+                output('save [archivo] - Guarda un archivo en el sistema');
                 output('cat [archivo] - Muestra el contenido de un archivo');
-                output('grep [patron] [archivo] - Busca un patrón en un archivo');
-                output('find [directorio] [nombre] - Busca un archivo en un directorio');
                 output('curl [url] - Realiza una petición HTTP GET');
                 output('post [url] [data] - Realiza una petición HTTP POST');
                 output('json [archivo] - Parsea un archivo JSON');
@@ -107,277 +91,207 @@
                 consoleElement.innerHTML = '<div><span class="command">></span><input type="text" id="input" autofocus></div>';
                 inputElement.focus();
             },
-            ls: () => {
-                const dir = getDirectory(currentDirectory);
-                if (dir) {
-                    output(`Archivos en '${currentDirectory}': ${Object.keys(dir).join(', ')}`, 'success');
-                } else {
-                    output(`Error: Directorio '${currentDirectory}' no encontrado.`, 'error');
+            open: async () => {
+                try {
+                    const [fileHandle] = await window.showOpenFilePicker();
+                    selectedFileHandle = fileHandle;
+                    const file = await fileHandle.getFile();
+                    const content = await file.text();
+                    output(`Archivo '${file.name}' abierto. Contenido: ${content}`, 'success');
+                } catch (error) {
+                    output('Error: No se pudo abrir el archivo.', 'error');
                 }
             },
-            mkdir: (name) => {
-                if (name) {
-                    const dir = getDirectory(currentDirectory);
-                    if (dir) {
-                        dir[name] = {};
-                        output(`Directorio '${name}' creado en '${currentDirectory}'.`, 'success');
-                    } else {
-                        output(`Error: Directorio '${currentDirectory}' no encontrado.`, 'error');
-                    }
-                } else {
-                    output('Error: Debes especificar un nombre.', 'error');
+            save: async (fileName) => {
+                if (!fileName) {
+                    output('Error: Debes especificar un nombre de archivo.', 'error');
+                    return;
+                }
+                try {
+                    const options = {
+                        types: [
+                            {
+                                description: 'Text Files',
+                                accept: { 'text/plain': ['.txt'] },
+                            },
+                        ],
+                    };
+                    const fileHandle = await window.showSaveFilePicker(options);
+                    const writable = await fileHandle.createWritable();
+                    const content = prompt('Introduce el contenido del archivo:');
+                    await writable.write(content);
+                    await writable.close();
+                    output(`Archivo '${fileName}' guardado correctamente.`, 'success');
+                } catch (error) {
+                    output('Error: No se pudo guardar el archivo.', 'error');
                 }
             },
-            rm: (file) => {
-                if (file) {
-                    const dir = getDirectory(currentDirectory);
-                    if (dir && dir[file]) {
-                        delete dir[file];
-                        output(`Archivo/directorio '${file}' eliminado.`, 'success');
-                    } else {
-                        output(`Error: Archivo/directorio '${file}' no encontrado.`, 'error');
-                    }
-                } else {
-                    output('Error: Debes especificar un archivo/directorio.', 'error');
+            cat: async () => {
+                if (!selectedFileHandle) {
+                    output('Error: No hay ningún archivo seleccionado. Usa el comando "open".', 'error');
+                    return;
+                }
+                try {
+                    const file = await selectedFileHandle.getFile();
+                    const content = await file.text();
+                    output(`Contenido del archivo: ${content}`, 'success');
+                } catch (error) {
+                    output('Error: No se pudo leer el archivo.', 'error');
                 }
             },
-            mv: (source, destination) => {
-                if (source && destination) {
-                    const sourceDir = getDirectory(currentDirectory);
-                    const destDir = getDirectory(destination.split('/').slice(0, -1).join('/'));
-                    if (sourceDir && sourceDir[source] && destDir) {
-                        destDir[destination.split('/').pop()] = sourceDir[source];
-                        delete sourceDir[source];
-                        output(`Archivo/directorio '${source}' movido a '${destination}'.`, 'success');
-                    } else {
-                        output('Error: Origen o destino no válido.', 'error');
-                    }
-                } else {
-                    output('Error: Debes especificar origen y destino.', 'error');
-                }
-            },
-            cp: (source, destination) => {
-                if (source && destination) {
-                    const sourceDir = getDirectory(currentDirectory);
-                    const destDir = getDirectory(destination.split('/').slice(0, -1).join('/'));
-                    if (sourceDir && sourceDir[source] && destDir) {
-                        destDir[destination.split('/').pop()] = { ...sourceDir[source] };
-                        output(`Archivo/directorio '${source}' copiado a '${destination}'.`, 'success');
-                    } else {
-                        output('Error: Origen o destino no válido.', 'error');
-                    }
-                } else {
-                    output('Error: Debes especificar origen y destino.', 'error');
-                }
-            },
-            pwd: () => {
-                output(`Directorio actual: ${currentDirectory}`, 'success');
-            },
-            cat: (file) => {
-                if (file) {
-                    const dir = getDirectory(currentDirectory);
-                    if (dir && dir[file]) {
-                        output(`Contenido de '${file}': ${dir[file]}`, 'success');
-                    } else {
-                        output(`Error: Archivo '${file}' no encontrado.`, 'error');
-                    }
-                } else {
-                    output('Error: Debes especificar un archivo.', 'error');
-                }
-            },
-            grep: (pattern, file) => {
-                if (pattern && file) {
-                    const dir = getDirectory(currentDirectory);
-                    if (dir && dir[file]) {
-                        const content = dir[file];
-                        if (content.includes(pattern)) {
-                            output(`Patrón '${pattern}' encontrado en '${file}'.`, 'success');
-                        } else {
-                            output(`Patrón '${pattern}' no encontrado en '${file}'.`, 'error');
-                        }
-                    } else {
-                        output(`Error: Archivo '${file}' no encontrado.`, 'error');
-                    }
-                } else {
-                    output('Error: Debes especificar un patrón y un archivo.', 'error');
-                }
-            },
-            find: (directory, name) => {
-                if (directory && name) {
-                    const dir = getDirectory(directory);
-                    if (dir) {
-                        const found = Object.keys(dir).includes(name);
-                        if (found) {
-                            output(`Archivo '${name}' encontrado en '${directory}'.`, 'success');
-                        } else {
-                            output(`Archivo '${name}' no encontrado en '${directory}'.`, 'error');
-                        }
-                    } else {
-                        output(`Error: Directorio '${directory}' no encontrado.`, 'error');
-                    }
-                } else {
-                    output('Error: Debes especificar un directorio y un nombre.', 'error');
-                }
-            },
-            curl: (url) => {
-                if (url) {
-                    fetch(url)
-                        .then(response => response.text())
-                        .then(data => output(`Respuesta: ${data}`, 'success'))
-                        .catch(error => output('Error: No se pudo realizar la petición.', 'error'));
-                } else {
+            curl: async (url) => {
+                if (!url) {
                     output('Error: Debes especificar una URL.', 'error');
+                    return;
+                }
+                try {
+                    const response = await fetch(url);
+                    const data = await response.text();
+                    output(`Respuesta: ${data}`, 'success');
+                } catch (error) {
+                    output('Error: No se pudo realizar la petición.', 'error');
                 }
             },
-            post: (url, data) => {
-                if (url && data) {
-                    fetch(url, { method: 'POST', body: data })
-                        .then(response => response.text())
-                        .then(data => output(`Respuesta: ${data}`, 'success'))
-                        .catch(error => output('Error: No se pudo realizar la petición.', 'error'));
-                } else {
+            post: async (url, data) => {
+                if (!url || !data) {
                     output('Error: Debes especificar una URL y datos.', 'error');
+                    return;
+                }
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ data }),
+                    });
+                    const result = await response.text();
+                    output(`Respuesta: ${result}`, 'success');
+                } catch (error) {
+                    output('Error: No se pudo realizar la petición.', 'error');
                 }
             },
-            json: (file) => {
-                if (file) {
-                    const dir = getDirectory(currentDirectory);
-                    if (dir && dir[file]) {
-                        try {
-                            const jsonData = JSON.parse(dir[file]);
-                            output(`JSON parseado: ${JSON.stringify(jsonData)}`, 'success');
-                        } catch (e) {
-                            output('Error: Archivo JSON inválido.', 'error');
-                        }
-                    } else {
-                        output(`Error: Archivo '${file}' no encontrado.`, 'error');
-                    }
-                } else {
-                    output('Error: Debes especificar un archivo JSON.', 'error');
+            json: async () => {
+                if (!selectedFileHandle) {
+                    output('Error: No hay ningún archivo seleccionado. Usa el comando "open".', 'error');
+                    return;
+                }
+                try {
+                    const file = await selectedFileHandle.getFile();
+                    const content = await file.text();
+                    const jsonData = JSON.parse(content);
+                    output(`JSON parseado: ${JSON.stringify(jsonData)}`, 'success');
+                } catch (error) {
+                    output('Error: Archivo JSON inválido.', 'error');
                 }
             },
             base64: (text) => {
-                if (text) {
-                    const encoded = btoa(text);
-                    const decoded = atob(encoded);
-                    output(`Texto codificado: ${encoded}`, 'success');
-                    output(`Texto decodificado: ${decoded}`, 'success');
-                } else {
+                if (!text) {
                     output('Error: Debes especificar un texto.', 'error');
+                    return;
                 }
+                const encoded = btoa(text);
+                const decoded = atob(encoded);
+                output(`Texto codificado: ${encoded}`, 'success');
+                output(`Texto decodificado: ${decoded}`, 'success');
             },
             encrypt: (text) => {
-                if (text) {
-                    const encrypted = btoa(text);
-                    output(`Texto encriptado: ${encrypted}`, 'success');
-                } else {
+                if (!text) {
                     output('Error: Debes especificar un texto.', 'error');
+                    return;
                 }
+                const encrypted = btoa(text);
+                output(`Texto encriptado: ${encrypted}`, 'success');
             },
             decrypt: (text) => {
-                if (text) {
-                    const decrypted = atob(text);
-                    output(`Texto desencriptado: ${decrypted}`, 'success');
-                } else {
+                if (!text) {
                     output('Error: Debes especificar un texto.', 'error');
+                    return;
                 }
+                const decrypted = atob(text);
+                output(`Texto desencriptado: ${decrypted}`, 'success');
             },
             sort: (array) => {
-                if (array) {
-                    const sorted = array.split(',').sort();
-                    output(`Array ordenado: ${sorted.join(',')}`, 'success');
-                } else {
+                if (!array) {
                     output('Error: Debes especificar un array.', 'error');
+                    return;
                 }
+                const sorted = array.split(',').sort();
+                output(`Array ordenado: ${sorted.join(',')}`, 'success');
             },
             reverse: (array) => {
-                if (array) {
-                    const reversed = array.split(',').reverse();
-                    output(`Array invertido: ${reversed.join(',')}`, 'success');
-                } else {
+                if (!array) {
                     output('Error: Debes especificar un array.', 'error');
+                    return;
                 }
+                const reversed = array.split(',').reverse();
+                output(`Array invertido: ${reversed.join(',')}`, 'success');
             },
             shuffle: (array) => {
-                if (array) {
-                    const shuffled = array.split(',').sort(() => Math.random() - 0.5);
-                    output(`Array mezclado: ${shuffled.join(',')}`, 'success');
-                } else {
+                if (!array) {
                     output('Error: Debes especificar un array.', 'error');
+                    return;
                 }
+                const shuffled = array.split(',').sort(() => Math.random() - 0.5);
+                output(`Array mezclado: ${shuffled.join(',')}`, 'success');
             },
             sum: (array) => {
-                if (array) {
-                    const numbers = array.split(',').map(Number);
-                    const sum = numbers.reduce((a, b) => a + b, 0);
-                    output(`Suma: ${sum}`, 'success');
-                } else {
+                if (!array) {
                     output('Error: Debes especificar un array.', 'error');
+                    return;
                 }
+                const numbers = array.split(',').map(Number);
+                const sum = numbers.reduce((a, b) => a + b, 0);
+                output(`Suma: ${sum}`, 'success');
             },
             avg: (array) => {
-                if (array) {
-                    const numbers = array.split(',').map(Number);
-                    const avg = numbers.reduce((a, b) => a + b, 0) / numbers.length;
-                    output(`Promedio: ${avg}`, 'success');
-                } else {
+                if (!array) {
                     output('Error: Debes especificar un array.', 'error');
+                    return;
                 }
+                const numbers = array.split(',').map(Number);
+                const avg = numbers.reduce((a, b) => a + b, 0) / numbers.length;
+                output(`Promedio: ${avg}`, 'success');
             },
             max: (array) => {
-                if (array) {
-                    const numbers = array.split(',').map(Number);
-                    const max = Math.max(...numbers);
-                    output(`Máximo: ${max}`, 'success');
-                } else {
+                if (!array) {
                     output('Error: Debes especificar un array.', 'error');
+                    return;
                 }
+                const numbers = array.split(',').map(Number);
+                const max = Math.max(...numbers);
+                output(`Máximo: ${max}`, 'success');
             },
             min: (array) => {
-                if (array) {
-                    const numbers = array.split(',').map(Number);
-                    const min = Math.min(...numbers);
-                    output(`Mínimo: ${min}`, 'success');
-                } else {
+                if (!array) {
                     output('Error: Debes especificar un array.', 'error');
+                    return;
                 }
+                const numbers = array.split(',').map(Number);
+                const min = Math.min(...numbers);
+                output(`Mínimo: ${min}`, 'success');
             },
             fibonacci: (n) => {
-                if (n) {
-                    const fib = [0, 1];
-                    for (let i = 2; i <= n; i++) {
-                        fib[i] = fib[i - 1] + fib[i - 2];
-                    }
-                    output(`Secuencia de Fibonacci: ${fib.slice(0, n).join(',')}`, 'success');
-                } else {
+                if (!n) {
                     output('Error: Debes especificar un número.', 'error');
+                    return;
                 }
+                const fib = [0, 1];
+                for (let i = 2; i <= n; i++) {
+                    fib[i] = fib[i - 1] + fib[i - 2];
+                }
+                output(`Secuencia de Fibonacci: ${fib.slice(0, n).join(',')}`, 'success');
             },
             factorial: (n) => {
-                if (n) {
-                    let fact = 1;
-                    for (let i = 1; i <= n; i++) {
-                        fact *= i;
-                    }
-                    output(`Factorial: ${fact}`, 'success');
-                } else {
+                if (!n) {
                     output('Error: Debes especificar un número.', 'error');
+                    return;
                 }
-            }
+                let fact = 1;
+                for (let i = 1; i <= n; i++) {
+                    fact *= i;
+                }
+                output(`Factorial: ${fact}`, 'success');
+            },
         };
-
-        function getDirectory(path) {
-            const parts = path.split('/').filter(p => p);
-            let current = fileSystem['/'];
-            for (const part of parts) {
-                if (current[part]) {
-                    current = current[part];
-                } else {
-                    return null;
-                }
-            }
-            return current;
-        }
 
         inputElement.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
