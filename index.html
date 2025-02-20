@@ -1,127 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cargando...</title>
+    <title>Cargando Consola...</title>
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f4f4f9;
-        font-family: Arial, sans-serif;
-      }
-      .loader-container {
-        text-align: center;
-        max-width: 300px;
-        width: 90%;
-        margin: 0 auto;
-      }
-      .progress-bar {
-        width: 100%;
-        height: 20px;
-        background-color: #e0e0e0;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        margin: 20px auto;
-      }
-      .progress {
-        width: 0%;
-        height: 100%;
-        background-color: #6200ea;
-        transition: width 0.3s ease-in-out;
-      }
-      .loading-text {
-        font-size: 16px;
-        color: #333;
-        margin-top: 10px;
-      }
-      #progress-percentage {
-        font-weight: bold;
-        color: #6200ea;
-      }
-      @media (max-width: 768px) {
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1e1e; /* Fondo oscuro */
+            color: #ffffff; /* Texto blanco */
+            font-family: 'Consolas', 'Courier New', monospace; /* Fuente tipo consola */
+            overflow: hidden;
+        }
+        .console-container {
+            width: 80%;
+            max-width: 800px;
+            background-color: #2d2d2d; /* Fondo del contenedor */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+        }
         .progress-bar {
-          height: 15px;
+            width: 100%;
+            height: 20px;
+            background-color: #444; /* Fondo de la barra de progreso */
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px auto;
+            position: relative;
+        }
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00bfff); /* Degradado moderno */
+            transition: width 0.3s ease-in-out;
         }
         .loading-text {
-          font-size: 14px;
+            font-size: 16px;
+            color: #00ff88; /* Color verde neón */
+            margin-top: 10px;
         }
-      }
-      @media (max-width: 480px) {
-        .progress-bar {
-          height: 10px;
+        #progress-percentage {
+            font-weight: bold;
+            color: #00bfff; /* Color azul neón */
         }
-        .loading-text {
-          font-size: 12px;
+        .hidden-command {
+            display: none; /* Opción oculta */
         }
-      }
+        @media (max-width: 768px) {
+            .console-container {
+                width: 90%;
+            }
+            .loading-text {
+                font-size: 14px;
+            }
+        }
+        @media (max-width: 480px) {
+            .loading-text {
+                font-size: 12px;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <div class="loader-container">
-      <div class="progress-bar">
-        <div class="progress"></div>
-      </div>
-      <p class="loading-text">
-        Cargando: <span id="progress-percentage">0%</span>
-      </p>
+</head>
+<body>
+    <div class="console-container">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <p class="loading-text">
+            Cargando: <span id="progress-percentage">0%</span>
+        </p>
+        <div class="hidden-command">
+            <!-- Opción oculta para redirección -->
+            <a id="hidden-link" href="src/app/app.html"></a>
+        </div>
     </div>
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const progressBar = document.querySelector(".progress");
-        const progressText = document.getElementById("progress-percentage");
-        let currentProgress = 0;
-        let targetProgress = 0;
-        function updateProgress() {
-          if (currentProgress < targetProgress) {
-            currentProgress += 1;
-            progressBar.style.width = `${currentProgress}%`;
-            progressText.textContent = `${currentProgress}%`;
-            requestAnimationFrame(updateProgress);
-          } else if (currentProgress === 100) {
-            setTimeout(() => {
-              window.location.href = "src/app/app.html";
-            }, 500);
-          }
-        }
-        function loadApp() {
-          return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", "src/app/app.html", true);
-            xhr.onprogress = (event) => {
-              if (event.lengthComputable) {
-                targetProgress = Math.round((event.loaded / event.total) * 100);
-              }
-            };
-            xhr.onload = () => {
-              if (xhr.status === 200) {
-                targetProgress = 100;
-                resolve(xhr.responseText);
-              } else {
-                reject(new Error("Error al cargar el archivo"));
-              }
-            };
-            xhr.onerror = () => {
-              reject(new Error("Error de red"));
-            };
-            xhr.send();
-          });
-        }
-        loadApp()
-          .then(() => {
-            updateProgress();
-          })
-          .catch((error) => {
-            console.error(error);
-            progressText.textContent = "Error al cargar";
-          });
-      });
+        document.addEventListener("DOMContentLoaded", () => {
+            const progressBar = document.querySelector(".progress");
+            const progressText = document.getElementById("progress-percentage");
+            const hiddenLink = document.getElementById("hidden-link");
+            let currentProgress = 0;
+            let targetProgress = 0;
+
+            function updateProgress() {
+                if (currentProgress < targetProgress) {
+                    currentProgress += 1;
+                    progressBar.style.width = `${currentProgress}%`;
+                    progressText.textContent = `${currentProgress}%`;
+                    requestAnimationFrame(updateProgress);
+                } else if (currentProgress === 100) {
+                    setTimeout(() => {
+                        hiddenLink.click(); // Redirección oculta
+                    }, 500);
+                }
+            }
+
+            function loadApp() {
+                return new Promise((resolve, reject) => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open("GET", "src/app/app.html", true);
+                    xhr.onprogress = (event) => {
+                        if (event.lengthComputable) {
+                            targetProgress = Math.round((event.loaded / event.total) * 100);
+                        }
+                    };
+                    xhr.onload = () => {
+                        if (xhr.status === 200) {
+                            targetProgress = 100;
+                            resolve(xhr.responseText);
+                        } else {
+                            reject(new Error("Error al cargar el archivo"));
+                        }
+                    };
+                    xhr.onerror = () => {
+                        reject(new Error("Error de red"));
+                    };
+                    xhr.send();
+                });
+            }
+
+            loadApp()
+                .then(() => {
+                    updateProgress();
+                })
+                .catch((error) => {
+                    console.error(error);
+                    progressText.textContent = "Error al cargar";
+                });
+        });
     </script>
-  </body>
+</body>
 </html>
