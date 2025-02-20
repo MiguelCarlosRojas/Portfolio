@@ -79,7 +79,28 @@
     </div>
     <script>
         const consoleElement = document.getElementById('console');
-        const inputElement = document.getElementById('input');
+
+        function createInputField() {
+            const inputWrapper = document.createElement('div');
+            const commandSpan = document.createElement('span');
+            commandSpan.className = 'command';
+            commandSpan.textContent = '>';
+            const inputField = document.createElement('input');
+            inputField.type = 'text';
+            inputField.id = 'input';
+            inputField.style.width = '100%';
+            inputField.style.backgroundColor = 'transparent';
+            inputField.style.border = 'none';
+            inputField.style.color = '#cccccc';
+            inputField.style.outline = 'none';
+            inputField.style.fontFamily = "'Consolas', 'Courier New', monospace";
+            inputWrapper.appendChild(commandSpan);
+            inputWrapper.appendChild(inputField);
+            return { inputWrapper, inputField };
+        }
+
+        let { inputWrapper, inputField } = createInputField();
+        consoleElement.appendChild(inputWrapper);
 
         const commands = {
             help: () => {
@@ -115,8 +136,25 @@
                 output('clearstorage - Limpia localStorage y sessionStorage');
             },
             clear: () => {
-                consoleElement.innerHTML = '<div><span class="command">></span><input type="text" id="input" autofocus></div>';
-                inputElement.focus();
+                consoleElement.innerHTML = ''; // Limpiamos todo el contenido
+                const welcomeMessage = document.createElement('div');
+                welcomeMessage.className = 'output';
+                welcomeMessage.textContent = 'Bienvenido a la Consola Profesional. Escribe \'help\' para ver los comandos disponibles.';
+                consoleElement.appendChild(welcomeMessage);
+
+                // Creamos un nuevo campo de entrada
+                const { inputWrapper: newInputWrapper, inputField: newInputField } = createInputField();
+                consoleElement.appendChild(newInputWrapper);
+
+                // Reasignamos el foco al nuevo campo de entrada
+                newInputField.focus();
+
+                // Actualizamos las referencias globales
+                inputWrapper = newInputWrapper;
+                inputField = newInputField;
+
+                // Volvemos a asignar el evento keypress
+                setupInputListener();
             },
             load: () => {
                 output('Cargando aplicación...', 'success');
@@ -132,7 +170,7 @@
                 progressText.textContent = '0%';
                 progressContainer.appendChild(progressBar);
                 progressContainer.appendChild(progressText);
-                consoleElement.insertBefore(progressContainer, inputElement.parentNode);
+                consoleElement.insertBefore(progressContainer, inputWrapper);
                 let currentProgress = 0;
                 let targetProgress = 0;
                 function updateProgress() {
@@ -401,28 +439,33 @@
             }
         };
 
-        inputElement.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                const inputText = inputElement.value.trim();
-                const inputArray = inputText.split(' ');
-                const command = inputArray[0];
-                const args = inputArray.slice(1);
-                if (commands[command]) {
-                    commands[command](...args);
-                } else {
-                    output(`Comando no reconocido: ${command}`, 'error');
+        function setupInputListener() {
+            inputField.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    const inputText = inputField.value.trim();
+                    const inputArray = inputText.split(' ');
+                    const command = inputArray[0];
+                    const args = inputArray.slice(1);
+                    if (commands[command]) {
+                        commands[command](...args);
+                    } else {
+                        output(`Comando no reconocido: ${command}`, 'error');
+                    }
+                    inputField.value = '';
+                    consoleElement.scrollTop = consoleElement.scrollHeight;
                 }
-                inputElement.value = '';
-                consoleElement.scrollTop = consoleElement.scrollHeight;
-            }
-        });
+            });
+        }
 
         function output(text, className) {
             const outputElement = document.createElement('div');
             outputElement.className = `output ${className || ''}`;
             outputElement.textContent = text;
-            consoleElement.insertBefore(outputElement, inputElement.parentNode);
+            consoleElement.insertBefore(outputElement, inputWrapper);
         }
+
+        // Inicializamos el listener del input
+        setupInputListener();
     </script>
 </body>
 </html>
