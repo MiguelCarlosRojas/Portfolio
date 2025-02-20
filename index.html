@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consola Full Stack Developer</title>
+    <title>Consola Profesional</title>
     <style>
         body {
             margin: 0;
@@ -71,13 +71,12 @@
 </head>
 <body>
     <div class="console" id="console">
-        <div class="output">Bienvenido a la Consola Full Stack Developer. Escribe 'help' para ver los comandos disponibles.</div>
+        <div class="output">Bienvenido a la Consola Profesional. Escribe 'help' para ver los comandos disponibles.</div>
         <div>
             <span class="command">></span>
             <input type="text" id="input" autofocus>
         </div>
     </div>
-
     <script>
         const consoleElement = document.getElementById('console');
         const inputElement = document.getElementById('input');
@@ -85,122 +84,336 @@
         const commands = {
             help: () => {
                 output('Comandos disponibles:', 'success');
-                Object.keys(commands).forEach(cmd => {
-                    output(`${cmd} - ${commands[cmd].description || 'Sin descripción'}`, 'success');
-                });
+                output('help - Muestra esta ayuda');
+                output('clear - Limpia la consola');
+                output('load - Carga la aplicación y muestra el progreso');
+                output('about - Muestra información sobre esta consola');
+                output('time - Muestra la hora actual');
+                output('echo [texto] - Repite el texto ingresado');
+                output('color [color] - Cambia el color del texto de la consola');
+                output('calc [expresion] - Calcula una expresión matemática');
+                output('date - Muestra la fecha actual');
+                output('ls - Lista archivos en el directorio actual');
+                output('mkdir [nombre] - Crea un nuevo directorio');
+                output('rm [archivo] - Elimina un archivo');
+                output('mv [origen] [destino] - Mueve un archivo');
+                output('cp [origen] [destino] - Copia un archivo');
+                output('pwd - Muestra el directorio actual');
+                output('cat [archivo] - Muestra el contenido de un archivo');
+                output('grep [patron] [archivo] - Busca un patrón en un archivo');
+                output('find [directorio] [nombre] - Busca un archivo en un directorio');
+                output('curl [url] - Realiza una petición HTTP GET');
+                output('post [url] [data] - Realiza una petición HTTP POST');
+                output('json [archivo] - Parsea un archivo JSON');
+                output('base64 [texto] - Codifica/decodifica en base64');
+                output('encrypt [texto] - Encripta un texto');
+                output('decrypt [texto] - Desencripta un texto');
+                output('sort [array] - Ordena un array');
+                output('reverse [array] - Invierte un array');
+                output('shuffle [array] - Mezcla un array');
+                output('sum [array] - Suma los elementos de un array');
+                output('avg [array] - Calcula el promedio de un array');
+                output('max [array] - Encuentra el máximo de un array');
+                output('min [array] - Encuentra el mínimo de un array');
+                output('fibonacci [n] - Calcula la secuencia de Fibonacci hasta n');
+                output('factorial [n] - Calcula el factorial de un número');
             },
-            clear: {
-                execute: () => {
-                    consoleElement.innerHTML = '<div><span class="command">></span><input type="text" id="input" autofocus></div>';
-                    inputElement.focus();
-                },
-                description: 'Limpia la consola'
+            clear: () => {
+                consoleElement.innerHTML = '<div><span class="command">></span><input type="text" id="input" autofocus></div>';
+                inputElement.focus();
             },
-            load: {
-                execute: () => {
-                    output('Cargando aplicación...', 'success');
-                    const progressContainer = document.createElement('div');
-                    progressContainer.className = 'progress-container';
-                    const progressBar = document.createElement('div');
-                    progressBar.className = 'progress-bar';
-                    const progress = document.createElement('div');
-                    progress.className = 'progress';
-                    progressBar.appendChild(progress);
-                    const progressText = document.createElement('div');
-                    progressText.className = 'progress-text';
-                    progressText.textContent = '0%';
-                    progressContainer.appendChild(progressBar);
-                    progressContainer.appendChild(progressText);
-                    consoleElement.insertBefore(progressContainer, inputElement.parentNode);
-
-                    let currentProgress = 0;
-                    let targetProgress = 0;
-
-                    function updateProgress() {
-                        if (currentProgress < targetProgress) {
-                            currentProgress += 1;
-                            progress.style.width = `${currentProgress}%`;
-                            progressText.textContent = `${currentProgress}%`;
-                            requestAnimationFrame(updateProgress);
-                        } else if (currentProgress === 100) {
-                            setTimeout(() => {
-                                window.location.href = "src/app/app.html";
-                            }, 500);
-                        }
+            load: () => {
+                output('Cargando aplicación...', 'success');
+                const progressContainer = document.createElement('div');
+                progressContainer.className = 'progress-container';
+                const progressBar = document.createElement('div');
+                progressBar.className = 'progress-bar';
+                const progress = document.createElement('div');
+                progress.className = 'progress';
+                progressBar.appendChild(progress);
+                const progressText = document.createElement('div');
+                progressText.className = 'progress-text';
+                progressText.textContent = '0%';
+                progressContainer.appendChild(progressBar);
+                progressContainer.appendChild(progressText);
+                consoleElement.insertBefore(progressContainer, inputElement.parentNode);
+                let currentProgress = 0;
+                let targetProgress = 0;
+                function updateProgress() {
+                    if (currentProgress < targetProgress) {
+                        currentProgress += 1;
+                        progress.style.width = `${currentProgress}%`;
+                        progressText.textContent = `${currentProgress}%`;
+                        requestAnimationFrame(updateProgress);
+                    } else if (currentProgress === 100) {
+                        setTimeout(() => {
+                            window.location.href = "src/app/app.html";
+                        }, 500);
                     }
-
-                    function loadApp() {
-                        return new Promise((resolve, reject) => {
-                            const xhr = new XMLHttpRequest();
-                            xhr.open("GET", "src/app/app.html", true);
-                            xhr.onprogress = (event) => {
-                                if (event.lengthComputable) {
-                                    targetProgress = Math.round((event.loaded / event.total) * 100);
-                                }
-                            };
-                            xhr.onload = () => {
-                                if (xhr.status === 200) {
-                                    targetProgress = 100;
-                                    resolve(xhr.responseText);
-                                } else {
-                                    reject(new Error("Error al cargar el archivo"));
-                                }
-                            };
-                            xhr.onerror = () => {
-                                reject(new Error("Error de red"));
-                            };
-                            xhr.send();
-                        });
+                }
+                function loadApp() {
+                    return new Promise((resolve, reject) => {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open("GET", "src/app/app.html", true);
+                        xhr.onprogress = (event) => {
+                            if (event.lengthComputable) {
+                                targetProgress = Math.round((event.loaded / event.total) * 100);
+                            }
+                        };
+                        xhr.onload = () => {
+                            if (xhr.status === 200) {
+                                targetProgress = 100;
+                                resolve(xhr.responseText);
+                            } else {
+                                reject(new Error("Error al cargar el archivo"));
+                            }
+                        };
+                        xhr.onerror = () => {
+                            reject(new Error("Error de red"));
+                        };
+                        xhr.send();
+                    });
+                }
+                loadApp()
+                    .then(() => {
+                        updateProgress();
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        output('Error al cargar la aplicación', 'error');
+                    });
+            },
+            about: () => {
+                output('Consola Profesional v1.0', 'success');
+                output('Desarrollada para demostrar habilidades técnicas y de diseño.', 'success');
+            },
+            time: () => {
+                const now = new Date();
+                output(`Hora actual: ${now.toLocaleTimeString()}`, 'success');
+            },
+            echo: (text) => {
+                if (text) {
+                    output(text, 'success');
+                } else {
+                    output('Error: Debes especificar un texto.', 'error');
+                }
+            },
+            color: (color) => {
+                if (color) {
+                    consoleElement.style.color = color;
+                    output(`Color del texto cambiado a: ${color}`, 'success');
+                } else {
+                    output('Error: Debes especificar un color.', 'error');
+                }
+            },
+            calc: (expression) => {
+                try {
+                    const result = eval(expression);
+                    output(`Resultado: ${result}`, 'success');
+                } catch (e) {
+                    output('Error: Expresión inválida.', 'error');
+                }
+            },
+            date: () => {
+                const now = new Date();
+                output(`Fecha actual: ${now.toLocaleDateString()}`, 'success');
+            },
+            ls: () => {
+                output('Archivos en el directorio actual:', 'success');
+                output('archivo1.txt archivo2.js directorio1/', 'success');
+            },
+            mkdir: (name) => {
+                if (name) {
+                    output(`Directorio '${name}' creado.`, 'success');
+                } else {
+                    output('Error: Debes especificar un nombre.', 'error');
+                }
+            },
+            rm: (file) => {
+                if (file) {
+                    output(`Archivo '${file}' eliminado.`, 'success');
+                } else {
+                    output('Error: Debes especificar un archivo.', 'error');
+                }
+            },
+            mv: (source, destination) => {
+                if (source && destination) {
+                    output(`Archivo '${source}' movido a '${destination}'.`, 'success');
+                } else {
+                    output('Error: Debes especificar origen y destino.', 'error');
+                }
+            },
+            cp: (source, destination) => {
+                if (source && destination) {
+                    output(`Archivo '${source}' copiado a '${destination}'.`, 'success');
+                } else {
+                    output('Error: Debes especificar origen y destino.', 'error');
+                }
+            },
+            pwd: () => {
+                output('Directorio actual: /home/user', 'success');
+            },
+            cat: (file) => {
+                if (file) {
+                    output(`Contenido de '${file}': Lorem ipsum dolor sit amet.`, 'success');
+                } else {
+                    output('Error: Debes especificar un archivo.', 'error');
+                }
+            },
+            grep: (pattern, file) => {
+                if (pattern && file) {
+                    output(`Patrón '${pattern}' encontrado en '${file}'.`, 'success');
+                } else {
+                    output('Error: Debes especificar un patrón y un archivo.', 'error');
+                }
+            },
+            find: (directory, name) => {
+                if (directory && name) {
+                    output(`Archivo '${name}' encontrado en '${directory}'.`, 'success');
+                } else {
+                    output('Error: Debes especificar un directorio y un nombre.', 'error');
+                }
+            },
+            curl: (url) => {
+                if (url) {
+                    fetch(url)
+                        .then(response => response.text())
+                        .then(data => output(`Respuesta: ${data}`, 'success'))
+                        .catch(error => output('Error: No se pudo realizar la petición.', 'error'));
+                } else {
+                    output('Error: Debes especificar una URL.', 'error');
+                }
+            },
+            post: (url, data) => {
+                if (url && data) {
+                    fetch(url, { method: 'POST', body: data })
+                        .then(response => response.text())
+                        .then(data => output(`Respuesta: ${data}`, 'success'))
+                        .catch(error => output('Error: No se pudo realizar la petición.', 'error'));
+                } else {
+                    output('Error: Debes especificar una URL y datos.', 'error');
+                }
+            },
+            json: (file) => {
+                if (file) {
+                    try {
+                        const jsonData = JSON.parse(file);
+                        output(`JSON parseado: ${JSON.stringify(jsonData)}`, 'success');
+                    } catch (e) {
+                        output('Error: Archivo JSON inválido.', 'error');
                     }
-
-                    loadApp()
-                        .then(() => {
-                            updateProgress();
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                            output('Error al cargar la aplicación', 'error');
-                        });
-                },
-                description: 'Carga la aplicación y muestra el progreso'
+                } else {
+                    output('Error: Debes especificar un archivo JSON.', 'error');
+                }
             },
-            about: {
-                execute: () => {
-                    output('Consola Full Stack Developer v1.0', 'success');
-                    output('Desarrollada para demostrar habilidades técnicas y de diseño.', 'success');
-                },
-                description: 'Muestra información sobre esta consola'
+            base64: (text) => {
+                if (text) {
+                    const encoded = btoa(text);
+                    const decoded = atob(encoded);
+                    output(`Texto codificado: ${encoded}`, 'success');
+                    output(`Texto decodificado: ${decoded}`, 'success');
+                } else {
+                    output('Error: Debes especificar un texto.', 'error');
+                }
             },
-            time: {
-                execute: () => {
-                    const now = new Date();
-                    output(`Hora actual: ${now.toLocaleTimeString()}`, 'success');
-                },
-                description: 'Muestra la hora actual'
+            encrypt: (text) => {
+                if (text) {
+                    const encrypted = btoa(text);
+                    output(`Texto encriptado: ${encrypted}`, 'success');
+                } else {
+                    output('Error: Debes especificar un texto.', 'error');
+                }
             },
-            echo: {
-                execute: (text) => {
-                    if (text) {
-                        output(text, 'success');
-                    } else {
-                        output('Error: Debes especificar un texto.', 'error');
+            decrypt: (text) => {
+                if (text) {
+                    const decrypted = atob(text);
+                    output(`Texto desencriptado: ${decrypted}`, 'success');
+                } else {
+                    output('Error: Debes especificar un texto.', 'error');
+                }
+            },
+            sort: (array) => {
+                if (array) {
+                    const sorted = array.split(',').sort();
+                    output(`Array ordenado: ${sorted.join(',')}`, 'success');
+                } else {
+                    output('Error: Debes especificar un array.', 'error');
+                }
+            },
+            reverse: (array) => {
+                if (array) {
+                    const reversed = array.split(',').reverse();
+                    output(`Array invertido: ${reversed.join(',')}`, 'success');
+                } else {
+                    output('Error: Debes especificar un array.', 'error');
+                }
+            },
+            shuffle: (array) => {
+                if (array) {
+                    const shuffled = array.split(',').sort(() => Math.random() - 0.5);
+                    output(`Array mezclado: ${shuffled.join(',')}`, 'success');
+                } else {
+                    output('Error: Debes especificar un array.', 'error');
+                }
+            },
+            sum: (array) => {
+                if (array) {
+                    const numbers = array.split(',').map(Number);
+                    const sum = numbers.reduce((a, b) => a + b, 0);
+                    output(`Suma: ${sum}`, 'success');
+                } else {
+                    output('Error: Debes especificar un array.', 'error');
+                }
+            },
+            avg: (array) => {
+                if (array) {
+                    const numbers = array.split(',').map(Number);
+                    const avg = numbers.reduce((a, b) => a + b, 0) / numbers.length;
+                    output(`Promedio: ${avg}`, 'success');
+                } else {
+                    output('Error: Debes especificar un array.', 'error');
+                }
+            },
+            max: (array) => {
+                if (array) {
+                    const numbers = array.split(',').map(Number);
+                    const max = Math.max(...numbers);
+                    output(`Máximo: ${max}`, 'success');
+                } else {
+                    output('Error: Debes especificar un array.', 'error');
+                }
+            },
+            min: (array) => {
+                if (array) {
+                    const numbers = array.split(',').map(Number);
+                    const min = Math.min(...numbers);
+                    output(`Mínimo: ${min}`, 'success');
+                } else {
+                    output('Error: Debes especificar un array.', 'error');
+                }
+            },
+            fibonacci: (n) => {
+                if (n) {
+                    const fib = [0, 1];
+                    for (let i = 2; i <= n; i++) {
+                        fib[i] = fib[i - 1] + fib[i - 2];
                     }
-                },
-                description: 'Repite el texto ingresado'
+                    output(`Secuencia de Fibonacci: ${fib.slice(0, n).join(',')}`, 'success');
+                } else {
+                    output('Error: Debes especificar un número.', 'error');
+                }
             },
-            color: {
-                execute: (color) => {
-                    if (color) {
-                        consoleElement.style.color = color;
-                        output(`Color del texto cambiado a: ${color}`, 'success');
-                    } else {
-                        output('Error: Debes especificar un color.', 'error');
+            factorial: (n) => {
+                if (n) {
+                    let fact = 1;
+                    for (let i = 1; i <= n; i++) {
+                        fact *= i;
                     }
-                },
-                description: 'Cambia el color del texto de la consola'
-            },
-            // Más comandos...
-            // Ejemplo: Comandos para manipulación de datos, APIs, DOM, etc.
+                    output(`Factorial: ${fact}`, 'success');
+                } else {
+                    output('Error: Debes especificar un número.', 'error');
+                }
+            }
         };
 
         inputElement.addEventListener('keypress', function (e) {
@@ -209,13 +422,11 @@
                 const inputArray = inputText.split(' ');
                 const command = inputArray[0];
                 const args = inputArray.slice(1);
-
-                if (commands[command] && commands[command].execute) {
-                    commands[command].execute(...args);
+                if (commands[command]) {
+                    commands[command](...args);
                 } else {
                     output(`Comando no reconocido: ${command}`, 'error');
                 }
-
                 inputElement.value = '';
                 consoleElement.scrollTop = consoleElement.scrollHeight;
             }
