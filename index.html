@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cargando Consola...</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consola Profesional</title>
     <style>
         body {
             margin: 0;
@@ -12,129 +12,168 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #1e1e1e; /* Fondo oscuro */
-            color: #ffffff; /* Texto blanco */
-            font-family: 'Consolas', 'Courier New', monospace; /* Fuente tipo consola */
-            overflow: hidden;
+            background-color: #1e1e1e;
+            color: #cccccc;
+            font-family: 'Consolas', 'Courier New', monospace;
         }
-        .console-container {
+        .console {
             width: 80%;
-            max-width: 800px;
-            background-color: #2d2d2d; /* Fondo del contenedor */
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            height: 60%;
+            background-color: #252526;
+            border: 1px solid #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             padding: 20px;
-            text-align: center;
+            overflow-y: auto;
+            border-radius: 5px;
+        }
+        .console input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            color: #cccccc;
+            outline: none;
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+        .output {
+            margin-bottom: 10px;
+        }
+        .command {
+            color: #569cd6;
+        }
+        .error {
+            color: #f44747;
+        }
+        .success {
+            color: #6a9955;
         }
         .progress-bar {
             width: 100%;
             height: 20px;
-            background-color: #444; /* Fondo de la barra de progreso */
+            background-color: #333;
             border-radius: 10px;
             overflow: hidden;
-            margin: 20px auto;
-            position: relative;
+            margin-top: 10px;
         }
         .progress {
             width: 0%;
             height: 100%;
-            background: linear-gradient(90deg, #00ff88, #00bfff); /* Degradado moderno */
+            background-color: #6200ea;
             transition: width 0.3s ease-in-out;
-        }
-        .loading-text {
-            font-size: 16px;
-            color: #00ff88; /* Color verde neón */
-            margin-top: 10px;
-        }
-        #progress-percentage {
-            font-weight: bold;
-            color: #00bfff; /* Color azul neón */
-        }
-        .hidden-command {
-            display: none; /* Opción oculta */
-        }
-        @media (max-width: 768px) {
-            .console-container {
-                width: 90%;
-            }
-            .loading-text {
-                font-size: 14px;
-            }
-        }
-        @media (max-width: 480px) {
-            .loading-text {
-                font-size: 12px;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="console-container">
-        <div class="progress-bar">
-            <div class="progress"></div>
-        </div>
-        <p class="loading-text">
-            Cargando: <span id="progress-percentage">0%</span>
-        </p>
-        <div class="hidden-command">
-            <!-- Opción oculta para redirección -->
-            <a id="hidden-link" href="src/app/app.html"></a>
+    <div class="console" id="console">
+        <div class="output">Bienvenido a la Consola Profesional. Escribe 'help' para ver los comandos disponibles.</div>
+        <div>
+            <span class="command">></span>
+            <input type="text" id="input" autofocus>
         </div>
     </div>
+
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const progressBar = document.querySelector(".progress");
-            const progressText = document.getElementById("progress-percentage");
-            const hiddenLink = document.getElementById("hidden-link");
-            let currentProgress = 0;
-            let targetProgress = 0;
+        const consoleElement = document.getElementById('console');
+        const inputElement = document.getElementById('input');
 
-            function updateProgress() {
-                if (currentProgress < targetProgress) {
-                    currentProgress += 1;
-                    progressBar.style.width = `${currentProgress}%`;
-                    progressText.textContent = `${currentProgress}%`;
-                    requestAnimationFrame(updateProgress);
-                } else if (currentProgress === 100) {
-                    setTimeout(() => {
-                        hiddenLink.click(); // Redirección oculta
-                    }, 500);
+        const commands = {
+            help: () => {
+                output('Comandos disponibles:', 'success');
+                output('help - Muestra esta ayuda');
+                output('clear - Limpia la consola');
+                output('load - Carga la aplicación y muestra el progreso');
+                output('about - Muestra información sobre esta consola');
+            },
+            clear: () => {
+                consoleElement.innerHTML = '<div><span class="command">></span><input type="text" id="input" autofocus></div>';
+                inputElement.focus();
+            },
+            load: () => {
+                output('Cargando aplicación...', 'success');
+                const progressBar = document.createElement('div');
+                progressBar.className = 'progress-bar';
+                const progress = document.createElement('div');
+                progress.className = 'progress';
+                progressBar.appendChild(progress);
+                consoleElement.insertBefore(progressBar, inputElement.parentNode);
+
+                let currentProgress = 0;
+                let targetProgress = 0;
+
+                function updateProgress() {
+                    if (currentProgress < targetProgress) {
+                        currentProgress += 1;
+                        progress.style.width = `${currentProgress}%`;
+                        requestAnimationFrame(updateProgress);
+                    } else if (currentProgress === 100) {
+                        setTimeout(() => {
+                            window.location.href = "src/app/app.html";
+                        }, 500);
+                    }
                 }
-            }
 
-            function loadApp() {
-                return new Promise((resolve, reject) => {
-                    const xhr = new XMLHttpRequest();
-                    xhr.open("GET", "src/app/app.html", true);
-                    xhr.onprogress = (event) => {
-                        if (event.lengthComputable) {
-                            targetProgress = Math.round((event.loaded / event.total) * 100);
-                        }
-                    };
-                    xhr.onload = () => {
-                        if (xhr.status === 200) {
-                            targetProgress = 100;
-                            resolve(xhr.responseText);
-                        } else {
-                            reject(new Error("Error al cargar el archivo"));
-                        }
-                    };
-                    xhr.onerror = () => {
-                        reject(new Error("Error de red"));
-                    };
-                    xhr.send();
-                });
-            }
+                function loadApp() {
+                    return new Promise((resolve, reject) => {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open("GET", "src/app/app.html", true);
+                        xhr.onprogress = (event) => {
+                            if (event.lengthComputable) {
+                                targetProgress = Math.round((event.loaded / event.total) * 100);
+                            }
+                        };
+                        xhr.onload = () => {
+                            if (xhr.status === 200) {
+                                targetProgress = 100;
+                                resolve(xhr.responseText);
+                            } else {
+                                reject(new Error("Error al cargar el archivo"));
+                            }
+                        };
+                        xhr.onerror = () => {
+                            reject(new Error("Error de red"));
+                        };
+                        xhr.send();
+                    });
+                }
 
-            loadApp()
-                .then(() => {
-                    updateProgress();
-                })
-                .catch((error) => {
-                    console.error(error);
-                    progressText.textContent = "Error al cargar";
-                });
+                loadApp()
+                    .then(() => {
+                        updateProgress();
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        output('Error al cargar la aplicación', 'error');
+                    });
+            },
+            about: () => {
+                output('Consola Profesional v1.0', 'success');
+                output('Desarrollada para demostrar habilidades técnicas y de diseño.', 'success');
+            }
+        };
+
+        inputElement.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const inputText = inputElement.value.trim();
+                const inputArray = inputText.split(' ');
+                const command = inputArray[0];
+                const args = inputArray.slice(1);
+
+                if (commands[command]) {
+                    commands[command](...args);
+                } else {
+                    output(`Comando no reconocido: ${command}`, 'error');
+                }
+
+                inputElement.value = '';
+                consoleElement.scrollTop = consoleElement.scrollHeight;
+            }
         });
+
+        function output(text, className) {
+            const outputElement = document.createElement('div');
+            outputElement.className = `output ${className || ''}`;
+            outputElement.textContent = text;
+            consoleElement.insertBefore(outputElement, inputElement.parentNode);
+        }
     </script>
 </body>
 </html>
