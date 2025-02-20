@@ -46,27 +46,6 @@
         .success {
             color: #6a9955;
         }
-        .progress-container {
-            margin-top: 10px;
-        }
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background-color: #333;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .progress {
-            width: 0%;
-            height: 100%;
-            background-color: #6200ea;
-            transition: width 0.3s ease-in-out;
-        }
-        .progress-text {
-            margin-top: 5px;
-            font-size: 14px;
-            color: #cccccc;
-        }
     </style>
 </head>
 <body>
@@ -81,18 +60,24 @@
         const consoleElement = document.getElementById('console');
         const inputElement = document.getElementById('input');
 
+        // Simulación del sistema de archivos
+        let fileSystem = {
+            '/': {
+                'archivo1.txt': 'Contenido de archivo1',
+                'archivo2.js': 'console.log("Hola Mundo");',
+                'directorio1': {
+                    'archivo3.txt': 'Contenido de archivo3'
+                }
+            }
+        };
+
+        let currentDirectory = '/';
+
         const commands = {
             help: () => {
                 output('Comandos disponibles:', 'success');
                 output('help - Muestra esta ayuda');
                 output('clear - Limpia la consola');
-                output('load - Carga la aplicación y muestra el progreso');
-                output('about - Muestra información sobre esta consola');
-                output('time - Muestra la hora actual');
-                output('echo [texto] - Repite el texto ingresado');
-                output('color [color] - Cambia el color del texto de la consola');
-                output('calc [expresion] - Calcula una expresión matemática');
-                output('date - Muestra la fecha actual');
                 output('ls - Lista archivos en el directorio actual');
                 output('mkdir [nombre] - Crea un nuevo directorio');
                 output('rm [archivo] - Elimina un archivo');
@@ -122,154 +107,114 @@
                 consoleElement.innerHTML = '<div><span class="command">></span><input type="text" id="input" autofocus></div>';
                 inputElement.focus();
             },
-            load: () => {
-                output('Cargando aplicación...', 'success');
-                const progressContainer = document.createElement('div');
-                progressContainer.className = 'progress-container';
-                const progressBar = document.createElement('div');
-                progressBar.className = 'progress-bar';
-                const progress = document.createElement('div');
-                progress.className = 'progress';
-                progressBar.appendChild(progress);
-                const progressText = document.createElement('div');
-                progressText.className = 'progress-text';
-                progressText.textContent = '0%';
-                progressContainer.appendChild(progressBar);
-                progressContainer.appendChild(progressText);
-                consoleElement.insertBefore(progressContainer, inputElement.parentNode);
-                let currentProgress = 0;
-                let targetProgress = 0;
-                function updateProgress() {
-                    if (currentProgress < targetProgress) {
-                        currentProgress += 1;
-                        progress.style.width = `${currentProgress}%`;
-                        progressText.textContent = `${currentProgress}%`;
-                        requestAnimationFrame(updateProgress);
-                    } else if (currentProgress === 100) {
-                        setTimeout(() => {
-                            window.location.href = "src/app/app.html";
-                        }, 500);
-                    }
-                }
-                function loadApp() {
-                    return new Promise((resolve, reject) => {
-                        const xhr = new XMLHttpRequest();
-                        xhr.open("GET", "src/app/app.html", true);
-                        xhr.onprogress = (event) => {
-                            if (event.lengthComputable) {
-                                targetProgress = Math.round((event.loaded / event.total) * 100);
-                            }
-                        };
-                        xhr.onload = () => {
-                            if (xhr.status === 200) {
-                                targetProgress = 100;
-                                resolve(xhr.responseText);
-                            } else {
-                                reject(new Error("Error al cargar el archivo"));
-                            }
-                        };
-                        xhr.onerror = () => {
-                            reject(new Error("Error de red"));
-                        };
-                        xhr.send();
-                    });
-                }
-                loadApp()
-                    .then(() => {
-                        updateProgress();
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                        output('Error al cargar la aplicación', 'error');
-                    });
-            },
-            about: () => {
-                output('Consola Profesional v1.0', 'success');
-                output('Desarrollada para demostrar habilidades técnicas y de diseño.', 'success');
-            },
-            time: () => {
-                const now = new Date();
-                output(`Hora actual: ${now.toLocaleTimeString()}`, 'success');
-            },
-            echo: (text) => {
-                if (text) {
-                    output(text, 'success');
-                } else {
-                    output('Error: Debes especificar un texto.', 'error');
-                }
-            },
-            color: (color) => {
-                if (color) {
-                    consoleElement.style.color = color;
-                    output(`Color del texto cambiado a: ${color}`, 'success');
-                } else {
-                    output('Error: Debes especificar un color.', 'error');
-                }
-            },
-            calc: (expression) => {
-                try {
-                    const result = eval(expression);
-                    output(`Resultado: ${result}`, 'success');
-                } catch (e) {
-                    output('Error: Expresión inválida.', 'error');
-                }
-            },
-            date: () => {
-                const now = new Date();
-                output(`Fecha actual: ${now.toLocaleDateString()}`, 'success');
-            },
             ls: () => {
-                output('Archivos en el directorio actual:', 'success');
-                output('archivo1.txt archivo2.js directorio1/', 'success');
+                const dir = getDirectory(currentDirectory);
+                if (dir) {
+                    output(`Archivos en '${currentDirectory}': ${Object.keys(dir).join(', ')}`, 'success');
+                } else {
+                    output(`Error: Directorio '${currentDirectory}' no encontrado.`, 'error');
+                }
             },
             mkdir: (name) => {
                 if (name) {
-                    output(`Directorio '${name}' creado.`, 'success');
+                    const dir = getDirectory(currentDirectory);
+                    if (dir) {
+                        dir[name] = {};
+                        output(`Directorio '${name}' creado en '${currentDirectory}'.`, 'success');
+                    } else {
+                        output(`Error: Directorio '${currentDirectory}' no encontrado.`, 'error');
+                    }
                 } else {
                     output('Error: Debes especificar un nombre.', 'error');
                 }
             },
             rm: (file) => {
                 if (file) {
-                    output(`Archivo '${file}' eliminado.`, 'success');
+                    const dir = getDirectory(currentDirectory);
+                    if (dir && dir[file]) {
+                        delete dir[file];
+                        output(`Archivo/directorio '${file}' eliminado.`, 'success');
+                    } else {
+                        output(`Error: Archivo/directorio '${file}' no encontrado.`, 'error');
+                    }
                 } else {
-                    output('Error: Debes especificar un archivo.', 'error');
+                    output('Error: Debes especificar un archivo/directorio.', 'error');
                 }
             },
             mv: (source, destination) => {
                 if (source && destination) {
-                    output(`Archivo '${source}' movido a '${destination}'.`, 'success');
+                    const sourceDir = getDirectory(currentDirectory);
+                    const destDir = getDirectory(destination.split('/').slice(0, -1).join('/'));
+                    if (sourceDir && sourceDir[source] && destDir) {
+                        destDir[destination.split('/').pop()] = sourceDir[source];
+                        delete sourceDir[source];
+                        output(`Archivo/directorio '${source}' movido a '${destination}'.`, 'success');
+                    } else {
+                        output('Error: Origen o destino no válido.', 'error');
+                    }
                 } else {
                     output('Error: Debes especificar origen y destino.', 'error');
                 }
             },
             cp: (source, destination) => {
                 if (source && destination) {
-                    output(`Archivo '${source}' copiado a '${destination}'.`, 'success');
+                    const sourceDir = getDirectory(currentDirectory);
+                    const destDir = getDirectory(destination.split('/').slice(0, -1).join('/'));
+                    if (sourceDir && sourceDir[source] && destDir) {
+                        destDir[destination.split('/').pop()] = { ...sourceDir[source] };
+                        output(`Archivo/directorio '${source}' copiado a '${destination}'.`, 'success');
+                    } else {
+                        output('Error: Origen o destino no válido.', 'error');
+                    }
                 } else {
                     output('Error: Debes especificar origen y destino.', 'error');
                 }
             },
             pwd: () => {
-                output('Directorio actual: /home/user', 'success');
+                output(`Directorio actual: ${currentDirectory}`, 'success');
             },
             cat: (file) => {
                 if (file) {
-                    output(`Contenido de '${file}': Lorem ipsum dolor sit amet.`, 'success');
+                    const dir = getDirectory(currentDirectory);
+                    if (dir && dir[file]) {
+                        output(`Contenido de '${file}': ${dir[file]}`, 'success');
+                    } else {
+                        output(`Error: Archivo '${file}' no encontrado.`, 'error');
+                    }
                 } else {
                     output('Error: Debes especificar un archivo.', 'error');
                 }
             },
             grep: (pattern, file) => {
                 if (pattern && file) {
-                    output(`Patrón '${pattern}' encontrado en '${file}'.`, 'success');
+                    const dir = getDirectory(currentDirectory);
+                    if (dir && dir[file]) {
+                        const content = dir[file];
+                        if (content.includes(pattern)) {
+                            output(`Patrón '${pattern}' encontrado en '${file}'.`, 'success');
+                        } else {
+                            output(`Patrón '${pattern}' no encontrado en '${file}'.`, 'error');
+                        }
+                    } else {
+                        output(`Error: Archivo '${file}' no encontrado.`, 'error');
+                    }
                 } else {
                     output('Error: Debes especificar un patrón y un archivo.', 'error');
                 }
             },
             find: (directory, name) => {
                 if (directory && name) {
-                    output(`Archivo '${name}' encontrado en '${directory}'.`, 'success');
+                    const dir = getDirectory(directory);
+                    if (dir) {
+                        const found = Object.keys(dir).includes(name);
+                        if (found) {
+                            output(`Archivo '${name}' encontrado en '${directory}'.`, 'success');
+                        } else {
+                            output(`Archivo '${name}' no encontrado en '${directory}'.`, 'error');
+                        }
+                    } else {
+                        output(`Error: Directorio '${directory}' no encontrado.`, 'error');
+                    }
                 } else {
                     output('Error: Debes especificar un directorio y un nombre.', 'error');
                 }
@@ -296,11 +241,16 @@
             },
             json: (file) => {
                 if (file) {
-                    try {
-                        const jsonData = JSON.parse(file);
-                        output(`JSON parseado: ${JSON.stringify(jsonData)}`, 'success');
-                    } catch (e) {
-                        output('Error: Archivo JSON inválido.', 'error');
+                    const dir = getDirectory(currentDirectory);
+                    if (dir && dir[file]) {
+                        try {
+                            const jsonData = JSON.parse(dir[file]);
+                            output(`JSON parseado: ${JSON.stringify(jsonData)}`, 'success');
+                        } catch (e) {
+                            output('Error: Archivo JSON inválido.', 'error');
+                        }
+                    } else {
+                        output(`Error: Archivo '${file}' no encontrado.`, 'error');
                     }
                 } else {
                     output('Error: Debes especificar un archivo JSON.', 'error');
@@ -415,6 +365,19 @@
                 }
             }
         };
+
+        function getDirectory(path) {
+            const parts = path.split('/').filter(p => p);
+            let current = fileSystem['/'];
+            for (const part of parts) {
+                if (current[part]) {
+                    current = current[part];
+                } else {
+                    return null;
+                }
+            }
+            return current;
+        }
 
         inputElement.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
