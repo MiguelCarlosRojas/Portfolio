@@ -199,54 +199,8 @@
                 },
                 description: 'Cambia el color del texto de la consola'
             },
-            // Más comandos
-            uppercase: {
-                execute: (text) => {
-                    if (text) {
-                        output(text.toUpperCase(), 'success');
-                    } else {
-                        output('Error: Debes especificar un texto.', 'error');
-                    }
-                },
-                description: 'Convierte el texto a mayúsculas'
-            },
-            lowercase: {
-                execute: (text) => {
-                    if (text) {
-                        output(text.toLowerCase(), 'success');
-                    } else {
-                        output('Error: Debes especificar un texto.', 'error');
-                    }
-                },
-                description: 'Convierte el texto a minúsculas'
-            },
-            reverse: {
-                execute: (text) => {
-                    if (text) {
-                        output(text.split('').reverse().join(''), 'success');
-                    } else {
-                        output('Error: Debes especificar un texto.', 'error');
-                    }
-                },
-                description: 'Invierte el texto ingresado'
-            },
-            fetch: {
-                execute: async (url) => {
-                    if (url) {
-                        try {
-                            const response = await fetch(url);
-                            const data = await response.json();
-                            output(JSON.stringify(data, null, 2), 'success');
-                        } catch (error) {
-                            output('Error al realizar la solicitud.', 'error');
-                        }
-                    } else {
-                        output('Error: Debes especificar una URL.', 'error');
-                    }
-                },
-                description: 'Realiza una solicitud HTTP GET a una URL'
-            },
-            // Agrega más comandos aquí...
+            // Más comandos...
+            // Ejemplo: Comandos para manipulación de datos, APIs, DOM, etc.
         };
 
         inputElement.addEventListener('keypress', function (e) {
@@ -256,7 +210,7 @@
                 const command = inputArray[0];
                 const args = inputArray.slice(1);
 
-                if (commands[command]) {
+                if (commands[command] && commands[command].execute) {
                     commands[command].execute(...args);
                 } else {
                     output(`Comando no reconocido: ${command}`, 'error');
