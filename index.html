@@ -46,19 +46,26 @@
         .success {
             color: #6a9955;
         }
+        .progress-container {
+            margin-top: 10px;
+        }
         .progress-bar {
             width: 100%;
             height: 20px;
             background-color: #333;
             border-radius: 10px;
             overflow: hidden;
-            margin-top: 10px;
         }
         .progress {
             width: 0%;
             height: 100%;
             background-color: #6200ea;
             transition: width 0.3s ease-in-out;
+        }
+        .progress-text {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #cccccc;
         }
     </style>
 </head>
@@ -82,6 +89,9 @@
                 output('clear - Limpia la consola');
                 output('load - Carga la aplicación y muestra el progreso');
                 output('about - Muestra información sobre esta consola');
+                output('time - Muestra la hora actual');
+                output('echo [texto] - Repite el texto ingresado');
+                output('color [color] - Cambia el color del texto de la consola');
             },
             clear: () => {
                 consoleElement.innerHTML = '<div><span class="command">></span><input type="text" id="input" autofocus></div>';
@@ -89,12 +99,19 @@
             },
             load: () => {
                 output('Cargando aplicación...', 'success');
+                const progressContainer = document.createElement('div');
+                progressContainer.className = 'progress-container';
                 const progressBar = document.createElement('div');
                 progressBar.className = 'progress-bar';
                 const progress = document.createElement('div');
                 progress.className = 'progress';
                 progressBar.appendChild(progress);
-                consoleElement.insertBefore(progressBar, inputElement.parentNode);
+                const progressText = document.createElement('div');
+                progressText.className = 'progress-text';
+                progressText.textContent = '0%';
+                progressContainer.appendChild(progressBar);
+                progressContainer.appendChild(progressText);
+                consoleElement.insertBefore(progressContainer, inputElement.parentNode);
 
                 let currentProgress = 0;
                 let targetProgress = 0;
@@ -103,6 +120,7 @@
                     if (currentProgress < targetProgress) {
                         currentProgress += 1;
                         progress.style.width = `${currentProgress}%`;
+                        progressText.textContent = `${currentProgress}%`;
                         requestAnimationFrame(updateProgress);
                     } else if (currentProgress === 100) {
                         setTimeout(() => {
@@ -147,6 +165,25 @@
             about: () => {
                 output('Consola Profesional v1.0', 'success');
                 output('Desarrollada para demostrar habilidades técnicas y de diseño.', 'success');
+            },
+            time: () => {
+                const now = new Date();
+                output(`Hora actual: ${now.toLocaleTimeString()}`, 'success');
+            },
+            echo: (text) => {
+                if (text) {
+                    output(text, 'success');
+                } else {
+                    output('Error: Debes especificar un texto.', 'error');
+                }
+            },
+            color: (color) => {
+                if (color) {
+                    consoleElement.style.color = color;
+                    output(`Color del texto cambiado a: ${color}`, 'success');
+                } else {
+                    output('Error: Debes especificar un color.', 'error');
+                }
             }
         };
 
