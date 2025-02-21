@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consola Profesional</title>
+    <title>Consola Futurista</title>
     <style>
         /* Estilos generales */
         body {
@@ -13,7 +13,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             color: #ffffff;
             font-family: 'Consolas', 'Courier New', monospace;
             overflow: hidden;
@@ -21,20 +21,20 @@
 
         /* Contenedor principal de la consola */
         .console {
-            width: 90%;
+            width: 80%;
             max-width: 1200px;
             height: 70%;
-            background-color: #1e1e2f;
-            border: 2px solid #333;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #6200ea;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 20px;
             overflow-y: auto;
             position: relative;
             transition: all 0.3s ease-in-out;
         }
 
-        /* Animación al cargar la consola */
+        /* Animación de carga */
         .console::before {
             content: '';
             position: absolute;
@@ -42,7 +42,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+            background: linear-gradient(90deg, rgba(100, 0, 234, 0.1), rgba(100, 0, 234, 0.3));
             animation: scan 2s infinite linear;
             pointer-events: none;
         }
@@ -52,7 +52,36 @@
             100% { transform: translateY(100%); }
         }
 
-        /* Estilo del campo de entrada */
+        /* Mensajes de salida */
+        .output {
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .command {
+            color: #6200ea;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #f44747;
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+
+        .success {
+            color: #6a9955;
+        }
+
+        /* Campo de entrada */
         .input-container {
             display: flex;
             align-items: center;
@@ -82,61 +111,9 @@
             border-color: #ff4081;
         }
 
-        /* Mensajes de salida */
-        .output {
-            margin-bottom: 10px;
-            font-size: 14px;
-            line-height: 1.5;
-            word-wrap: break-word;
-        }
-
-        .error {
-            color: #f44747;
-            animation: shake 0.3s ease-in-out;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-        }
-
-        .success {
-            color: #6a9955;
-        }
-
-        /* Barra de progreso */
-        .progress-container {
-            margin-top: 10px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background-color: #333;
-            border-radius: 5px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .progress {
-            width: 0%;
-            height: 100%;
-            background-color: #6200ea;
-            transition: width 0.3s ease-in-out;
-        }
-
-        .progress-text {
-            margin-top: 5px;
-            font-size: 12px;
-            color: #cccccc;
-        }
-
-        /* Efectos visuales adicionales */
+        /* Mensaje de bienvenida */
         .welcome-message {
             font-size: 18px;
-            color: #ffffff;
             text-align: center;
             margin-bottom: 20px;
             animation: fadeIn 1s ease-in-out;
@@ -150,7 +127,7 @@
 </head>
 <body>
     <div class="console" id="console">
-        <div class="welcome-message">Bienvenido a la Consola Profesional. Escribe 'help' para ver los comandos disponibles.</div>
+        <div class="welcome-message">Bienvenido a la Consola Futurista. Escribe 'help' para ver los comandos disponibles.</div>
     </div>
     <script>
         const consoleElement = document.getElementById('console');
@@ -194,21 +171,6 @@
                 output('about - Muestra información sobre esta consola');
                 output('time - Muestra la hora actual');
                 output('date - Muestra la fecha actual');
-                output('echo [texto] - Repite el texto ingresado');
-                output('color [color] - Cambia el color del texto de la consola');
-                output('calc [expresion] - Calcula una expresión matemática');
-                output('curl [url] - Realiza una petición HTTP GET');
-                output('post [url] [data] - Realiza una petición HTTP POST');
-                output('json [archivo] - Parsea un archivo JSON');
-                output('base64 [texto] - Codifica/decodifica en base64');
-                output('encrypt [texto] - Encripta un texto');
-                output('decrypt [texto] - Desencripta un texto');
-                output('sort [array] - Ordena un array');
-                output('reverse [array] - Invierte un array');
-                output('sum [array] - Suma los elementos de un array');
-                output('avg [array] - Calcula el promedio de un array');
-                output('max [array] - Encuentra el máximo de un array');
-                output('min [array] - Encuentra el mínimo de un array');
             },
             clear: () => {
                 // Limpiamos todo el contenido de la consola
@@ -217,7 +179,7 @@
                 // Agregamos un mensaje de bienvenida
                 const welcomeMessage = document.createElement('div');
                 welcomeMessage.className = 'welcome-message';
-                welcomeMessage.textContent = 'Bienvenido a la Consola Profesional. Escribe \'help\' para ver los comandos disponibles.';
+                welcomeMessage.textContent = 'Bienvenido a la Consola Futurista. Escribe \'help\' para ver los comandos disponibles.';
                 consoleElement.appendChild(welcomeMessage);
 
                 // Creamos un nuevo campo de entrada
@@ -296,7 +258,7 @@
                     });
             },
             about: () => {
-                output('Consola Profesional v1.0', 'success');
+                output('Consola Futurista v1.0', 'success');
                 output('Desarrollada para demostrar habilidades técnicas y de diseño.', 'success');
             },
             time: () => {
@@ -306,139 +268,6 @@
             date: () => {
                 const now = new Date();
                 output(`Fecha actual: ${now.toLocaleDateString()}`, 'success');
-            },
-            echo: (text) => {
-                if (text) {
-                    output(text, 'success');
-                } else {
-                    output('Error: Debes especificar un texto.', 'error');
-                }
-            },
-            color: (color) => {
-                if (color) {
-                    consoleElement.style.color = color;
-                    output(`Color del texto cambiado a: ${color}`, 'success');
-                } else {
-                    output('Error: Debes especificar un color.', 'error');
-                }
-            },
-            calc: (expression) => {
-                try {
-                    const result = eval(expression);
-                    output(`Resultado: ${result}`, 'success');
-                } catch (e) {
-                    output('Error: Expresión inválida.', 'error');
-                }
-            },
-            curl: (url) => {
-                if (url) {
-                    fetch(url)
-                        .then(response => response.text())
-                        .then(data => output(`Respuesta: ${data}`, 'success'))
-                        .catch(error => output('Error: No se pudo realizar la petición.', 'error'));
-                } else {
-                    output('Error: Debes especificar una URL.', 'error');
-                }
-            },
-            post: (url, data) => {
-                if (url && data) {
-                    fetch(url, { method: 'POST', body: data })
-                        .then(response => response.text())
-                        .then(data => output(`Respuesta: ${data}`, 'success'))
-                        .catch(error => output('Error: No se pudo realizar la petición.', 'error'));
-                } else {
-                    output('Error: Debes especificar una URL y datos.', 'error');
-                }
-            },
-            json: (file) => {
-                if (file) {
-                    try {
-                        const jsonData = JSON.parse(file);
-                        output(`JSON parseado: ${JSON.stringify(jsonData)}`, 'success');
-                    } catch (e) {
-                        output('Error: Archivo JSON inválido.', 'error');
-                    }
-                } else {
-                    output('Error: Debes especificar un archivo JSON.', 'error');
-                }
-            },
-            base64: (text) => {
-                if (text) {
-                    const encoded = btoa(text);
-                    const decoded = atob(encoded);
-                    output(`Texto codificado: ${encoded}`, 'success');
-                    output(`Texto decodificado: ${decoded}`, 'success');
-                } else {
-                    output('Error: Debes especificar un texto.', 'error');
-                }
-            },
-            encrypt: (text) => {
-                if (text) {
-                    const encrypted = btoa(text);
-                    output(`Texto encriptado: ${encrypted}`, 'success');
-                } else {
-                    output('Error: Debes especificar un texto.', 'error');
-                }
-            },
-            decrypt: (text) => {
-                if (text) {
-                    const decrypted = atob(text);
-                    output(`Texto desencriptado: ${decrypted}`, 'success');
-                } else {
-                    output('Error: Debes especificar un texto.', 'error');
-                }
-            },
-            sort: (array) => {
-                if (array) {
-                    const sorted = array.split(',').sort();
-                    output(`Array ordenado: ${sorted.join(',')}`, 'success');
-                } else {
-                    output('Error: Debes especificar un array.', 'error');
-                }
-            },
-            reverse: (array) => {
-                if (array) {
-                    const reversed = array.split(',').reverse();
-                    output(`Array invertido: ${reversed.join(',')}`, 'success');
-                } else {
-                    output('Error: Debes especificar un array.', 'error');
-                }
-            },
-            sum: (array) => {
-                if (array) {
-                    const numbers = array.split(',').map(Number);
-                    const sum = numbers.reduce((a, b) => a + b, 0);
-                    output(`Suma: ${sum}`, 'success');
-                } else {
-                    output('Error: Debes especificar un array.', 'error');
-                }
-            },
-            avg: (array) => {
-                if (array) {
-                    const numbers = array.split(',').map(Number);
-                    const avg = numbers.reduce((a, b) => a + b, 0) / numbers.length;
-                    output(`Promedio: ${avg}`, 'success');
-                } else {
-                    output('Error: Debes especificar un array.', 'error');
-                }
-            },
-            max: (array) => {
-                if (array) {
-                    const numbers = array.split(',').map(Number);
-                    const max = Math.max(...numbers);
-                    output(`Máximo: ${max}`, 'success');
-                } else {
-                    output('Error: Debes especificar un array.', 'error');
-                }
-            },
-            min: (array) => {
-                if (array) {
-                    const numbers = array.split(',').map(Number);
-                    const min = Math.min(...numbers);
-                    output(`Mínimo: ${min}`, 'success');
-                } else {
-                    output('Error: Debes especificar un array.', 'error');
-                }
             }
         };
 
