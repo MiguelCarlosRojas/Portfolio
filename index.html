@@ -122,18 +122,10 @@
                 output('decrypt [texto] - Desencripta un texto');
                 output('sort [array] - Ordena un array');
                 output('reverse [array] - Invierte un array');
-                output('shuffle [array] - Mezcla un array');
                 output('sum [array] - Suma los elementos de un array');
                 output('avg [array] - Calcula el promedio de un array');
                 output('max [array] - Encuentra el máximo de un array');
                 output('min [array] - Encuentra el mínimo de un array');
-                output('fibonacci [n] - Calcula la secuencia de Fibonacci hasta n');
-                output('factorial [n] - Calcula el factorial de un número');
-                output('localstorage [key] [value] - Guarda un valor en localStorage');
-                output('sessionstorage [key] [value] - Guarda un valor en sessionStorage');
-                output('getlocal [key] - Obtiene un valor de localStorage');
-                output('getsession [key] - Obtiene un valor de sessionStorage');
-                output('clearstorage - Limpia localStorage y sessionStorage');
             },
             clear: () => {
                 if (inputWrapper && inputWrapper.parentNode) {
@@ -327,14 +319,6 @@
                     output('Error: Debes especificar un array.', 'error');
                 }
             },
-            shuffle: (array) => {
-                if (array) {
-                    const shuffled = array.split(',').sort(() => Math.random() - 0.5);
-                    output(`Array mezclado: ${shuffled.join(',')}`, 'success');
-                } else {
-                    output('Error: Debes especificar un array.', 'error');
-                }
-            },
             sum: (array) => {
                 if (array) {
                     const numbers = array.split(',').map(Number);
@@ -370,73 +354,6 @@
                 } else {
                     output('Error: Debes especificar un array.', 'error');
                 }
-            },
-            fibonacci: (n) => {
-                if (n) {
-                    const fib = [0, 1];
-                    for (let i = 2; i <= n; i++) {
-                        fib[i] = fib[i - 1] + fib[i - 2];
-                    }
-                    output(`Secuencia de Fibonacci: ${fib.slice(0, n).join(',')}`, 'success');
-                } else {
-                    output('Error: Debes especificar un número.', 'error');
-                }
-            },
-            factorial: (n) => {
-                if (n) {
-                    let fact = 1;
-                    for (let i = 1; i <= n; i++) {
-                        fact *= i;
-                    }
-                    output(`Factorial: ${fact}`, 'success');
-                } else {
-                    output('Error: Debes especificar un número.', 'error');
-                }
-            },
-            localstorage: (key, value) => {
-                if (key && value) {
-                    localStorage.setItem(key, value);
-                    output(`Valor '${value}' guardado en localStorage con la clave '${key}'.`, 'success');
-                } else {
-                    output('Error: Debes especificar una clave y un valor.', 'error');
-                }
-            },
-            sessionstorage: (key, value) => {
-                if (key && value) {
-                    sessionStorage.setItem(key, value);
-                    output(`Valor '${value}' guardado en sessionStorage con la clave '${key}'.`, 'success');
-                } else {
-                    output('Error: Debes especificar una clave y un valor.', 'error');
-                }
-            },
-            getlocal: (key) => {
-                if (key) {
-                    const value = localStorage.getItem(key);
-                    if (value) {
-                        output(`Valor en localStorage para la clave '${key}': ${value}`, 'success');
-                    } else {
-                        output(`No se encontró ningún valor en localStorage para la clave '${key}'.`, 'error');
-                    }
-                } else {
-                    output('Error: Debes especificar una clave.', 'error');
-                }
-            },
-            getsession: (key) => {
-                if (key) {
-                    const value = sessionStorage.getItem(key);
-                    if (value) {
-                        output(`Valor en sessionStorage para la clave '${key}': ${value}`, 'success');
-                    } else {
-                        output(`No se encontró ningún valor en sessionStorage para la clave '${key}'.`, 'error');
-                    }
-                } else {
-                    output('Error: Debes especificar una clave.', 'error');
-                }
-            },
-            clearstorage: () => {
-                localStorage.clear();
-                sessionStorage.clear();
-                output('localStorage y sessionStorage han sido limpiados.', 'success');
             }
         };
 
