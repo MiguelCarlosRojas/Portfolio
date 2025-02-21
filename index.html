@@ -29,19 +29,21 @@
             box-shadow: 0 0 20px rgba(100, 0, 234, 0.5); /* Resplandor morado */
             border-radius: 20px;
             padding: 20px;
-            overflow-y: auto; /* Solo permitir desplazamiento vertical */
-            overflow-x: hidden; /* Desactivar desplazamiento horizontal */
+            overflow: hidden; /* Eliminar todas las barras de desplazamiento */
             position: relative;
             transition: all 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         /* Mensajes de salida */
         .output {
-            margin-bottom: 10px;
             font-size: 14px;
             line-height: 1.5;
             word-wrap: break-word; /* Ajustar palabras largas */
             white-space: pre-wrap; /* Mantener saltos de línea */
+            flex-grow: 1; /* Permite que el contenido crezca hasta llenar el espacio disponible */
         }
 
         .command-input {
@@ -69,7 +71,6 @@
         .input-container {
             display: flex;
             align-items: center;
-            margin-top: 10px;
         }
 
         .input-container .command {
@@ -101,7 +102,6 @@
         .welcome-message {
             font-size: 18px;
             text-align: center;
-            margin-bottom: 20px;
             animation: fadeIn 1s ease-in-out;
         }
 
@@ -279,7 +279,7 @@
                         output(`Comando no reconocido: ${command}`, 'error');
                     }
                     inputField.value = '';
-                    consoleElement.scrollTop = consoleElement.scrollHeight;
+                    // No es necesario scroll ya que no hay barras de desplazamiento
                 } else if (e.key === 'ArrowUp') {
                     // Navegar hacia atrás en el historial
                     if (historyIndex > 0) {
