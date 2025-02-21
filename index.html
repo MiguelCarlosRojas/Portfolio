@@ -29,7 +29,8 @@
             box-shadow: 0 0 20px rgba(100, 0, 234, 0.5); /* Resplandor morado */
             border-radius: 20px;
             padding: 20px;
-            overflow-y: auto; /* Habilitar desplazamiento vertical solo si es necesario */
+            overflow-y: auto; /* Solo permitir desplazamiento vertical */
+            overflow-x: hidden; /* Desactivar desplazamiento horizontal */
             position: relative;
             transition: all 0.3s ease-in-out;
         }
@@ -39,8 +40,8 @@
             margin-bottom: 10px;
             font-size: 14px;
             line-height: 1.5;
-            word-wrap: break-word; /* Asegura que el texto no se desborde */
-            white-space: pre-wrap; /* Permite saltos de línea automáticos */
+            word-wrap: break-word; /* Ajustar palabras largas */
+            white-space: pre-wrap; /* Mantener saltos de línea */
         }
 
         .command-input {
@@ -88,6 +89,8 @@
             font-size: 16px;
             padding: 5px 0;
             transition: border-color 0.3s ease-in-out;
+            word-wrap: break-word; /* Ajustar palabras largas en el campo de entrada */
+            white-space: pre-wrap; /* Mantener saltos de línea */
         }
 
         .input-container input:focus {
