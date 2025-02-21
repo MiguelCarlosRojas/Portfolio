@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consola Futurista</title>
+    <title>Consola Minimalista</title>
     <style>
-        /* Estilos generales */
         body {
             margin: 0;
             padding: 0;
@@ -13,61 +12,56 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
             color: #ffffff;
             font-family: 'Consolas', 'Courier New', monospace;
             overflow: hidden;
         }
 
-        /* Contenedor principal de la consola */
         .console {
-            width: 80%;
+            width: 90%;
             max-width: 1200px;
-            height: 70%;
-            background: #000000; /* Fondo negro sólido */
-            border: 2px solid #6200ea; /* Borde morado */
-            box-shadow: 0 0 20px rgba(100, 0, 234, 0.5); /* Resplandor morado */
-            border-radius: 20px;
+            height: 80%;
+            background: #0f172a;
+            border: 1px solid #3b82f6;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
             padding: 20px;
-            overflow-y: auto; /* Habilitar desplazamiento vertical */
+            overflow-y: auto;
             position: relative;
-            transition: all 0.3s ease-in-out;
         }
 
-        /* Personalización de la barra de desplazamiento */
         .console::-webkit-scrollbar {
-            width: 10px; /* Ancho de la barra */
+            width: 8px;
         }
 
         .console::-webkit-scrollbar-track {
-            background: #1e1e1e; /* Color del fondo de la barra */
+            background: #1e293b;
             border-radius: 10px;
         }
 
         .console::-webkit-scrollbar-thumb {
-            background: #6200ea; /* Color del "thumb" (control deslizante) */
+            background: #3b82f6;
             border-radius: 10px;
         }
 
         .console::-webkit-scrollbar-thumb:hover {
-            background: #ff4081; /* Cambio de color al pasar el mouse */
+            background: #60a5fa;
         }
 
-        /* Mensajes de salida */
         .output {
             margin-bottom: 10px;
             font-size: 14px;
             line-height: 1.5;
-            word-wrap: break-word;
         }
 
         .command-input {
-            color: #6200ea;
+            color: #3b82f6;
             font-weight: bold;
         }
 
         .error {
-            color: #f44747;
+            color: #ef4444;
             animation: shake 0.3s ease-in-out;
         }
 
@@ -79,10 +73,9 @@
         }
 
         .success {
-            color: #6a9955;
+            color: #22c55e;
         }
 
-        /* Campo de entrada */
         .input-container {
             display: flex;
             align-items: center;
@@ -90,7 +83,7 @@
         }
 
         .input-container .command {
-            color: #6200ea;
+            color: #3b82f6;
             font-weight: bold;
             margin-right: 10px;
         }
@@ -99,7 +92,7 @@
             flex: 1;
             background-color: transparent;
             border: none;
-            border-bottom: 1px solid #6200ea;
+            border-bottom: 1px solid #3b82f6;
             color: #ffffff;
             outline: none;
             font-family: 'Consolas', 'Courier New', monospace;
@@ -109,10 +102,9 @@
         }
 
         .input-container input:focus {
-            border-color: #ff4081;
+            border-color: #facc15;
         }
 
-        /* Mensaje de bienvenida */
         .welcome-message {
             font-size: 18px;
             text-align: center;
@@ -128,7 +120,7 @@
 </head>
 <body>
     <div class="console" id="console">
-        <div class="welcome-message">Bienvenido a la Consola Futurista. Escribe 'help' para ver los comandos disponibles.</div>
+        <div class="welcome-message">Bienvenido a la Consola Minimalista. Escribe 'help' para ver los comandos disponibles.</div>
     </div>
     <script>
         const consoleElement = document.getElementById('console');
@@ -159,7 +151,6 @@
         let { inputContainer, inputField } = createInputField();
         consoleElement.appendChild(inputContainer);
 
-        // Historial de comandos
         const commandHistory = [];
         let historyIndex = -1;
 
@@ -174,27 +165,18 @@
                 output('date - Muestra la fecha actual');
             },
             clear: () => {
-                // Limpiamos todo el contenido de la consola
                 consoleElement.innerHTML = '';
-
-                // Agregamos un mensaje de bienvenida
                 const welcomeMessage = document.createElement('div');
                 welcomeMessage.className = 'welcome-message';
-                welcomeMessage.textContent = 'Bienvenido a la Consola Futurista. Escribe \'help\' para ver los comandos disponibles.';
+                welcomeMessage.textContent = 'Bienvenido a la Consola Minimalista. Escribe \'help\' para ver los comandos disponibles.';
                 consoleElement.appendChild(welcomeMessage);
 
-                // Creamos un nuevo campo de entrada
                 const { inputContainer: newInputContainer, inputField: newInputField } = createInputField();
                 consoleElement.appendChild(newInputContainer);
 
-                // Reasignamos las referencias globales
                 inputContainer = newInputContainer;
                 inputField = newInputField;
-
-                // Asignamos el foco al nuevo campo de entrada
                 inputField.focus();
-
-                // Volvemos a asignar el evento keypress
                 setupInputListener();
             },
             load: () => {
@@ -259,7 +241,7 @@
                     });
             },
             about: () => {
-                output('Consola Futurista v1.0', 'success');
+                output('Consola Minimalista v1.0', 'success');
                 output('Desarrollada para demostrar habilidades técnicas y de diseño.', 'success');
             },
             time: () => {
@@ -277,12 +259,9 @@
                 if (e.key === 'Enter') {
                     const inputText = inputField.value.trim();
                     if (inputText) {
-                        // Mostramos el comando que escribimos
                         output(`> ${inputText}`, 'command-input');
-
-                        // Guardamos el comando en el historial
                         commandHistory.push(inputText);
-                        historyIndex = commandHistory.length; // Reiniciamos el índice del historial
+                        historyIndex = commandHistory.length;
                     }
 
                     const inputArray = inputText.split(' ');
@@ -296,22 +275,20 @@
                     inputField.value = '';
                     consoleElement.scrollTop = consoleElement.scrollHeight;
                 } else if (e.key === 'ArrowUp') {
-                    // Navegar hacia atrás en el historial
                     if (historyIndex > 0) {
                         historyIndex--;
                         inputField.value = commandHistory[historyIndex];
                     }
-                    e.preventDefault(); // Evitar el comportamiento predeterminado
+                    e.preventDefault();
                 } else if (e.key === 'ArrowDown') {
-                    // Navegar hacia adelante en el historial
                     if (historyIndex < commandHistory.length - 1) {
                         historyIndex++;
                         inputField.value = commandHistory[historyIndex];
                     } else {
-                        historyIndex = commandHistory.length; // Reiniciar al final
+                        historyIndex = commandHistory.length;
                         inputField.value = '';
                     }
-                    e.preventDefault(); // Evitar el comportamiento predeterminado
+                    e.preventDefault();
                 }
             });
         }
@@ -323,7 +300,6 @@
             consoleElement.insertBefore(outputElement, inputContainer);
         }
 
-        // Inicializamos el listener del input
         setupInputListener();
     </script>
 </body>
