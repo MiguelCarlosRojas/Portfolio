@@ -14,17 +14,17 @@
             align-items: center;
             height: 100vh;
             background: linear-gradient(135deg, #1e1e2f, #2a2a40);
-            color: #cccccc;
+            color: #ffffff;
             font-family: 'Consolas', 'Courier New', monospace;
             overflow: hidden;
         }
 
         /* Contenedor principal de la consola */
         .console {
-            width: 80%;
+            width: 90%;
             max-width: 1200px;
             height: 70%;
-            background-color: #121212;
+            background-color: #1e1e2f;
             border: 2px solid #333;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border-radius: 15px;
@@ -53,11 +53,23 @@
         }
 
         /* Estilo del campo de entrada */
-        .console input {
-            width: calc(100% - 20px);
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .input-container .command {
+            color: #6200ea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .input-container input {
+            flex: 1;
             background-color: transparent;
             border: none;
-            border-bottom: 2px solid #6200ea;
+            border-bottom: 1px solid #6200ea;
             color: #ffffff;
             outline: none;
             font-family: 'Consolas', 'Courier New', monospace;
@@ -66,7 +78,7 @@
             transition: border-color 0.3s ease-in-out;
         }
 
-        .console input:focus {
+        .input-container input:focus {
             border-color: #ff4081;
         }
 
@@ -76,11 +88,6 @@
             font-size: 14px;
             line-height: 1.5;
             word-wrap: break-word;
-        }
-
-        .command {
-            color: #6200ea;
-            font-weight: bold;
         }
 
         .error {
@@ -144,35 +151,35 @@
 <body>
     <div class="console" id="console">
         <div class="welcome-message">Bienvenido a la Consola Profesional. Escribe 'help' para ver los comandos disponibles.</div>
-        <div>
-            <span class="command">></span>
-            <input type="text" id="input" autofocus>
-        </div>
     </div>
     <script>
         const consoleElement = document.getElementById('console');
 
         function createInputField() {
-            const inputWrapper = document.createElement('div');
+            const inputContainer = document.createElement('div');
+            inputContainer.className = 'input-container';
+
             const commandSpan = document.createElement('span');
             commandSpan.className = 'command';
             commandSpan.textContent = '>';
+
             const inputField = document.createElement('input');
             inputField.type = 'text';
-            inputField.id = 'input';
             inputField.style.width = '100%';
             inputField.style.backgroundColor = 'transparent';
             inputField.style.border = 'none';
             inputField.style.color = '#ffffff';
             inputField.style.outline = 'none';
             inputField.style.fontFamily = "'Consolas', 'Courier New', monospace";
-            inputWrapper.appendChild(commandSpan);
-            inputWrapper.appendChild(inputField);
-            return { inputWrapper, inputField };
+
+            inputContainer.appendChild(commandSpan);
+            inputContainer.appendChild(inputField);
+
+            return { inputContainer, inputField };
         }
 
-        let { inputWrapper, inputField } = createInputField();
-        consoleElement.appendChild(inputWrapper);
+        let { inputContainer, inputField } = createInputField();
+        consoleElement.appendChild(inputContainer);
 
         // Historial de comandos
         const commandHistory = [];
@@ -204,11 +211,6 @@
                 output('min [array] - Encuentra el mínimo de un array');
             },
             clear: () => {
-                // Eliminamos el campo de entrada existente
-                if (inputWrapper && inputWrapper.parentNode) {
-                    inputWrapper.parentNode.removeChild(inputWrapper);
-                }
-
                 // Limpiamos todo el contenido de la consola
                 consoleElement.innerHTML = '';
 
@@ -219,11 +221,11 @@
                 consoleElement.appendChild(welcomeMessage);
 
                 // Creamos un nuevo campo de entrada
-                const { inputWrapper: newInputWrapper, inputField: newInputField } = createInputField();
-                consoleElement.appendChild(newInputWrapper);
+                const { inputContainer: newInputContainer, inputField: newInputField } = createInputField();
+                consoleElement.appendChild(newInputContainer);
 
                 // Reasignamos las referencias globales
-                inputWrapper = newInputWrapper;
+                inputContainer = newInputContainer;
                 inputField = newInputField;
 
                 // Asignamos el foco al nuevo campo de entrada
@@ -246,7 +248,7 @@
                 progressText.textContent = '0%';
                 progressContainer.appendChild(progressBar);
                 progressContainer.appendChild(progressText);
-                consoleElement.insertBefore(progressContainer, inputWrapper);
+                consoleElement.insertBefore(progressContainer, inputContainer);
                 let currentProgress = 0;
                 let targetProgress = 0;
                 function updateProgress() {
@@ -485,7 +487,7 @@
             const outputElement = document.createElement('div');
             outputElement.className = `output ${className || ''}`;
             outputElement.textContent = text;
-            consoleElement.insertBefore(outputElement, inputWrapper);
+            consoleElement.insertBefore(outputElement, inputContainer);
         }
 
         // Inicializamos el listener del input
