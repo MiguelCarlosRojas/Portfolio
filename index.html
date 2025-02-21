@@ -29,21 +29,36 @@
             box-shadow: 0 0 20px rgba(100, 0, 234, 0.5); /* Resplandor morado */
             border-radius: 20px;
             padding: 20px;
-            overflow: hidden; /* Eliminar todas las barras de desplazamiento */
+            overflow-y: auto; /* Habilitar desplazamiento vertical */
             position: relative;
             transition: all 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        }
+
+        /* Personalización de la barra de desplazamiento */
+        .console::-webkit-scrollbar {
+            width: 10px; /* Ancho de la barra */
+        }
+
+        .console::-webkit-scrollbar-track {
+            background: #1e1e1e; /* Color del fondo de la barra */
+            border-radius: 10px;
+        }
+
+        .console::-webkit-scrollbar-thumb {
+            background: #6200ea; /* Color del "thumb" (control deslizante) */
+            border-radius: 10px;
+        }
+
+        .console::-webkit-scrollbar-thumb:hover {
+            background: #ff4081; /* Cambio de color al pasar el mouse */
         }
 
         /* Mensajes de salida */
         .output {
+            margin-bottom: 10px;
             font-size: 14px;
             line-height: 1.5;
-            word-wrap: break-word; /* Ajustar palabras largas */
-            white-space: pre-wrap; /* Mantener saltos de línea */
-            flex-grow: 1; /* Permite que el contenido crezca hasta llenar el espacio disponible */
+            word-wrap: break-word;
         }
 
         .command-input {
@@ -71,6 +86,7 @@
         .input-container {
             display: flex;
             align-items: center;
+            margin-top: 10px;
         }
 
         .input-container .command {
@@ -90,8 +106,6 @@
             font-size: 16px;
             padding: 5px 0;
             transition: border-color 0.3s ease-in-out;
-            word-wrap: break-word; /* Ajustar palabras largas en el campo de entrada */
-            white-space: pre-wrap; /* Mantener saltos de línea */
         }
 
         .input-container input:focus {
@@ -102,6 +116,7 @@
         .welcome-message {
             font-size: 18px;
             text-align: center;
+            margin-bottom: 20px;
             animation: fadeIn 1s ease-in-out;
         }
 
@@ -279,7 +294,7 @@
                         output(`Comando no reconocido: ${command}`, 'error');
                     }
                     inputField.value = '';
-                    // No es necesario scroll ya que no hay barras de desplazamiento
+                    consoleElement.scrollTop = consoleElement.scrollHeight;
                 } else if (e.key === 'ArrowUp') {
                     // Navegar hacia atrás en el historial
                     if (historyIndex > 0) {
