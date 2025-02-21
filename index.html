@@ -42,7 +42,7 @@
             word-wrap: break-word;
         }
 
-        .command {
+        .command-input {
             color: #6200ea;
             font-weight: bold;
         }
@@ -258,6 +258,9 @@
                 if (e.key === 'Enter') {
                     const inputText = inputField.value.trim();
                     if (inputText) {
+                        // Mostramos el comando que escribimos
+                        output(`> ${inputText}`, 'command-input');
+
                         // Guardamos el comando en el historial
                         commandHistory.push(inputText);
                         historyIndex = commandHistory.length; // Reiniciamos el índice del historial
