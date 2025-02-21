@@ -29,7 +29,7 @@
             box-shadow: 0 0 20px rgba(100, 0, 234, 0.5); /* Resplandor morado */
             border-radius: 20px;
             padding: 20px;
-            overflow-y: auto;
+            overflow-y: auto; /* Habilitar desplazamiento vertical solo si es necesario */
             position: relative;
             transition: all 0.3s ease-in-out;
         }
@@ -39,7 +39,8 @@
             margin-bottom: 10px;
             font-size: 14px;
             line-height: 1.5;
-            word-wrap: break-word;
+            word-wrap: break-word; /* Asegura que el texto no se desborde */
+            white-space: pre-wrap; /* Permite saltos de línea automáticos */
         }
 
         .command-input {
