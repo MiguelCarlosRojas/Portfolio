@@ -102,6 +102,9 @@
         let { inputWrapper, inputField } = createInputField();
         consoleElement.appendChild(inputWrapper);
 
+        const commandHistory = [];
+        let historyIndex = -1;
+
         const commands = {
             help: () => {
                 output('Comandos disponibles:', 'success');
@@ -358,9 +361,14 @@
         };
 
         function setupInputListener() {
-            inputField.addEventListener('keypress', function (e) {
+            inputField.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter') {
                     const inputText = inputField.value.trim();
+                    if (inputText) {
+                        commandHistory.push(inputText);
+                        historyIndex = commandHistory.length;
+                    }
+
                     const inputArray = inputText.split(' ');
                     const command = inputArray[0];
                     const args = inputArray.slice(1);
@@ -371,6 +379,21 @@
                     }
                     inputField.value = '';
                     consoleElement.scrollTop = consoleElement.scrollHeight;
+                } else if (e.key === 'ArrowUp') {
+                    if (historyIndex > 0) {
+                        historyIndex--;
+                        inputField.value = commandHistory[historyIndex];
+                    }
+                    e.preventDefault();
+                } else if (e.key === 'ArrowDown') {
+                    if (historyIndex < commandHistory.length - 1) {
+                        historyIndex++;
+                        inputField.value = commandHistory[historyIndex];
+                    } else {
+                        historyIndex = commandHistory.length;
+                        inputField.value = '';
+                    }
+                    e.preventDefault();
                 }
             });
         }
