@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consola Profesional</title>
     <style>
+        /* Estilos generales */
         body {
             margin: 0;
             padding: 0;
@@ -12,66 +13,137 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #1e1e1e;
+            background: linear-gradient(135deg, #1e1e2f, #2a2a40);
             color: #cccccc;
             font-family: 'Consolas', 'Courier New', monospace;
+            overflow: hidden;
         }
+
+        /* Contenedor principal de la consola */
         .console {
             width: 80%;
-            height: 60%;
-            background-color: #252526;
-            border: 1px solid #333;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 1200px;
+            height: 70%;
+            background-color: #121212;
+            border: 2px solid #333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
             padding: 20px;
             overflow-y: auto;
-            border-radius: 5px;
+            position: relative;
+            transition: all 0.3s ease-in-out;
         }
-        .console input {
+
+        /* Animación al cargar la consola */
+        .console::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+            animation: scan 2s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Estilo del campo de entrada */
+        .console input {
+            width: calc(100% - 20px);
             background-color: transparent;
             border: none;
-            color: #cccccc;
+            border-bottom: 2px solid #6200ea;
+            color: #ffffff;
             outline: none;
             font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 16px;
+            padding: 5px 0;
+            transition: border-color 0.3s ease-in-out;
         }
+
+        .console input:focus {
+            border-color: #ff4081;
+        }
+
+        /* Mensajes de salida */
         .output {
             margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+            word-wrap: break-word;
         }
+
         .command {
-            color: #569cd6;
+            color: #6200ea;
+            font-weight: bold;
         }
+
         .error {
             color: #f44747;
+            animation: shake 0.3s ease-in-out;
         }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+
         .success {
             color: #6a9955;
         }
+
+        /* Barra de progreso */
         .progress-container {
             margin-top: 10px;
         }
+
         .progress-bar {
             width: 100%;
-            height: 20px;
+            height: 10px;
             background-color: #333;
-            border-radius: 10px;
+            border-radius: 5px;
             overflow: hidden;
+            position: relative;
         }
+
         .progress {
             width: 0%;
             height: 100%;
             background-color: #6200ea;
             transition: width 0.3s ease-in-out;
         }
+
         .progress-text {
             margin-top: 5px;
-            font-size: 14px;
+            font-size: 12px;
             color: #cccccc;
+        }
+
+        /* Efectos visuales adicionales */
+        .welcome-message {
+            font-size: 18px;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
     <div class="console" id="console">
-        <div class="output">Bienvenido a la Consola Profesional. Escribe 'help' para ver los comandos disponibles.</div>
+        <div class="welcome-message">Bienvenido a la Consola Profesional. Escribe 'help' para ver los comandos disponibles.</div>
         <div>
             <span class="command">></span>
             <input type="text" id="input" autofocus>
@@ -91,7 +163,7 @@
             inputField.style.width = '100%';
             inputField.style.backgroundColor = 'transparent';
             inputField.style.border = 'none';
-            inputField.style.color = '#cccccc';
+            inputField.style.color = '#ffffff';
             inputField.style.outline = 'none';
             inputField.style.fontFamily = "'Consolas', 'Courier New', monospace";
             inputWrapper.appendChild(commandSpan);
@@ -102,6 +174,7 @@
         let { inputWrapper, inputField } = createInputField();
         consoleElement.appendChild(inputWrapper);
 
+        // Historial de comandos
         const commandHistory = [];
         let historyIndex = -1;
 
@@ -131,25 +204,32 @@
                 output('min [array] - Encuentra el mínimo de un array');
             },
             clear: () => {
+                // Eliminamos el campo de entrada existente
                 if (inputWrapper && inputWrapper.parentNode) {
                     inputWrapper.parentNode.removeChild(inputWrapper);
                 }
 
+                // Limpiamos todo el contenido de la consola
                 consoleElement.innerHTML = '';
 
+                // Agregamos un mensaje de bienvenida
                 const welcomeMessage = document.createElement('div');
-                welcomeMessage.className = 'output';
+                welcomeMessage.className = 'welcome-message';
                 welcomeMessage.textContent = 'Bienvenido a la Consola Profesional. Escribe \'help\' para ver los comandos disponibles.';
                 consoleElement.appendChild(welcomeMessage);
 
+                // Creamos un nuevo campo de entrada
                 const { inputWrapper: newInputWrapper, inputField: newInputField } = createInputField();
                 consoleElement.appendChild(newInputWrapper);
 
+                // Reasignamos las referencias globales
                 inputWrapper = newInputWrapper;
                 inputField = newInputField;
 
+                // Asignamos el foco al nuevo campo de entrada
                 inputField.focus();
 
+                // Volvemos a asignar el evento keypress
                 setupInputListener();
             },
             load: () => {
@@ -365,8 +445,9 @@
                 if (e.key === 'Enter') {
                     const inputText = inputField.value.trim();
                     if (inputText) {
+                        // Guardamos el comando en el historial
                         commandHistory.push(inputText);
-                        historyIndex = commandHistory.length;
+                        historyIndex = commandHistory.length; // Reiniciamos el índice del historial
                     }
 
                     const inputArray = inputText.split(' ');
@@ -380,20 +461,22 @@
                     inputField.value = '';
                     consoleElement.scrollTop = consoleElement.scrollHeight;
                 } else if (e.key === 'ArrowUp') {
+                    // Navegar hacia atrás en el historial
                     if (historyIndex > 0) {
                         historyIndex--;
                         inputField.value = commandHistory[historyIndex];
                     }
-                    e.preventDefault();
+                    e.preventDefault(); // Evitar el comportamiento predeterminado
                 } else if (e.key === 'ArrowDown') {
+                    // Navegar hacia adelante en el historial
                     if (historyIndex < commandHistory.length - 1) {
                         historyIndex++;
                         inputField.value = commandHistory[historyIndex];
                     } else {
-                        historyIndex = commandHistory.length;
+                        historyIndex = commandHistory.length; // Reiniciar al final
                         inputField.value = '';
                     }
-                    e.preventDefault();
+                    e.preventDefault(); // Evitar el comportamiento predeterminado
                 }
             });
         }
@@ -405,6 +488,7 @@
             consoleElement.insertBefore(outputElement, inputWrapper);
         }
 
+        // Inicializamos el listener del input
         setupInputListener();
     </script>
 </body>
