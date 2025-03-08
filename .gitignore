@@ -1,29 +1,24 @@
-# Ignorar directorios generados por Node.js
-node_modules/
-npm-debug.log
-yarn-debug.log
-yarn-error.log
-
-# Ignorar archivos de configuración local
-.env
-.env.local
-.env.development
-.env.production
-
-# Ignorar archivos temporales o específicos del sistema operativo
-.DS_Store
-Thumbs.db
-
-# Ignorar archivos generados por IDEs/editores
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
-
-# Ignorar archivos generados durante la construcción del proyecto
-dist/
-build/
-coverage/
-
-# Ignorar logs
+# Logs
+logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
