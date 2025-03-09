@@ -33,8 +33,7 @@ const Portfolio: React.FC = () => {
     const typingElement = document.querySelector(".typing-text") as HTMLElement | null;
     const text = [
       "Un desarrollador Full-Stack",
-      "Amo crear sistemas eficientes y escalables",
-      "Diseño interfaces modernas e intuitivas"
+      "Construyo soluciones robustas y dinámicas"
     ];
     let i = 0;
 
