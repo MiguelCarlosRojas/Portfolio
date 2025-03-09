@@ -1,6 +1,6 @@
 // src/pages/Portfolio.tsx
 import React, { useEffect, useState } from 'react';
-import '../app.css';
+import '../App.css';
 import { toggleLanguage } from '../translation/translate';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
