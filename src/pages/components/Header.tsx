@@ -1,12 +1,14 @@
 import React from 'react';
 import { HeaderProps } from '../../utils/types';
+import ProfileImage from '../../assets/images/profile.jpg';
+import CurriculumPDF from '../../shared/pdf/CURRICULUM-CARLOS-ROJAS-MIGUEL-ANGEL.pdf';
 
 const Header: React.FC<HeaderProps> = ({ translations }) => {
   return (
     <header className="header">
       <div className="header-content">
         <div className="profile-photo">
-          <img src="../../assets/images/profile.jpg" alt="Foto de perfil" />
+          <img src={ProfileImage} alt="Foto de perfil" />
         </div>
         <div className="intro">
           <h1 id="header-greeting">
@@ -17,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ translations }) => {
           </h2>
           <p><span className="typing-text"></span></p>
           <a
-            href="../../shared/pdf/CURRICULUM-CARLOS-ROJAS-MIGUEL-ANGEL.pdf"
+            href={CurriculumPDF}
             className="btn download-btn"
             download
             id="download-cv"
