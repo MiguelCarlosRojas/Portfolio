@@ -1,0 +1,172 @@
+/* Sección disponible para crear proyectos */
+.available {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(145deg, #0d1e3b, #123a56);
+  color: #ffffff;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo animado */
+.available::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://cdn.pixabay.com/photo/2017/08/30/01/16/particles-2695733_960_720.jpg")
+    no-repeat center center;
+  background-size: cover;
+  filter: blur(7px) brightness(0.8);
+  z-index: -1;
+  animation: backgroundMove 15s infinite alternate;
+}
+
+@keyframes backgroundMove {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(1.2) translateY(-30px);
+  }
+}
+
+/* Contenedor */
+.available .container {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  animation: fadeIn 1.2s ease-out;
+  padding: 0 20px; /* Añadido para mejor responsividad */
+}
+
+.available .content {
+  margin-bottom: 30px;
+}
+
+/* Títulos */
+.available .title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+}
+
+/* Descripciones */
+.available .description,
+.available .call-to-action {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  color: #dcdcdc;
+}
+
+.available .description {
+  font-weight: 400;
+}
+
+.available .call-to-action {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Botón de WhatsApp */
+.available .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 3rem;
+  background-color: #25d366;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 40px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.available .btn:hover {
+  background-color: #128c7e;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
+}
+
+.available .btn:active {
+  transform: scale(1);
+}
+
+.available .whatsapp-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.available .btn:hover .whatsapp-icon {
+  transform: rotate(20deg);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .available .title {
+    font-size: 2.5rem;
+  }
+
+  .available .description,
+  .available .call-to-action {
+    font-size: 1rem;
+  }
+
+  .available .btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+
+  .available .whatsapp-icon {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .available .title {
+    font-size: 2rem;
+  }
+
+  .available .description,
+  .available .call-to-action {
+    font-size: 0.9rem;
+  }
+
+  .available .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .available .whatsapp-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
