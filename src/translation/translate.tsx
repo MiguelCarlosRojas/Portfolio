@@ -36,12 +36,12 @@ function setCurrentLanguage(language: string): void {
 // Función para traducir todos los elementos de la página
 async function translateAllElements(targetLanguage: string): Promise<Record<string, string>> {
   const elementsToTranslate: TranslateElement[] = [
-    { id: "page-title", text: "Portafolio de Miguel Angel Carlos Rojas" }, // Valor inicial desde index.html
+    { id: "page-title", text: "Portafolio de Miguel Angel Carlos Rojas" },
     { id: "nav-about", text: "Sobre mí" },
     { id: "nav-contact", text: "Contactar" },
     { id: "nav-skills", text: "Habilidades" },
     { id: "nav-projects", text: "Ir a proyectos" },
-    { id: "header-greeting", text: "¡Hola!\nmi nombre es" },
+    { id: "header-greeting", text: "¡Hola! 🤟\nSoy" },
     { id: "header-name", text: "Miguel Angel Carlos Rojas" },
     { id: "download-cv", text: "Descargar CV" },
     { id: "about-title", text: "Sobre mí" },
