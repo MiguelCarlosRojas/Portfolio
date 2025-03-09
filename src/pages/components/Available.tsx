@@ -26,7 +26,7 @@ const Available: React.FC<AvailableProps> = ({ translations }) => {
           id="whatsapp-button"
         >
           <img
-            src="/src/assets/icons/whatsapp.webp"
+            src="../../assets/icons/whatsapp.webp"
             alt="WhatsApp"
             className="whatsapp-icon"
           />

@@ -6,7 +6,7 @@ const Header: React.FC<HeaderProps> = ({ translations }) => {
     <header className="header">
       <div className="header-content">
         <div className="profile-photo">
-          <img src="/src/assets/images/profile.jpg" alt="Foto de perfil" />
+          <img src="../../assets/images/profile.jpg" alt="Foto de perfil" />
         </div>
         <div className="intro">
           <h1 id="header-greeting">
@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ translations }) => {
           </h2>
           <p><span className="typing-text"></span></p>
           <a
-            href="/src/components/pdf/CURRICULUM-CARLOS-ROJAS-MIGUEL-ANGEL.pdf"
+            href="../../shared/pdf/CURRICULUM-CARLOS-ROJAS-MIGUEL-ANGEL.pdf"
             className="btn download-btn"
             download
             id="download-cv"
