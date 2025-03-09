@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavbarProps } from '../../utils/types';
+import LogoIcon from '../../assets/icons/icon.png';
 
 const Navbar: React.FC<NavbarProps> = ({ translations, onToggleLanguage }) => {
   useEffect(() => {
@@ -27,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ translations, onToggleLanguage }) => {
         </div>
         <div className="logo">
           <a href="#">
-            <img src="/src/assets/icons/icon.png" alt="Logo" className="logo-image" />
+            <img src={LogoIcon} alt="Logo" className="logo-image" />
           </a>
         </div>
       </div>
