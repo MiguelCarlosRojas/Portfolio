@@ -36,7 +36,7 @@ function setCurrentLanguage(language: string): void {
 // Función para traducir todos los elementos de la página
 async function translateAllElements(targetLanguage: string): Promise<Record<string, string>> {
   const elementsToTranslate: TranslateElement[] = [
-    { id: "page-title", text: "Portafolio de Miguel Angel Carlos Rojas" }, // Valor inicial desde index.html
+    { id: "page-title", text: "Portafolio de Miguel Angel Carlos Rojas" },
     { id: "nav-about", text: "Sobre mí" },
     { id: "nav-contact", text: "Contactar" },
     { id: "nav-skills", text: "Habilidades" },
