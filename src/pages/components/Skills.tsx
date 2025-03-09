@@ -1,16 +1,19 @@
-// src/pages/Skills.tsx
+// src/pages/components/Skills.tsx
 import React from 'react';
 
-const Skills: React.FC = () => {
+interface SkillsProps {
+  translations: Record<string, string>;
+}
+
+const Skills: React.FC<SkillsProps> = ({ translations }) => {
   return (
     <section id="skills" className="skills">
       <div className="container">
         <h2 className="section-title" id="skills-title">
-          Habilidades y Tecnologías
+          {translations["skills-title"] || "Habilidades y Tecnologías"}
         </h2>
         <p className="section-subtitle" id="skills-subtitle">
-          Estas son las herramientas y tecnologías que utilizo para crear
-          soluciones modernas y efectivas.
+          {translations["skills-subtitle"] || "Estas son las herramientas y tecnologías que utilizo para crear soluciones modernas y efectivas."}
         </p>
         <div className="skills-grid">
           <div className="skill fade-in delay-1">
@@ -19,7 +22,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>HTML</h3>
             <p id="skill-html-description">
-              Experto en diseño de interfaces web modernas y funcionales.
+              {translations["skill-html-description"] || "Experto en diseño de interfaces web modernas y funcionales."}
             </p>
           </div>
           <div className="skill fade-in delay-2">
@@ -28,7 +31,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>CSS</h3>
             <p id="skill-css-description">
-              Estilos avanzados para experiencia visual fluida.
+              {translations["skill-css-description"] || "Estilos avanzados para experiencia visual fluida."}
             </p>
           </div>
           <div className="skill fade-in delay-3">
@@ -37,7 +40,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>TypeScript</h3>
             <p id="skill-typescript-description">
-              Código robusto y tipado para proyectos escalables.
+              {translations["skill-typescript-description"] || "Código robusto y tipado para proyectos escalables."}
             </p>
           </div>
           <div className="skill fade-in delay-4">
@@ -47,7 +50,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>React + Vite</h3>
             <p id="skill-react-vite-description">
-              Desarrollo de frontend con herramientas modernas.
+              {translations["skill-react-vite-description"] || "Desarrollo de frontend con herramientas modernas."}
             </p>
           </div>
           <div className="skill fade-in delay-5">
@@ -56,7 +59,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Angular</h3>
             <p id="skill-angular-description">
-              Creación de aplicaciones web robustas con arquitectura MVC.
+              {translations["skill-angular-description"] || "Creación de aplicaciones web robustas con arquitectura MVC."}
             </p>
           </div>
           <div className="skill fade-in delay-6">
@@ -65,7 +68,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Tailwind CSS</h3>
             <p id="skill-tailwind-description">
-              Estilos personalizados y flexibles para interfaces únicas.
+              {translations["skill-tailwind-description"] || "Estilos personalizados y flexibles para interfaces únicas."}
             </p>
           </div>
           <div className="skill fade-in delay-7">
@@ -74,7 +77,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Bootstrap</h3>
             <p id="skill-bootstrap-description">
-              Diseños rápidos con componentes predefinidos.
+              {translations["skill-bootstrap-description"] || "Diseños rápidos con componentes predefinidos."}
             </p>
           </div>
           <div className="skill fade-in delay-8">
@@ -83,7 +86,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Docker</h3>
             <p id="skill-docker-description">
-              Contenedores para despliegue y desarrollo escalable.
+              {translations["skill-docker-description"] || "Contenedores para despliegue y desarrollo escalable."}
             </p>
           </div>
           <div className="skill fade-in delay-9">
@@ -92,7 +95,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Git</h3>
             <p id="skill-git-description">
-              Control de versiones para gestionar cambios.
+              {translations["skill-git-description"] || "Control de versiones para gestionar cambios."}
             </p>
           </div>
           <div className="skill fade-in delay-10">
@@ -101,7 +104,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>GitHub</h3>
             <p id="skill-github-description">
-              Colaboración en proyectos y almacenamiento de código.
+              {translations["skill-github-description"] || "Colaboración en proyectos y almacenamiento de código."}
             </p>
           </div>
           <div className="skill fade-in delay-11">
@@ -110,7 +113,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Firebase</h3>
             <p id="skill-firebase-description">
-              Integración para autenticación y almacenamiento en la nube.
+              {translations["skill-firebase-description"] || "Integración para autenticación y almacenamiento en la nube."}
             </p>
           </div>
           <div className="skill fade-in delay-12">
@@ -119,7 +122,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Postman</h3>
             <p id="skill-postman-description">
-              Pruebas de API para asegurar la calidad del backend.
+              {translations["skill-postman-description"] || "Pruebas de API para asegurar la calidad del backend."}
             </p>
           </div>
           <div className="skill fade-in delay-13">
@@ -128,7 +131,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>MySQL</h3>
             <p id="skill-mysql-description">
-              Gestión de bases de datos relacionales con MySQL.
+              {translations["skill-mysql-description"] || "Gestión de bases de datos relacionales con MySQL."}
             </p>
           </div>
           <div className="skill fade-in delay-14">
@@ -137,7 +140,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>PostgreSQL</h3>
             <p id="skill-postgresql-description">
-              Gestión avanzada de bases de datos PostgreSQL.
+              {translations["skill-postgresql-description"] || "Gestión avanzada de bases de datos PostgreSQL."}
             </p>
           </div>
           <div className="skill fade-in delay-15">
@@ -146,7 +149,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>MongoDB</h3>
             <p id="skill-mongodb-description">
-              Gestión de bases de datos NoSQL con MongoDB.
+              {translations["skill-mongodb-description"] || "Gestión de bases de datos NoSQL con MongoDB."}
             </p>
           </div>
           <div className="skill fade-in delay-16">
@@ -155,7 +158,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>SQL Server</h3>
             <p id="skill-sqlserver-description">
-              Herramienta avanzada de administración SQL Server.
+              {translations["skill-sqlserver-description"] || "Herramienta avanzada de administración SQL Server."}
             </p>
           </div>
           <div className="skill fade-in delay-17">
@@ -164,7 +167,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Oracle SQL</h3>
             <p id="skill-oraclesql-description">
-              Desarrollo y administración de bases de datos Oracle SQL.
+              {translations["skill-oraclesql-description"] || "Desarrollo y administración de bases de datos Oracle SQL."}
             </p>
           </div>
           <div className="skill fade-in delay-18">
@@ -173,7 +176,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Trello</h3>
             <p id="skill-trello-description">
-              Gestión de proyectos y tareas colaborativa de forma eficiente.
+              {translations["skill-trello-description"] || "Gestión de proyectos y tareas colaborativa de forma eficiente."}
             </p>
           </div>
           <div className="skill fade-in delay-19">
@@ -182,7 +185,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Google Docs</h3>
             <p id="skill-googledocs-description">
-              Creación y colaboración en documentos de texto.
+              {translations["skill-googledocs-description"] || "Creación y colaboración en documentos de texto."}
             </p>
           </div>
           <div className="skill fade-in delay-20">
@@ -191,7 +194,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Google Slides</h3>
             <p id="skill-googleslides-description">
-              Creación y presentación de diapositivas interactivas.
+              {translations["skill-googleslides-description"] || "Creación y presentación de diapositivas interactivas."}
             </p>
           </div>
           <div className="skill fade-in delay-21">
@@ -200,7 +203,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Google Sheets</h3>
             <p id="skill-googlesheets-description">
-              Gestión de datos y fórmulas en hojas de cálculo colaborativas.
+              {translations["skill-googlesheets-description"] || "Gestión de datos y fórmulas en hojas de cálculo colaborativas."}
             </p>
           </div>
           <div className="skill fade-in delay-22">
@@ -209,7 +212,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Google Forms</h3>
             <p id="skill-googleforms-description">
-              Creación de formularios y encuestas de forma sencilla.
+              {translations["skill-googleforms-description"] || "Creación de formularios y encuestas de forma sencilla."}
             </p>
           </div>
           <div className="skill fade-in delay-23">
@@ -218,7 +221,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Google Meet</h3>
             <p id="skill-googlemeet-description">
-              Plataforma de videoconferencias para reuniones remotas.
+              {translations["skill-googlemeet-description"] || "Plataforma de videoconferencias para reuniones remotas."}
             </p>
           </div>
           <div className="skill fade-in delay-24">
@@ -227,7 +230,7 @@ const Skills: React.FC = () => {
             </div>
             <h3>Google Drive</h3>
             <p id="skill-googledrive-description">
-              Almacenamiento en la nube para colaborar en archivos.
+              {translations["skill-googledrive-description"] || "Almacenamiento en la nube para colaborar en archivos."}
             </p>
           </div>
         </div>

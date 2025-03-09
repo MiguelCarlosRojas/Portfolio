@@ -1,7 +1,27 @@
-// src/pages/Navbar.tsx
-import React from 'react';
+// src/pages/components/Navbar.tsx
+import React, { useEffect } from 'react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  translations: Record<string, string>;
+  onToggleLanguage: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ translations, onToggleLanguage }) => {
+  useEffect(() => {
+    const menuIcon = document.getElementById("menu-icon");
+    const navLeft = document.getElementById("nav-left");
+
+    const handleMenuToggle = () => {
+      navLeft?.classList.toggle("active");
+    };
+
+    menuIcon?.addEventListener("click", handleMenuToggle);
+    
+    return () => {
+      menuIcon?.removeEventListener("click", handleMenuToggle);
+    };
+  }, []);
+
   return (
     <nav className="navbar">
       <div className="left-container">
@@ -17,13 +37,13 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       <ul className="nav-left" id="nav-left">
-        <li><a id="nav-about" href="#about">Sobre mí</a></li>
-        <li><a id="nav-contact" href="#available">Contactar</a></li>
-        <li><a id="nav-skills" href="#skills">Habilidades</a></li>
-        <li><a id="nav-projects" href="#projects">Ir a proyectos</a></li>
+        <li><a id="nav-about" href="#about">{translations["nav-about"] || "Sobre mí"}</a></li>
+        <li><a id="nav-contact" href="#available">{translations["nav-contact"] || "Contactar"}</a></li>
+        <li><a id="nav-skills" href="#skills">{translations["nav-skills"] || "Habilidades"}</a></li>
+        <li><a id="nav-projects" href="#projects">{translations["nav-projects"] || "Ir a proyectos"}</a></li>
       </ul>
       <div className="right-container">
-        <div id="toggle-language" style={{ cursor: 'pointer' }}>
+        <div id="toggle-language" style={{ cursor: 'pointer' }} onClick={onToggleLanguage}>
           <img
             id="flag-icon"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/24px-Flag_of_Mexico.svg.png"

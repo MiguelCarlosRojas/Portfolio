@@ -1,12 +1,16 @@
-// src/pages/Footer.tsx
+// src/pages/components/Footer.tsx
 import React from 'react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  translations: Record<string, string>;
+}
+
+const Footer: React.FC<FooterProps> = ({ translations }) => {
   return (
     <footer className="footer">
       <div className="container">
         <p id="footer-text">
-          © 2024 Miguel Carlos Rojas. Todos los derechos reservados.
+          {translations["footer-text"] || "© 2024 Miguel Carlos Rojas. Todos los derechos reservados."}
         </p>
       </div>
     </footer>

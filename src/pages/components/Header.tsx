@@ -1,7 +1,11 @@
-// src/pages/Header.tsx
+// src/pages/components/Header.tsx
 import React from 'react';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  translations: Record<string, string>;
+}
+
+const Header: React.FC<HeaderProps> = ({ translations }) => {
   return (
     <header className="header">
       <div className="header-content">
@@ -9,8 +13,12 @@ const Header: React.FC = () => {
           <img src="/src/assets/images/profile.jpg" alt="Foto de perfil" />
         </div>
         <div className="intro">
-          <h1 id="header-greeting">¡Hola!<br />mi nombre es</h1>
-          <h2 id="header-name">Miguel Angel Carlos Rojas</h2>
+          <h1 id="header-greeting">
+            {translations["header-greeting"] || "¡Hola!\nmi nombre es"}
+          </h1>
+          <h2 id="header-name">
+            {translations["header-name"] || "Miguel Angel Carlos Rojas"}
+          </h2>
           <p><span className="typing-text"></span></p>
           <a
             href="/src/components/pdf/CURRICULUM-CARLOS-ROJAS-MIGUEL-ANGEL.pdf"
@@ -23,7 +31,7 @@ const Header: React.FC = () => {
               alt="PDF Icon"
               className="pdf-icon"
             />
-            Descargar CV
+            {translations["download-cv"] || "Descargar CV"}
           </a>
         </div>
       </div>

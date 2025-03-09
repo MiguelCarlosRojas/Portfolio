@@ -1,6 +1,7 @@
 // src/pages/Portfolio.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../app.css';
+import { toggleLanguage } from '../translation/translate';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import About from './components/About';
@@ -10,7 +11,9 @@ import Projects from './components/Projects';
 import Footer from './components/Footer';
 
 const Portfolio: React.FC = () => {
-  // Efecto para el toggle del menú (mantenido aquí porque afecta a Navbar)
+  const [translations, setTranslations] = useState<Record<string, string>>({});
+
+  // Efecto para el toggle del menú
   useEffect(() => {
     const menuIcon = document.getElementById("menu-icon");
     const navLeft = document.getElementById("nav-left");
@@ -26,7 +29,7 @@ const Portfolio: React.FC = () => {
     };
   }, []);
 
-  // Efecto de escritura (mantenido aquí porque afecta a Header)
+  // Efecto de escritura
   useEffect(() => {
     const typingElement = document.querySelector(".typing-text") as HTMLElement | null;
     const text = ["Desarrollador Front-End", "Diseñador UX/UI"];
@@ -79,20 +82,26 @@ const Portfolio: React.FC = () => {
     typeWord();
   }, []);
 
+  // Función para manejar el cambio de idioma
+  const handleToggleLanguage = async () => {
+    const newTranslations = await toggleLanguage();
+    setTranslations(newTranslations);
+  };
+
   return (
     <>
       <div id="loading-overlay" className="loading-overlay">
         <div className="loading-spinner"></div>
       </div>
-      <Navbar />
-      <Header />
+      <Navbar translations={translations} onToggleLanguage={handleToggleLanguage} />
+      <Header translations={translations} />
       <main>
-        <About />
-        <Available />
-        <Skills />
-        <Projects />
+        <About translations={translations} />
+        <Available translations={translations} />
+        <Skills translations={translations} />
+        <Projects translations={translations} />
       </main>
-      <Footer />
+      <Footer translations={translations} />
     </>
   );
 };
