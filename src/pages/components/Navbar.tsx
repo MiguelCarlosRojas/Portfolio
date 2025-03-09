@@ -1,4 +1,3 @@
-// src/pages/components/Navbar.tsx
 import React, { useEffect } from 'react';
 
 interface NavbarProps {

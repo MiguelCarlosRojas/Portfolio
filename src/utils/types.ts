@@ -1,5 +1,3 @@
-// src/utils/types.ts
-
 // Interfaz para los elementos a traducir
 export interface TranslateElement {
     id: string;

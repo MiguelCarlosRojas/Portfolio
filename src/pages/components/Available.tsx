@@ -1,4 +1,3 @@
-// src/pages/components/Available.tsx
 import React from 'react';
 
 interface AvailableProps {

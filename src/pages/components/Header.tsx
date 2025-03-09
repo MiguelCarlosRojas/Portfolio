@@ -1,4 +1,3 @@
-// src/pages/components/Header.tsx
 import React from 'react';
 
 interface HeaderProps {

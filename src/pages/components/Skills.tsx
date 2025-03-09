@@ -1,4 +1,3 @@
-// src/pages/components/Skills.tsx
 import React from 'react';
 
 interface SkillsProps {

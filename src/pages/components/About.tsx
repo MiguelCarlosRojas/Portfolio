@@ -1,4 +1,3 @@
-// src/pages/components/About.tsx
 import React from 'react';
 
 interface AboutProps {

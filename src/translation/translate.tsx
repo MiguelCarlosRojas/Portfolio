@@ -1,4 +1,3 @@
-// src/translation/translate.tsx
 import { TranslateElement, TranslateResponse } from '../utils/types';
 
 // URL de la API obtenida desde el entorno

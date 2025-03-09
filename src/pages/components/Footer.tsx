@@ -1,4 +1,3 @@
-// src/pages/components/Footer.tsx
 import React from 'react';
 
 interface FooterProps {

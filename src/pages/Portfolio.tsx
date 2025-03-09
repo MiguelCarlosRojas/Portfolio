@@ -1,4 +1,3 @@
-// src/pages/Portfolio.tsx
 import React, { useEffect, useState } from 'react';
 import '../App.css';
 import { toggleLanguage } from '../translation/translate';
