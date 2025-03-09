@@ -1,48 +1,77 @@
-/* Estilo general para la sección */
-.projects {
-  padding: 50px 0;
-  background: linear-gradient(135deg, #f9f9f9, #e0e0e0); /* Degradado suave */
-  color: #000;
+/* Sección Proyectos - Estilos base */
+:root {
+  /* Variables CSS reutilizables */
+  --light-gradient: linear-gradient(135deg, #f9f9f9, #e0e0e0);
+  --card-bg: #fff;
+  --info-bg: #f7f7f7;
+  --text-dark: #333;
+  --text-muted: #555;
+  --button-gradient: linear-gradient(90deg, #007bff, #00c6ff);
+  --button-hover-gradient: linear-gradient(90deg, #00c6ff, #007bff);
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-dark: rgba(0, 0, 0, 0.2);
+  --shadow-button: rgba(0, 123, 255, 0.2);
+  --shadow-button-hover: rgba(0, 123, 255, 0.3);
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 25px;
+  --spacing-xxl: 30px;
+  --spacing-xxxl: 50px;
+  --font-size-sm: 0.85rem;
+  --font-size-md: 0.9rem;
+  --font-size-lg: 1rem;
+  --font-size-xl: 1.3rem;
+  --font-size-xxl: 1.8rem;
+  --font-size-xxxl: 2.5rem;
 }
 
+.projects {
+  padding: var(--spacing-xxxl) 0;
+  background: var(--light-gradient);
+  color: var(--text-dark);
+}
+
+/* Títulos de sección */
 .section-title {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: var(--font-size-xxxl);
   font-weight: bold;
-  margin-bottom: 30px;
-  color: #333;
+  margin-bottom: var(--spacing-xxl);
+  color: var(--text-dark);
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
+/* Grid de proyectos */
 .project-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 30px;
+  gap: var(--spacing-xxl);
   justify-items: center;
   align-items: center;
 }
 
+/* Tarjeta de proyecto */
 .project-card {
-  background-color: #fff;
+  background-color: var(--card-bg);
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px var(--shadow-light);
   overflow: hidden;
   display: flex;
   flex-direction: row;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: auto;
   max-width: 1200px;
 }
 
 .project-card:hover {
   transform: translateY(-15px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 35px var(--shadow-dark);
 }
 
+/* Vista previa del proyecto */
 .project-preview {
   flex: 1;
-  max-width: 1200px;
   border-right: 2px solid #f1f1f1;
   display: flex;
   justify-content: center;
@@ -56,51 +85,53 @@
   border-radius: 15px 0 0 15px;
 }
 
+/* Información del proyecto */
 .project-info {
   flex: 1;
-  padding: 25px;
+  padding: var(--spacing-xl);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #f7f7f7;
+  background-color: var(--info-bg);
   border-radius: 0 15px 15px 0;
   text-align: left;
 }
 
 .project-info h3 {
-  font-size: 1.8rem;
+  font-size: var(--font-size-xxl);
   font-weight: bold;
-  color: #333;
-  margin-bottom: 15px;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-md);
 }
 
 .project-info p {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 20px;
+  font-size: var(--font-size-lg);
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-lg);
   line-height: 1.6;
 }
 
+/* Botón de proyecto */
 .btn-project {
   display: inline-block;
-  background: linear-gradient(90deg, #007bff, #00c6ff);
+  background: var(--button-gradient);
   color: #fff;
   padding: 14px 30px;
-  font-size: 1.1rem;
+  font-size: var(--font-size-lg);
   font-weight: bold;
   border-radius: 30px;
   text-align: center;
   text-decoration: none;
-  transition: all 0.3s ease;
-  margin-top: 15px;
-  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  margin-top: var(--spacing-md);
+  box-shadow: 0 4px 10px var(--shadow-button);
   width: 100%;
   cursor: pointer;
 }
 
 .btn-project:hover {
-  background: linear-gradient(90deg, #00c6ff, #007bff);
-  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+  background: var(--button-hover-gradient);
+  box-shadow: 0 6px 15px var(--shadow-button-hover);
   transform: translateY(-5px);
 }
 
@@ -109,7 +140,7 @@
   box-shadow: none;
 }
 
-/* Media Queries para tablets */
+/* Media Queries para Responsividad */
 @media (max-width: 1024px) {
   .project-preview iframe {
     width: 800px;
@@ -121,44 +152,56 @@
   }
 
   .project-info p {
-    font-size: 0.95rem;
+    font-size: var(--font-size-md);
   }
 
   .btn-project {
-    font-size: 1rem;
+    font-size: var(--font-size-md);
     padding: 12px 25px;
   }
 }
 
-/* Media Queries para celulares */
 @media (max-width: 767px) {
   .section-title {
     font-size: 2rem;
   }
 
+  .project-card {
+    flex-direction: column;
+  }
+
+  .project-preview {
+    border-right: none;
+    border-bottom: 2px solid #f1f1f1;
+  }
+
   .project-preview iframe {
     width: 100%;
     height: 300px;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .project-info {
+    border-radius: 0 0 15px 15px;
   }
 
   .project-info h3 {
-    font-size: 1.4rem;
+    font-size: var(--font-size-xl);
   }
 
   .project-info p {
-    font-size: 0.9rem;
+    font-size: var(--font-size-md);
   }
 
   .btn-project {
-    font-size: 0.95rem;
+    font-size: var(--font-size-md);
     padding: 10px 20px;
   }
 }
 
-/* Media Queries para pantallas muy pequeñas (ej: móviles pequeños) */
 @media (max-width: 480px) {
   .section-title {
-    font-size: 1.8rem;
+    font-size: var(--font-size-xxl);
   }
 
   .project-preview iframe {
@@ -166,15 +209,15 @@
   }
 
   .project-info h3 {
-    font-size: 1.3rem;
+    font-size: var(--font-size-xl);
   }
 
   .project-info p {
-    font-size: 0.85rem;
+    font-size: var(--font-size-sm);
   }
 
   .btn-project {
-    font-size: 0.9rem;
+    font-size: var(--font-size-md);
     padding: 8px 18px;
   }
 }

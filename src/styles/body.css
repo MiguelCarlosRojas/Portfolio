@@ -1,17 +1,29 @@
-/* Estilos generales */
+/* Estilos globales - Configuración base */
+:root {
+  /* Variables CSS reutilizables */
+  --primary-gradient: linear-gradient(135deg, rgb(0, 31, 63) 0%, rgb(0, 77, 122) 100%);
+  --text-color: #ffffff;
+  --spacing-max: 1200px;
+  --spacing-container: 90%;
+  --animation-duration: 15s;
+  --background-size-lg: 400%;
+  --background-size-md: 350%;
+  --background-size-sm: 300%;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  color: white;
-  background: linear-gradient(135deg, rgb(0, 31, 63) 0%, rgb(0, 77, 122) 100%);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  color: var(--text-color);
+  background: var(--primary-gradient);
+  background-size: var(--background-size-lg) var(--background-size-lg);
+  animation: gradientShift var(--animation-duration) ease infinite;
   overflow-x: hidden;
 }
 
-/* Animación de cambio de degradado */
+/* Animación de degradado */
 @keyframes gradientShift {
   0% {
     background-position: 100% 0%;
@@ -26,22 +38,15 @@ body {
 
 /* Contenedor */
 .container {
-  width: 90%;
-  max-width: 1200px;
+  width: var(--spacing-container);
+  max-width: var(--spacing-max);
   margin: 0 auto;
 }
 
-/* Estilos responsivos */
-
-/* Pantallas pequeñas */
+/* Media Queries para Responsividad */
 @media (max-width: 767px) {
   body {
-    background: linear-gradient(
-      135deg,
-      rgb(0, 31, 63) 0%,
-      rgb(0, 77, 122) 100%
-    );
-    background-size: 300% 300%;
+    background-size: var(--background-size-sm) var(--background-size-sm);
     animation: gradientShift 10s ease infinite;
   }
 
@@ -50,10 +55,9 @@ body {
   }
 }
 
-/* Pantallas medianas (tabletas y pantallas medianas) */
 @media (max-width: 1024px) {
   body {
-    background-size: 350% 350%;
+    background-size: var(--background-size-md) var(--background-size-md);
     animation: gradientShift 12s ease infinite;
   }
 
@@ -62,14 +66,13 @@ body {
   }
 }
 
-/* Pantallas grandes */
 @media (min-width: 1200px) {
   body {
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    background-size: var(--background-size-lg) var(--background-size-lg);
+    animation: gradientShift var(--animation-duration) ease infinite;
   }
 
   .container {
-    width: 90%;
+    width: var(--spacing-container);
   }
 }
