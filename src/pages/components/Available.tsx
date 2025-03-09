@@ -1,8 +1,5 @@
 import React from 'react';
-
-interface AvailableProps {
-  translations: Record<string, string>;
-}
+import { AvailableProps } from '../../utils/types';
 
 const Available: React.FC<AvailableProps> = ({ translations }) => {
   return (
@@ -29,7 +26,7 @@ const Available: React.FC<AvailableProps> = ({ translations }) => {
           id="whatsapp-button"
         >
           <img
-            src="/src/assets/icons/whatsapp.webp"
+            src="../../assets/icons/whatsapp.webp"
             alt="WhatsApp"
             className="whatsapp-icon"
           />
