@@ -1,7 +1,7 @@
 import React from 'react';
 import { HeaderProps } from '../../utils/types';
 import ProfileImage from '../../assets/images/profile.jpg';
-import CurriculumPDF from '../../shared/pdf/CURRICULUM-CARLOS-ROJAS-MIGUEL-ANGEL.pdf';
+import CurriculumPDF from '../../views/pdf/CURRICULUM-CARLOS-ROJAS-MIGUEL-ANGEL.pdf';
 
 const Header: React.FC<HeaderProps> = ({ translations }) => {
   return (
