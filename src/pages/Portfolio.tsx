@@ -28,10 +28,14 @@ const Portfolio: React.FC = () => {
     };
   }, []);
 
-  // Efecto de escritura
+  // Efecto de escritura actualizado con texto relacionado y mediano
   useEffect(() => {
     const typingElement = document.querySelector(".typing-text") as HTMLElement | null;
-    const text = ["Desarrollador Front-End", "Diseñador UX/UI"];
+    const text = [
+      "Un desarrollador Full-Stack",
+      "Construyo soluciones robustas y dinámicas",
+      "Creo experiencias digitales fluidas y atractivas"
+    ];
     let i = 0;
 
     function typeWord() {

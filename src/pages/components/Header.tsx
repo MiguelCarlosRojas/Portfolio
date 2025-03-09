@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ translations }) => {
         </div>
         <div className="intro">
           <h1 id="header-greeting">
-            {translations["header-greeting"] || "¡Hola!\nmi nombre es"}
+            {translations["header-greeting"] || "¡Hola! 🤟\nSoy"}
           </h1>
           <h2 id="header-name">
             {translations["header-name"] || "Miguel Angel Carlos Rojas"}
