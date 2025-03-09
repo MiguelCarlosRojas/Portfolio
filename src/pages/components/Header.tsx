@@ -1,8 +1,5 @@
 import React from 'react';
-
-interface HeaderProps {
-  translations: Record<string, string>;
-}
+import { HeaderProps } from '../../utils/types';
 
 const Header: React.FC<HeaderProps> = ({ translations }) => {
   return (

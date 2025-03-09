@@ -1,8 +1,5 @@
 import React from 'react';
-
-interface ProjectsProps {
-  translations: Record<string, string>;
-}
+import { ProjectsProps } from '../../utils/types';
 
 const Projects: React.FC<ProjectsProps> = ({ translations }) => {
   return (

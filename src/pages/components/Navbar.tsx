@@ -1,9 +1,5 @@
 import React, { useEffect } from 'react';
-
-interface NavbarProps {
-  translations: Record<string, string>;
-  onToggleLanguage: () => void;
-}
+import { NavbarProps } from '../../utils/types';
 
 const Navbar: React.FC<NavbarProps> = ({ translations, onToggleLanguage }) => {
   useEffect(() => {

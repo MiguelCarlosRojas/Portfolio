@@ -1,8 +1,5 @@
 import React from 'react';
-
-interface FooterProps {
-  translations: Record<string, string>;
-}
+import { FooterProps } from '../../utils/types';
 
 const Footer: React.FC<FooterProps> = ({ translations }) => {
   return (

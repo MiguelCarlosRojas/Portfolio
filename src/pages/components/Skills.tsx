@@ -1,8 +1,5 @@
 import React from 'react';
-
-interface SkillsProps {
-  translations: Record<string, string>;
-}
+import { SkillsProps } from '../../utils/types';
 
 const Skills: React.FC<SkillsProps> = ({ translations }) => {
   return (
