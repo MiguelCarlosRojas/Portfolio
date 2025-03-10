@@ -217,7 +217,7 @@ Antes de instalar y ejecutar el proyecto, asegúrate de tener lo siguiente:
 ## Personalización 🎨
 1. **Cambiar contenido**:
    - Edita las traducciones en `src/translation/translate.tsx`. 🌐
-   - Actualiza el CV en `src/pdf/` o añade imágenes en `src/assets/` si las usas. 📑🖼️
+   - Actualiza el CV en `src/views/pdf/` o añade imágenes en `src/assets/` si las usas. 📑🖼️
 
 2. **Añadir secciones**:
    - Crea un nuevo componente en `src/pages/components/` (por ejemplo, `Contact.tsx`). 🧩
@@ -250,4 +250,3 @@ Antes de instalar y ejecutar el proyecto, asegúrate de tener lo siguiente:
 - **Email**: [isakiangel6@gmail.com](mailto:isakiangel6@gmail.com) ✉️  
 
 Gracias por visitar mi portafolio. ¡Espero colaborar contigo pronto! 🙌
-```
