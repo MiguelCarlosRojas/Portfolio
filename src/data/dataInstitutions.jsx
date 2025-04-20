@@ -1,13 +1,13 @@
-import LogoLinkedIn from "/icons/Linkedin.png";
-import LogoDesafioLatam from "/icons/DesafioLatam.png";
-import LogoCodigoFacilito from "/icons/CodigoFacilito.png";
-import LogoSkilio from "/icons/Skilio.png";
-import LogoTyping from "/icons/Typing.png";
-import LogoCredly from "/icons/Credly.png";
-import LogoGoogleCloud from "/icons/GoogleCloud.png";
-import LogoDataCamp from "/icons/DataCamp.png";
-import LogoOracle from "/icons/Oracle.png";
-import LogoFreeCodeCamp from "/icons/FreeCodeCamp.png";
+import LogoLinkedIn from "public/icons/Linkedin.png";
+import LogoDesafioLatam from "public/icons/DesafioLatam.png";
+import LogoCodigoFacilito from "public/icons/CodigoFacilito.png";
+import LogoSkilio from "public/icons/Skilio.png";
+import LogoTyping from "public/icons/Typing.png";
+import LogoCredly from "public/icons/Credly.png";
+import LogoGoogleCloud from "public/icons/GoogleCloud.png";
+import LogoDataCamp from "public/icons/DataCamp.png";
+import LogoOracle from "public/icons/Oracle.png";
+import LogoFreeCodeCamp from "public/icons/FreeCodeCamp.png";
 
 export const dataInstitutions = {
   1: {
