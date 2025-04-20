@@ -36,7 +36,7 @@ SOFTWARE.
 ```
 
 ## Aviso 📢
-- Los archivos en `src/assets/` (imágenes, íconos) y `src/views/pdf/` (currículum) pueden estar sujetos a derechos de autor adicionales o licencias específicas de terceros. Verifica las fuentes originales si las usas. 🖼️📑
+- Los archivos en `src/assets/` (imágenes, íconos) y `public/icons/` (logos) pueden estar sujetos a derechos de autor adicionales o licencias específicas de terceros. Verifica las fuentes originales si las usas. 🖼️📑
 - Cualquier contribución al proyecto se considera bajo la misma licencia MIT, a menos que se acuerde lo contrario con el autor. 🤝
 
 ## Agradecimiento 🙌
