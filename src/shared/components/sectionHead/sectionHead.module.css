@@ -1,0 +1,123 @@
+.header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  margin-block: 60px 30px;
+  padding: 20px 40px 0 20px;
+  border: 1px solid var(--color-primary-light);
+  border-bottom: 0;
+  border-radius: 50px 50px 0 0;
+  background: var(--surface-primary);
+  z-index: 6;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 50px;
+  background: var(--color-primary-light);
+  filter: blur(50px);
+  z-index: -1;
+}
+
+.icon {
+  width: 300px;
+  min-height: 100%;
+  background: linear-gradient(
+    to right,
+    var(--color-primary-light),
+    transparent
+  );
+  border-radius: 50px 0 0 5px;
+}
+
+.icon span {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.icon img {
+  width: 100%;
+  max-width: 250px;
+  position: absolute;
+  bottom: 0;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+.icon > span > img {
+  z-index: 20;
+}
+
+.icon .blurImage {
+  position: absolute;
+  z-index: 2;
+  bottom: -20%;
+  pointer-events: none;
+}
+
+.blurImage img {
+  filter: blur(50px);
+  width: 150%;
+  max-width: 300px;
+  opacity: 0.8;
+}
+
+.headerRight {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 30px;
+  z-index: 8;
+}
+
+.description {
+  max-width: 750px;
+}
+
+@media (width <=768px) {
+  .header {
+    flex-direction: column;
+    padding: 20px 20px 0 20px;
+    border-radius: 30px 30px 0 0;
+  }
+
+  .icon {
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(
+      to bottom,
+      var(--color-primary-light),
+      transparent 100%
+    );
+    border-radius: 20px 20px 0 0;
+  }
+
+  .icon img {
+    left: 0;
+  }
+
+  .headerRight {
+    padding: 0;
+  }
+}
+
+@media (width <=500px) {
+  .icon {
+    height: 80px;
+  }
+
+  .icon img {
+    max-height: 200px;
+    left: -5vw;
+  }
+}
