@@ -1,28 +1,18 @@
 import AngularLogo from "/icons/Angular.png";
-import AsanaLogo from "/icons/Asana.png";
 import BlockchainLogo from "/icons/Blockchain.png";
-import CSSLogo from "/icons/CSS.png";
-import DockerLogo from "/icons/Docker.png";
-import ExcalidrawLogo from "/icons/Excalidraw.png";
 import FigmaLogo from "/icons/Figma.png";
 import FirebaseLogo from "/icons/Firebase.png";
-import GithubLogo from "/icons/Github.png";
-import HTMLLogo from "/icons/HTML.png";
 import JWTLogo from "/icons/JWT.png";
 import MetamaskLogo from "/icons/MetaMask.png";
 import MongoDBLogo from "/icons/MongoDB.png";
 import MySQLLogo from "/icons/MySQL.png";
-import NotionLogo from "/icons/Notion.png";
 import ReactLogo from "/icons/ReactJS.png";
 import RemixEthereumLogo from "/icons/RemixEthereum.png";
-import SolidityLogo from "/icons/Solidity.png";
 import SpringBootLogo from "/icons/SpringBoot.png";
 import TailwindCSSLogo from "/icons/TailwindCSS.png";
 import TandiaLogo from "/icons/Tandia.png";
 import TrelloLogo from "/icons/Trello.png";
 import TSLogo from "/icons/TS.png";
-import VercelLogo from "/icons/Vercel.png";
-import RailwayLogo from "/icons/Railway.png";
 
 export const dataTools = {
   // UX/UI TOOLS (Category 1)
@@ -32,26 +22,8 @@ export const dataTools = {
     logo: { FigmaLogo },
     category: 1,
   },
-  excalidraw: {
-    title: "Excalidraw",
-    caption: "Diagramas y bocetos rápidos",
-    logo: { ExcalidrawLogo },
-    category: 1,
-  },
 
   // ORGANIZATION (Category 5)
-  asana: {
-    title: "Asana",
-    caption: "Organización de tareas y deadlines",
-    logo: { AsanaLogo },
-    category: 5,
-  },
-  notion: {
-    title: "Notion",
-    caption: "Gestión y documentación de proyectos",
-    logo: { NotionLogo },
-    category: 5,
-  },
   trello: {
     title: "Trello",
     caption: "Gestión de proyectos con tableros",
@@ -60,18 +32,6 @@ export const dataTools = {
   },
 
   // FRONTEND TOOLS (Category 3)
-  html: {
-    title: "HTML",
-    caption: "Estructura de página web",
-    logo: { HTMLLogo },
-    category: 3,
-  },
-  css: {
-    title: "CSS",
-    caption: "Estilo y diseño web",
-    logo: { CSSLogo },
-    category: 3,
-  },
   reactjs: {
     title: "React JS",
     caption: "Webs dinámicas y escalables",
@@ -124,34 +84,10 @@ export const dataTools = {
   },
 
   // DEVOPS & DEPLOYMENT (Category 6)
-  vercel: {
-    title: "Vercel",
-    caption: "Hosting rápido y sencillo",
-    logo: { VercelLogo },
-    category: 6,
-  },
   firebase: {
     title: "Firebase",
     caption: "Hosting con backend integrado",
     logo: { FirebaseLogo },
-    category: 6,
-  },
-  github: {
-    title: "Github",
-    caption: "Control de versiones colaborativo",
-    logo: { GithubLogo },
-    category: 6,
-  },
-  docker: {
-    title: "Docker",
-    caption: "Contenedores para aplicaciones",
-    logo: { DockerLogo },
-    category: 6,
-  },
-  railway: {
-    title: "Railway",
-    caption: "Plataforma para despliegue de aplicaciones",
-    logo: { RailwayLogo },
     category: 6,
   },
 
@@ -160,12 +96,6 @@ export const dataTools = {
     title: "Blockchain",
     caption: "Tecnología para contratos inteligentes",
     logo: { BlockchainLogo },
-    category: 7,
-  },
-  solidity: {
-    title: "Solidity",
-    caption: "Lenguaje para contratos inteligentes",
-    logo: { SolidityLogo },
     category: 7,
   },
   remixethereum: {
