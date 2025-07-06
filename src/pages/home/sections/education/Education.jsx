@@ -52,7 +52,7 @@ const viewModeOptions = {
 export default function Education() {
   const [isMobile, setIsMobile] = useState(false);
   const [viewMode, setViewMode] = useState(1);
-  const [inProgress, setInProgress] = useState(true);
+  const [inProgress, setInProgress] = useState(false);
   const [sortOrder, setSortOrder] = useState("Más relevantes");
 
   useEffect(() => {
