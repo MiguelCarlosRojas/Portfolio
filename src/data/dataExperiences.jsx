@@ -1,8 +1,30 @@
 import MedexLogo from "../assets/experiences/MedexLogo.webp";
 import ValleGrandeLogo from "../assets/experiences/ValleGrandeLogo.webp";
 import ParroquiaLogo from "../assets/experiences/ParroquiaLogo.webp";
+import keOlaLogo from "../assets/experiences/keOlaLogo.webp";
 
 export const dataExperiences = [
+  {
+    role: "Full Stack Developer",
+    organization: {
+      title: "keOla Networks",
+      image: keOlaLogo,
+      website: "https://inclub.world",
+    },
+    startDate: "2025-05",
+    endDate: "",
+    employmentType: "Temporary Contract",
+    workMode: "Remoto",
+    responsabilities: [
+    ],
+    tools: [
+      "springboot",
+      "angular",
+      "scss",
+      "typescript",
+      "excalidraw"
+    ],
+  },
   {
     role: "Full Stack Developer",
     organization: {
