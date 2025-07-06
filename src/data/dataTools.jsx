@@ -9,8 +9,10 @@ import MySQLLogo from "/icons/MySQL.png";
 import ReactLogo from "/icons/ReactJS.png";
 import RemixEthereumLogo from "/icons/RemixEthereum.png";
 import SpringBootLogo from "/icons/SpringBoot.png";
+import ExcalidrawLogo from "/icons/Excalidraw.png";
 import TailwindCSSLogo from "/icons/TailwindCSS.png";
 import TandiaLogo from "/icons/Tandia.png";
+import SCSSLogo from "/icons/SCSS.png";
 import TrelloLogo from "/icons/Trello.png";
 import TSLogo from "/icons/TS.png";
 
@@ -20,6 +22,12 @@ export const dataTools = {
     title: "Figma",
     caption: "Diseño, prototipos y workshops",
     logo: { FigmaLogo },
+    category: 1,
+  },
+  excalidraw: {
+    title: "Excalidraw",
+    caption: "Diagramas y bocetos rápidos",
+    logo: { ExcalidrawLogo },
     category: 1,
   },
 
@@ -32,6 +40,12 @@ export const dataTools = {
   },
 
   // FRONTEND TOOLS (Category 3)
+  scss: {
+    title: "SCSS",
+    caption: "Estilo y diseño web",
+    logo: { SCSSLogo },
+    category: 3,
+  },
   reactjs: {
     title: "React JS",
     caption: "Webs dinámicas y escalables",

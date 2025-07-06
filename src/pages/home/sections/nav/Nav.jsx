@@ -222,7 +222,7 @@ export default function Nav({ isDarkMode, toggleDarkMode }) {
       </div>
       <div className={styles.navRight}>
         <Tooltip
-          text="Available soon"
+          text="Estamos trabajando en ello."
           ariaLabel="Cambiar idioma a Inglés"
           anchorSide="right"
         >
