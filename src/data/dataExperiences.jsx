@@ -19,10 +19,10 @@ export const dataExperiences = [
     workMode: "Remoto",
     responsabilities: [
       "Integración y personalización avanzada de tiendas online, gestión completa de productos, pedidos, pagos y checkout nativo de Shopify.",
-      "Desarrollo de backend ágil, escalable y eficiente utilizando JavaScript, ideal para aplicaciones en tiempo real y alto volumen de tráfico.",
-      "Gestión eficiente, segura y escalable de bases de datos PostgreSQL.",
-      "Almacenamiento seguro, escalable y bajo costo de archivos multimedia, documentos, imágenes de productos y backups en la nube Azure.",
-      "Integración de inteligencia artificial avanzada para generar contenido, automatizar procesos y crear experiencias innovadoras personalizadas.",
+      "Desarrollo de backend ágil, escalable y eficiente utilizando JavaScript, ideal para aplicaciones en tiempo real y alto volumen.",
+      "Gestión eficiente, segura y escalable de bases de datos PostgreSQL para almacenamiento estructurado y optimizado.",
+      "Almacenamiento seguro, escalable y bajo costo de archivos multimedia, documentos, imágenes de productos y backups en Azure.",
+      "Integración de inteligencia artificial avanzada para generar contenido, automatizar procesos y crear experiencias personalizadas.",
     ],
     tools: [
       "javascript",
@@ -45,10 +45,10 @@ export const dataExperiences = [
     employmentType: "Full-time",
     workMode: "Remoto",
     responsabilities: [
-      "Desarrollo de backend escalable con Spring Boot para la gestión eficiente, segura y en tiempo real de solicitudes mediante WebSocket.",
-      "Creación de aplicaciones móviles nativas con React Native y Expo para una experiencia fluida, rápida, intuitiva, accesible y multiplataforma.",
+      "Desarrollo de backend escalable con Spring Boot para la gestión eficiente, segura y en tiempo real de solicitudes vía WebSocket.",
+      "Creación de aplicaciones móviles nativas con React Native y Expo para una experiencia fluida, rápida y multiplataforma.",
       "Administración de bases de datos PostgreSQL para almacenamiento confiable, estructurado y altamente optimizado de solicitudes.",
-      "Integración de autenticación segura con JSON Web Token para proteger el acceso, validar usuarios y autorizar en cada interacción.",
+      "Integración de autenticación segura con JSON Web Token para proteger el acceso, validar usuarios y autorizar interacciones.",
       "Diseño de interfaces modernas y consistentes utilizando Tailwind CSS en la carga y aceptación de solicitudes para Android e iOS.",
     ],
     tools: [
@@ -73,10 +73,10 @@ export const dataExperiences = [
     workMode: "Remoto",
     responsabilities: [
       "Reutilización de componentes existentes con nuevos módulos para acelerar el desarrollo, optimizar código y mantener consistencia.",
-      "Diseño estilizado SCSS interfaces mantenibles control estilos.",
-      "Implementación de modal corto con mensaje 'Estamos trabajando en esta funcionalidad' para notificar al usuario cuando está en desarrollo.",
+      "Diseño estilizado SCSS interfaces mantenibles control estilos para aplicaciones web modernas y responsivas.",
+      "Implementación de modal con mensaje de funcionalidad en desarrollo para notificar al usuario de manera clara y directa.",
       "Creación de nuevos CRUD API desde cero con alta eficiencia, estructura limpia y siguiendo mejores prácticas de arquitectura.",
-      "Uso del nuevo API desarrollado para integrarlo en otros CRUD API, promoviendo reutilización, escalabilidad y mantenimiento simplificado.",
+      "Uso del nuevo API desarrollado para integrarlo en otros CRUD API, promoviendo reutilización, escalabilidad y mantenimiento.",
     ],
     tools: [
       "springboot",
@@ -103,7 +103,7 @@ export const dataExperiences = [
       "Creación de interfaces de usuario responsivas y modernas con React, desarrollo de nuevos módulos y componentes reutilizables.",
       "Administración de bases de datos MySQL para una gestión eficiente, segura, altamente optimizada, robusta y escalable de productos.",
       "Implementación de un sistema de alertas de notificaciones personalizadas, automáticas, confiables y en tiempo real para usuarios.",
-      "Diseño estilizado, moderno y responsivo utilizando Tailwind CSS.",
+      "Diseño estilizado, moderno y responsivo utilizando Tailwind CSS para interfaces atractivas y funcionales en el sector salud.",
     ],
     tools: [
       "springboot",
@@ -126,11 +126,11 @@ export const dataExperiences = [
     employmentType: "Part-time",
     workMode: "Remoto",
     responsabilities: [
-      "Desarrollo de contratos inteligentes utilizando Solidity para el proyecto NexCoin con alta eficiencia, seguridad robusta, óptima y confiable.",
-      "Creación de interfaces de usuario dinámicas, interactivas con React.",
+      "Desarrollo de contratos inteligentes utilizando Solidity para el proyecto NexCoin con alta eficiencia, seguridad robusta y confiable.",
+      "Creación de interfaces de usuario dinámicas, interactivas con React para visualización de datos blockchain en tiempo real.",
       "Con MetaMask integrado puedes conectar tu wallet y realizar transacciones blockchain de forma intuitiva y protegida en pocos clics.",
-      "Diseño estilizado, moderno y responsivo utilizando Tailwind CSS.",
-      "Implementación de tecnología blockchain para garantizar transparencia, seguridad, escalabilidad y confianza en el comercio minorista.",
+      "Diseño estilizado, moderno y responsivo utilizando Tailwind CSS para interfaces atractivas y funcionales en la plataforma.",
+      "Implementación de tecnología blockchain para garantizar transparencia, seguridad, escalabilidad y confianza en el comercio.",
     ],
     tools: [
       "figma",
@@ -153,13 +153,13 @@ export const dataExperiences = [
     employmentType: "Full-time",
     workMode: "Híbrido",
     responsabilities: [
-      "Desarrollo de un sistema integral, escalable, eficiente y seguro para la gestión de constancias sacramentales y contabilidad parroquial.",
-      "Implementación de backend robusto y escalable utilizando Spring Boot.",
-      "Creación de interfaces web dinámicas y responsivas con Angular.",
-      "Gestión eficiente de datos con MongoDB como base de datos NoSQL.",
-      "Implementación de seguridad con JSON Web Token y OAuth 2.",
-      "Integración de servicios en la nube con Firebase altamente optimizada.",
-      "Diseño estilizado, responsivo y moderno utilizando Tailwind CSS.",
+      "Desarrollo de un sistema integral, escalable, eficiente y seguro para la gestión de constancias sacramentales y contabilidad.",
+      "Implementación de backend robusto y escalable utilizando Spring Boot para el manejo eficiente de datos parroquiales.",
+      "Creación de interfaces web dinámicas y responsivas con Angular para una experiencia de usuario moderna e intuitiva.",
+      "Gestión eficiente de datos con MongoDB como base de datos NoSQL para almacenamiento flexible y escalable.",
+      "Implementación de seguridad con JSON Web Token y OAuth 2 para proteger el acceso y autorizar usuarios del sistema.",
+      "Integración de servicios en la nube con Firebase altamente optimizada para almacenamiento y autenticación en tiempo real.",
+      "Diseño estilizado, responsivo y moderno utilizando Tailwind CSS para interfaces atractivas y funcionales.",
     ],
     tools: [
       "springboot",
