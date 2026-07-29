@@ -96,7 +96,7 @@ export const dataExperiences = [
     organization: {
       title: "MEDEX",
       image: MedexLogo,
-      website: "https://demo.medex.website",
+      website: "https://demo.testmedex.xyz/auth/login",
     },
     startDate: "2025-02",
     endDate: "2025-12",
