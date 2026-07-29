@@ -15,6 +15,15 @@ import TandiaLogo from "/icons/Tandia.png";
 import SCSSLogo from "/icons/SCSS.png";
 import TrelloLogo from "/icons/Trello.png";
 import TSLogo from "/icons/TS.png";
+import JavaScriptLogo from "/icons/JavaScript.png";
+import PostgreSQLLogo from "/icons/PostgreSQL.png";
+import AzureLogo from "/icons/Azure.png";
+import JavaLogo from "/icons/Java.png";
+import ReactNativeLogo from "/icons/ReactNative.png";
+import ExpoLogo from "/icons/Expo.png";
+import ShopifyLogo from "/icons/Shopify.svg";
+import AILogo from "/icons/AI.svg";
+import RestAPILogo from "/icons/RestAPI.svg";
 
 export const dataTools = {
   // UX/UI TOOLS (Category 1)
@@ -131,5 +140,71 @@ export const dataTools = {
     caption: "Herramienta personalizada (desconocida)",
     logo: { TandiaLogo },
     category: 8,
+  },
+
+  // PROGRAMMING LANGUAGES (Category 9)
+  javascript: {
+    title: "JavaScript",
+    caption: "Lenguaje de programacion web",
+    logo: { JavaScriptLogo },
+    category: 9,
+  },
+  java: {
+    title: "Java",
+    caption: "Lenguaje de programacion backend",
+    logo: { JavaLogo },
+    category: 9,
+  },
+
+  // DATABASES (Category 10)
+  postgresql: {
+    title: "PostgreSQL",
+    caption: "Base de datos relacional avanzada",
+    logo: { PostgreSQLLogo },
+    category: 10,
+  },
+
+  // CLOUD SERVICES (Category 11)
+  azure: {
+    title: "Azure",
+    caption: "Servicios en la nube Microsoft",
+    logo: { AzureLogo },
+    category: 11,
+  },
+
+  // MOBILE DEVELOPMENT (Category 12)
+  reactnative: {
+    title: "React Native",
+    caption: "Desarrollo de apps moviles cross-platform",
+    logo: { ReactNativeLogo },
+    category: 12,
+  },
+  expo: {
+    title: "Expo",
+    caption: "Plataforma para React Native",
+    logo: { ExpoLogo },
+    category: 12,
+  },
+
+  // E-COMMERCE (Category 13)
+  shopify: {
+    title: "Shopify",
+    caption: "Plataforma de comercio electronico",
+    logo: { ShopifyLogo },
+    category: 13,
+  },
+
+  // AI & API (Category 14)
+  ai: {
+    title: "Inteligencia Artificial",
+    caption: "IA para automatizacion y contenido",
+    logo: { AILogo },
+    category: 14,
+  },
+  restapi: {
+    title: "REST API",
+    caption: "Arquitectura de APIs RESTful",
+    logo: { RestAPILogo },
+    category: 14,
   },
 };
