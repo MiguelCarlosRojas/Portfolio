@@ -30,6 +30,7 @@ export const dataExperiences = [
       "postgresql",
       "azure",
       "ai",
+      "restapi",
     ],
   },
   {
@@ -57,7 +58,6 @@ export const dataExperiences = [
       "postgresql",
       "jwt",
       "tailwindcss",
-      "websocket",
     ],
   },
   {
@@ -84,6 +84,7 @@ export const dataExperiences = [
       "scss",
       "typescript",
       "excalidraw",
+      "java",
     ],
   },
   {
@@ -133,13 +134,11 @@ export const dataExperiences = [
     ],
     tools: [
       "figma",
-      "trello",
       "reactjs",
       "metamask",
       "typescript",
       "blockchain",
       "remixethereum",
-      "github",
     ],
   },
   {
@@ -168,7 +167,6 @@ export const dataExperiences = [
       "typescript",
       "mongodb",
       "jwt",
-      "firebase",
       "tailwindcss",
     ],
   },
