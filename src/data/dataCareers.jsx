@@ -62,7 +62,7 @@ export const dataCareers = {
       "SQL Server",
     ],
     priority: "Complementario",
-    startDate: "2024",
+    startDate: "2022",
     svg: (
       <svg
         width="19"
@@ -108,7 +108,7 @@ export const dataCareers = {
       "Trello",
     ],
     priority: "Complementario",
-    startDate: "2024",
+    startDate: "2026",
     svg: (
       <svg
         width="19"
