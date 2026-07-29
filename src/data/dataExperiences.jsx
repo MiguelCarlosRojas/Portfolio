@@ -2,14 +2,16 @@ import MedexLogo from "../assets/experiences/MedexLogo.webp";
 import ValleGrandeLogo from "../assets/experiences/ValleGrandeLogo.webp";
 import ParroquiaLogo from "../assets/experiences/ParroquiaLogo.webp";
 import keOlaLogo from "../assets/experiences/keOlaLogo.webp";
+import CxmartLogo from "../assets/experiences/CxmartLogo.webp";
+import MerxsAiLogo from "../assets/experiences/MerxsAiLogo.webp";
 
 export const dataExperiences = [
   {
     role: "Full Stack Developer",
     organization: {
       title: "CXmart",
-      image: keOlaLogo,
-      website: "",
+      image: CxmartLogo,
+      website: "https://intrascan360.com/account/",
     },
     startDate: "2025-12",
     endDate: "2026-01",
@@ -34,7 +36,7 @@ export const dataExperiences = [
     role: "Mobile Developer",
     organization: {
       title: "Merxs AI",
-      image: keOlaLogo,
+      image: MerxsAiLogo,
       website: "",
     },
     startDate: "2025-06",
