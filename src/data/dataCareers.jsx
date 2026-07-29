@@ -21,7 +21,7 @@ export const dataCareers = {
       "TypeScript",
     ],
     priority: "Principal",
-    startDate: "2023",
+    startDate: "2024",
     svg: (
       <svg
         width="19"
@@ -62,7 +62,7 @@ export const dataCareers = {
       "SQL Server",
     ],
     priority: "Complementario",
-    startDate: "2022",
+    startDate: "2024",
     svg: (
       <svg
         width="19"
