@@ -4,7 +4,7 @@
 Este proyecto, **Portafolio Personal - Miguel Angel Carlos Rojas**, fue creado y es mantenido por **Miguel Angel Carlos Rojas**. Todos los derechos están reservados al autor, salvo que se indique lo contrario en esta documentación o en los archivos individuales. 📖
 
 - **Autor**: Miguel Angel Carlos Rojas
-- **Año**: 2025
+- **Año**: 2024 - 2026
 - **Contacto**: [isakiangel6@gmail.com](mailto:isakiangel6@gmail.com) ✉️
 - **GitHub**: [github.com/MiguelCarlosRojas](https://github.com/MiguelCarlosRojas) 👨‍💻
 
@@ -14,7 +14,7 @@ Este proyecto está licenciado bajo la **Licencia MIT**, que permite el uso, cop
 ```
 MIT License
 
-Copyright (c) 2025 Miguel Angel Carlos Rojas
+Copyright (c) 2024-2026 Miguel Angel Carlos Rojas
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
