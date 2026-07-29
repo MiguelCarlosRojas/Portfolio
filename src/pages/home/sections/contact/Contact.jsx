@@ -190,6 +190,7 @@ export default function Contact() {
               </svg>
             </a>
             <div className={styles.social}>
+              <SocialButton iconName="whatsapp" />
               <SocialButton iconName="youtube" />
               <SocialButton iconName="gitlab" />
               <SocialButton iconName="github" />
