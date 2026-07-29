@@ -79,6 +79,8 @@ export const dataExperiences = [
       "Implementación de modal con mensaje de funcionalidad en desarrollo para notificar al usuario de manera clara y directa.",
       "Creación de nuevos CRUD API desde cero con alta eficiencia, estructura limpia y siguiendo mejores prácticas de arquitectura.",
       "Uso del nuevo API desarrollado para integrarlo en otros CRUD API, promoviendo reutilización, escalabilidad y mantenimiento.",
+      "Desarrollo de frontend robusto y escalable con Angular para interfaces web dinámicas y responsivas en tiempo real.",
+      "Implementación de seguridad con JSON Web Token para proteger el acceso y autorizar usuarios en cada interacción del sistema.",
     ],
     tools: [
       "springboot",
@@ -106,6 +108,8 @@ export const dataExperiences = [
       "Administración de bases de datos MySQL para una gestión eficiente, segura, altamente optimizada, robusta y escalable de productos.",
       "Implementación de un sistema de alertas de notificaciones personalizadas, automáticas, confiables y en tiempo real para usuarios.",
       "Diseño estilizado, moderno y responsivo utilizando Tailwind CSS para interfaces atractivas y funcionales en el sector salud.",
+      "Integración de servicios en la nube para almacenamiento seguro, escalable y bajo costo de documentos y imágenes de productos.",
+      "Implementación de autenticación segura con JSON Web Token para proteger el acceso y validar usuarios en cada interacción.",
     ],
     tools: [
       "springboot",
@@ -133,8 +137,6 @@ export const dataExperiences = [
       "Con MetaMask integrado puedes conectar tu wallet y realizar transacciones blockchain de forma intuitiva y protegida en pocos clics.",
       "Diseño estilizado, moderno y responsivo utilizando Tailwind CSS para interfaces atractivas y funcionales en la plataforma.",
       "Implementación de tecnología blockchain para garantizar transparencia, seguridad, escalabilidad y confianza en el comercio.",
-      "Gestión de bases de datos descentralizadas para almacenamiento seguro y transparente de transacciones y contratos inteligentes.",
-      "Integración de APIs de terceros para conectar la plataforma con servicios externos y mejorar la funcionalidad del ecosistema.",
     ],
     tools: [
       "figma",
@@ -162,8 +164,6 @@ export const dataExperiences = [
       "Creación de interfaces web dinámicas y responsivas con Angular para una experiencia de usuario moderna e intuitiva.",
       "Gestión eficiente de datos con MongoDB como base de datos NoSQL para almacenamiento flexible y escalable.",
       "Implementación de seguridad con JSON Web Token y OAuth 2 para proteger el acceso y autorizar usuarios del sistema.",
-      "Integración de servicios en la nube con Firebase altamente optimizada para almacenamiento y autenticación en tiempo real.",
-      "Diseño estilizado, responsivo y moderno utilizando Tailwind CSS para interfaces atractivas y funcionales.",
     ],
     tools: [
       "springboot",
