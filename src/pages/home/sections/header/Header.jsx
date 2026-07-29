@@ -1,5 +1,6 @@
 import styles from "./Header.module.css";
 import headerImage from "../../../../assets/FotoPerfil.webp";
+import cvPdf from "../../../../assets/CURRICULUM-CARLOS-ROJAS-MIGUEL-ANGEL.pdf";
 import SocialButton from "../../../../shared/components/socialButton/socialButton";
 import { motion } from "framer-motion";
 
@@ -123,7 +124,7 @@ export default function Header() {
           }}
         >
           <a
-            href="https://drive.google.com/file/d/17SBjX290S5watuUC9EYAWWZLRyqCV8nc/view?usp=sharing"
+            href={cvPdf}
             rel="noreferrer"
             target="_blank"
           >
