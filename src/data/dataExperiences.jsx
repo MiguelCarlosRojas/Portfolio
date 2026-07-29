@@ -23,6 +23,7 @@ export const dataExperiences = [
       "Gestión eficiente, segura y escalable de bases de datos PostgreSQL para almacenamiento estructurado y optimizado.",
       "Almacenamiento seguro, escalable y bajo costo de archivos multimedia, documentos, imágenes de productos y backups en Azure.",
       "Integración de inteligencia artificial avanzada para generar contenido, automatizar procesos y crear experiencias personalizadas.",
+      "Implementación de REST APIs robustas para integración de servicios y comunicación entre sistemas de manera eficiente.",
     ],
     tools: [
       "javascript",
@@ -50,6 +51,7 @@ export const dataExperiences = [
       "Administración de bases de datos PostgreSQL para almacenamiento confiable, estructurado y altamente optimizado de solicitudes.",
       "Integración de autenticación segura con JSON Web Token para proteger el acceso, validar usuarios y autorizar interacciones.",
       "Diseño de interfaces modernas y consistentes utilizando Tailwind CSS en la carga y aceptación de solicitudes para Android e iOS.",
+      "Implementación de pruebas unitarias y de integración para garantizar la calidad y confiabilidad del código desarrollado.",
     ],
     tools: [
       "springboot",
@@ -131,6 +133,8 @@ export const dataExperiences = [
       "Con MetaMask integrado puedes conectar tu wallet y realizar transacciones blockchain de forma intuitiva y protegida en pocos clics.",
       "Diseño estilizado, moderno y responsivo utilizando Tailwind CSS para interfaces atractivas y funcionales en la plataforma.",
       "Implementación de tecnología blockchain para garantizar transparencia, seguridad, escalabilidad y confianza en el comercio.",
+      "Gestión de bases de datos descentralizadas para almacenamiento seguro y transparente de transacciones y contratos inteligentes.",
+      "Integración de APIs de terceros para conectar la plataforma con servicios externos y mejorar la funcionalidad del ecosistema.",
     ],
     tools: [
       "figma",
