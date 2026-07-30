@@ -18,11 +18,11 @@ export const dataExperiences = [
     employmentType: "Full-time",
     workMode: "Remoto",
     responsabilities: [
-      "Integración y personalización avanzada de tiendas online, gestión completa de productos, pedidos, pagos y checkout nativo de Shopify.",
+      "Integración y personalización de tiendas online, gestión completa de productos, pedidos, pagos y checkout nativo de Shopify.",
       "Desarrollo de backend ágil, escalable y eficiente utilizando JavaScript, ideal para aplicaciones en tiempo real y alto volumen.",
       "Gestión eficiente, segura y escalable de bases de datos PostgreSQL para almacenamiento estructurado y optimizado.",
-      "Almacenamiento seguro, escalable y bajo costo de archivos multimedia, documentos, imágenes de productos y backups en Azure.",
-      "Integración de inteligencia artificial avanzada para generar contenido, automatizar procesos y crear experiencias personalizadas.",
+      "Almacenamiento seguro, escalable y bajo costo de archivos multimedia, documentos, imágenes y backups en Azure.",
+      "Integración de inteligencia artificial para generar contenido, automatizar procesos y crear experiencias personalizadas.",
       "Implementación de REST APIs robustas para integración de servicios y comunicación entre sistemas de manera eficiente.",
     ],
     tools: [
@@ -48,7 +48,7 @@ export const dataExperiences = [
     responsabilities: [
       "Desarrollo de backend escalable con Spring Boot para la gestión eficiente, segura y en tiempo real de solicitudes vía WebSocket.",
       "Creación de aplicaciones móviles nativas con React Native y Expo para una experiencia fluida, rápida y multiplataforma.",
-      "Administración de bases de datos PostgreSQL para almacenamiento confiable, estructurado y altamente optimizado de solicitudes.",
+      "Administración de bases de datos PostgreSQL para almacenamiento confiable, estructurado y optimizado de solicitudes.",
       "Integración de autenticación segura con JSON Web Token para proteger el acceso, validar usuarios y autorizar interacciones.",
       "Diseño de interfaces modernas y consistentes utilizando Tailwind CSS en la carga y aceptación de solicitudes para Android e iOS.",
       "Implementación de pruebas unitarias y de integración para garantizar la calidad y confiabilidad del código desarrollado.",
@@ -105,8 +105,8 @@ export const dataExperiences = [
     responsabilities: [
       "Desarrollo de APIs en Java con Spring Boot para la gestión eficiente, segura, robusta y escalable de compras y ventas de medicamentos.",
       "Creación de interfaces de usuario responsivas y modernas con React, desarrollo de nuevos módulos y componentes reutilizables.",
-      "Administración de bases de datos MySQL para una gestión eficiente, segura, altamente optimizada, robusta y escalable de productos.",
-      "Implementación de un sistema de alertas de notificaciones personalizadas, automáticas, confiables y en tiempo real para usuarios.",
+      "Administración de bases de datos MySQL para una gestión eficiente, segura, optimizada, robusta y escalable de productos.",
+      "Implementación de un sistema de alertas de notificaciones personalizadas, automáticas y en tiempo real para usuarios.",
       "Diseño estilizado, moderno y responsivo utilizando Tailwind CSS para interfaces atractivas y funcionales en el sector salud.",
       "Integración de servicios en la nube para almacenamiento seguro, escalable y bajo costo de documentos y imágenes de productos.",
       "Implementación de autenticación segura con JSON Web Token para proteger el acceso y validar usuarios en cada interacción.",
