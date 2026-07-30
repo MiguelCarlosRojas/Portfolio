@@ -48,7 +48,7 @@ export const dataExperiences = [
     responsabilities: [
       "Desarrollo de backend escalable con Spring Boot para la gestión eficiente, segura y en tiempo real de solicitudes vía WebSocket.",
       "Creación de aplicaciones móviles nativas con React Native y Expo para una experiencia fluida, rápida y multiplataforma.",
-      "Administración de bases de datos PostgreSQL para almacenamiento confiable, estructurado y optimizado de solicitudes.",
+      "Administración de bases de datos PostgreSQL para almacenamiento confiable y optimizado de solicitudes.",
       "Integración de autenticación segura con JSON Web Token para proteger el acceso, validar usuarios y autorizar interacciones.",
       "Diseño de interfaces modernas y consistentes utilizando Tailwind CSS en la carga y aceptación de solicitudes para Android e iOS.",
       "Implementación de pruebas unitarias y de integración para garantizar la calidad y confiabilidad del código desarrollado.",
@@ -134,7 +134,7 @@ export const dataExperiences = [
     responsabilities: [
       "Desarrollo de contratos inteligentes utilizando Solidity para el proyecto NexCoin con alta eficiencia, seguridad robusta y confiable.",
       "Creación de interfaces de usuario dinámicas, interactivas con React para visualización de datos blockchain en tiempo real.",
-      "Con MetaMask integrado puedes conectar tu wallet y realizar transacciones blockchain de forma intuitiva y protegida en pocos clics.",
+      "Con MetaMask puedes conectar tu wallet y realizar transacciones blockchain de forma intuitiva y protegida en pocos clics.",
       "Diseño estilizado, moderno y responsivo utilizando Tailwind CSS para interfaces atractivas y funcionales en la plataforma.",
       "Implementación de tecnología blockchain para garantizar transparencia, seguridad, escalabilidad y confianza en el comercio.",
     ],
