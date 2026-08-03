@@ -23,7 +23,7 @@ import ReactNativeLogo from "/icons/reactnative.png";
 import ExpoLogo from "/icons/expo.png";
 import ShopifyLogo from "/icons/Shopify.svg";
 import ChatGPTLogo from "/icons/ChatGPT.svg";
-import RestAPILogo from "/icons/RestAPI.svg";
+import NodeJSLogo from "/icons/nodejs.png";
 
 export const dataTools = {
   // UX/UI TOOLS (Category 1)
@@ -201,10 +201,10 @@ export const dataTools = {
     logo: { ChatGPTLogo },
     category: 14,
   },
-  restapi: {
-    title: "REST API",
-    caption: "Arquitectura de APIs RESTful",
-    logo: { RestAPILogo },
+  nodejs: {
+    title: "Node.js",
+    caption: "Runtime para backend con JavaScript",
+    logo: { NodeJSLogo },
     category: 14,
   },
 };

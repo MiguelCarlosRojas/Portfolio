@@ -31,7 +31,7 @@ export const dataExperiences = [
       "postgresql",
       "azure",
       "chatgpt",
-      "restapi",
+      "nodejs",
     ],
   },
   {
