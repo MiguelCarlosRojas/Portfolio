@@ -1,7 +1,7 @@
 import MedexLogo from "../assets/experiences/MedexLogo.webp";
 import ValleGrandeLogo from "../assets/experiences/ValleGrandeLogo.webp";
 import ParroquiaLogo from "../assets/experiences/ParroquiaLogo.webp";
-import keOlaLogo from "../assets/experiences/keOlaLogo.webp";
+import InClubLogo from "../assets/experiences/InClubLogo.png";
 import CxmartLogo from "../assets/experiences/CxmartLogo.webp";
 import MerxsAiLogo from "../assets/experiences/MerxsAiLogo.webp";
 
@@ -66,7 +66,7 @@ export const dataExperiences = [
     role: "Full Stack Developer",
     organization: {
       title: "InClub World",
-      image: keOlaLogo,
+      image: InClubLogo,
       website: "https://inclub.world",
     },
     startDate: "2025-05",
