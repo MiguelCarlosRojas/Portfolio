@@ -21,7 +21,7 @@ import AzureLogo from "/icons/azure.png";
 import JavaLogo from "/icons/java.png";
 import ReactNativeLogo from "/icons/reactnative.png";
 import ExpoLogo from "/icons/expo.png";
-import ShopifyLogo from "/icons/Shopify.svg";
+import ShopifyLogo from "/icons/shopify.png";
 import ChatGPTLogo from "/icons/ChatGPT.svg";
 import NodeJSLogo from "/icons/nodejs.png";
 
