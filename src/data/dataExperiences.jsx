@@ -39,7 +39,7 @@ export const dataExperiences = [
     organization: {
       title: "Merxs AI",
       image: MerxsAiLogo,
-      website: "",
+      website: "https://www.linkedin.com/company/cargoia",
     },
     startDate: "2025-06",
     endDate: "2025-10",
