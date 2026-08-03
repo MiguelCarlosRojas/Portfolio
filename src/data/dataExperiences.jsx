@@ -30,7 +30,7 @@ export const dataExperiences = [
       "shopify",
       "postgresql",
       "azure",
-      "ai",
+      "chatgpt",
       "restapi",
     ],
   },

@@ -22,7 +22,7 @@ import JavaLogo from "/icons/java.png";
 import ReactNativeLogo from "/icons/reactnative.png";
 import ExpoLogo from "/icons/expo.png";
 import ShopifyLogo from "/icons/Shopify.svg";
-import AILogo from "/icons/AI.svg";
+import ChatGPTLogo from "/icons/ChatGPT.svg";
 import RestAPILogo from "/icons/RestAPI.svg";
 
 export const dataTools = {
@@ -195,10 +195,10 @@ export const dataTools = {
   },
 
   // AI & API (Category 14)
-  ai: {
-    title: "Inteligencia Artificial",
+  chatgpt: {
+    title: "ChatGPT",
     caption: "IA para automatizacion y contenido",
-    logo: { AILogo },
+    logo: { ChatGPTLogo },
     category: 14,
   },
   restapi: {
