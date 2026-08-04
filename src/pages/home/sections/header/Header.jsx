@@ -96,7 +96,7 @@ export default function Header() {
             >
               <path
                 d="M0.632699 10.2452C0.0469128 10.831 0.0469128 11.7808 0.632699 12.3666L10.1786 21.9125C10.7644 22.4983 11.7142 22.4983 12.3 21.9125C12.8857 21.3267 12.8857 20.377 12.3 19.7912L3.81468 11.3059L12.3 2.82063C12.8857 2.23484 12.8857 1.28509 12.3 0.699306C11.7142 0.11352 10.7644 0.11352 10.1786 0.699306L0.632699 10.2452ZM1.69336 12.8059H401.693V9.80591H1.69336V12.8059Z"
-                fill="#4557FB"
+                fill="var(--color-primary)"
               />
             </svg>
           </span>
@@ -137,7 +137,7 @@ export default function Header() {
             >
               <path
                 d="M8.14856 1.79492V17.7949M8.14856 17.7949L14.1486 11.7949M8.14856 17.7949L2.14856 11.7949"
-                stroke="#4557FB"
+                stroke="var(--color-primary)"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -147,7 +147,7 @@ export default function Header() {
                 y1="20.9865"
                 x2="14.6343"
                 y2="20.8087"
-                stroke="#4557FB"
+                stroke="var(--color-primary)"
                 strokeWidth="2"
                 strokeLinecap="round"
               />
