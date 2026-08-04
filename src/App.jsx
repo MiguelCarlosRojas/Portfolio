@@ -16,12 +16,7 @@ export default function App() {
   }, [isDarkMode]);
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => {
-      const newMode = !prevMode;
-      document.body.className = newMode ? "dark-mode" : "light-mode";
-      localStorage.setItem("darkMode", newMode);
-      return newMode;
-    });
+    setIsDarkMode((prevMode) => !prevMode);
   };
 
   return (
