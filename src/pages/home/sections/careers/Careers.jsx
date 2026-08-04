@@ -125,7 +125,7 @@ export default function Careers() {
               >
                 <path
                   d="M8 1.5V17.5M8 17.5L14 11.5M8 17.5L2 11.5"
-                  stroke="#7D8AFF"
+                  stroke="var(--color-primary)"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
