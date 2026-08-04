@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./socialButton.module.css";
 import Tooltip from "../tooltip/tooltip";
 import Snackbar from "../snackbar/snackbar";

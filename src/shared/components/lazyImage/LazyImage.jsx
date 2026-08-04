@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./LazyImage.module.css";
 
 export default function LazyImage({ src, alt, radius = 0, ...props }) {
