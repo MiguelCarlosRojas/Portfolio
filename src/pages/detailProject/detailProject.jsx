@@ -31,7 +31,6 @@ export default function DetailProject() {
   const [isSnackbarVisible, setIsSnackbarVisible] = useState(false);
 
   const heroRef = useRef(null);
-  const navRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [relatedProjects, setRelatedProjects] = useState([]);
 
@@ -124,7 +123,6 @@ export default function DetailProject() {
 
       <nav
         id="project-nav"
-        ref={navRef}
         className={`${styles.nav} ${isScrolled && styles.scrolled}`}
       >
         <div className={styles.coverNav}></div>

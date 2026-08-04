@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./sortDropdown.module.css";
 import CaptionText from "../../../shared/components/captionText/captionText";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./optionsProject.module.css";
 
 const OptionsProject = ({
