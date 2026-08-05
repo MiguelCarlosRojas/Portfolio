@@ -1,40 +1,20 @@
-.experience {
+.experiences {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3xl);
 }
 
-/* HEAD */
-.experienceHead {
+.main {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-md);
-  text-align: center;
+  gap: var(--space-2xl);
+  position: relative;
 }
 
-.experienceHead h2 {
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  letter-spacing: -0.03em;
-}
-
-.experienceHead p {
-  font-size: 1.0625rem;
-  color: var(--text-muted);
-  max-width: 520px;
-}
-
-/* LIST */
-.listExperience {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-}
-
-.listExperience .company {
-  display: flex;
-  gap: var(--space-xl);
-  padding: var(--space-xl) var(--space-2xl);
+.experienceItem {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-2xl);
+  padding: var(--space-2xl);
   background: var(--bg-card);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-xl);
@@ -42,7 +22,7 @@
   position: relative;
 }
 
-.company::after {
+.experienceItem::before {
   content: "";
   position: absolute;
   left: 0;
@@ -55,196 +35,164 @@
   transition: opacity 0.3s ease;
 }
 
-.company:hover {
+.experienceItem:hover {
   border-color: var(--primary-400);
   box-shadow: var(--shadow-lg), 0 0 40px rgba(20, 184, 166, 0.08);
-  transform: translateX(6px);
 }
 
-.company:hover::after {
+.experienceItem:hover::before {
   opacity: 1;
 }
 
-.companyImage {
-  flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: var(--radius-lg);
-  object-fit: contain;
-  padding: 8px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-subtle);
-  align-self: flex-start;
+.visible {
+  opacity: 1;
 }
 
-.companyText {
+/* LEFT */
+.itemLeft {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
-  width: 100%;
+  gap: var(--space-lg);
 }
 
-.companyText > div {
+.circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--primary-500);
+  box-shadow: 0 0 12px var(--primary-500);
+  margin-bottom: var(--space-sm);
+}
+
+.itemLeft > span {
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
 }
 
-.companyText h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+.itemLeft > span > span {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
-.companyText h3::after {
-  content: "";
-  display: inline-block;
-  width: 0;
-  height: 0;
+.itemLogo {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s var(--ease-out-expo);
 }
 
-.companyText h3 span {
-  color: var(--primary-500);
+.itemLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
 }
 
-.companyText h4 {
-  font-size: 1rem;
+.itemLogo:hover {
+  border-color: var(--primary-400);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* RIGHT */
+.itemRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.itemDetails {
+  display: flex;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.detail > span:first-child {
+  width: 20px;
+  height: 20px;
+}
+
+.detail h4 {
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--text-heading);
 }
 
-.companyText h5 {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-muted);
+.line {
+  width: 1px;
+  background: var(--border-default);
+  align-self: stretch;
 }
 
-/* LINK */
-.companyLink {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--primary-500);
-  transition: all 0.2s ease;
-}
-
-.companyLink:hover {
-  gap: var(--space-sm);
-  color: var(--primary-600);
-}
-
-.companyLink svg {
-  width: 14px;
-  transition: transform 0.2s ease;
-}
-
-.companyLink:hover svg {
-  transform: translate(2px, -2px);
-}
-
-.companyLink svg path {
-  stroke: currentColor;
-}
-
-/* TOOLS */
-.tools {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-}
-
-.tools img {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
-  padding: 6px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-subtle);
-  object-fit: contain;
-  transition: all 0.2s ease;
-}
-
-.tools img:hover {
-  border-color: var(--primary-400);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
-}
-
-.tools img[src$=".svg"] {
-  background: var(--bg-tertiary);
-}
-
-/* RESPONSIBILITIES */
-.responsibilities {
+/* RESPONSABILITIES */
+.responsabilities {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-}
-
-.responsibilities h5 {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.responsibilities ul {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
   list-style: none;
   padding: 0;
 }
 
-.responsibilities li {
+.responsabilities li {
   display: flex;
   align-items: flex-start;
   gap: var(--space-sm);
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: 0.9375rem;
+  line-height: 1.6;
   color: var(--text-body);
 }
 
-.responsibilities li::before {
+.responsabilities li::before {
   content: "";
   flex-shrink: 0;
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--primary-500);
-  margin-top: 7px;
+  margin-top: 8px;
 }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-  .company {
-    padding: var(--space-lg) var(--space-xl);
+  .experienceItem {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    padding: var(--space-xl);
+  }
+
+  .itemDetails {
+    flex-wrap: wrap;
   }
 }
 
 @media (max-width: 768px) {
-  .experience {
-    gap: var(--space-2xl);
+  .main {
+    gap: var(--space-lg);
   }
 
-  .listExperience {
-    gap: var(--space-md);
-  }
-
-  .company {
-    flex-direction: column;
-    gap: var(--space-md);
+  .experienceItem {
     padding: var(--space-lg);
   }
 
-  .company:hover {
+  .experienceItem:hover {
     transform: translateY(-2px);
   }
 
-  .company::after {
+  .experienceItem::before {
     top: 0;
     left: 0;
     right: 0;
@@ -254,21 +202,22 @@
     border-radius: var(--radius-full) var(--radius-full) 0 0;
   }
 
-  .companyImage {
+  .itemLogo {
     width: 52px;
     height: 52px;
   }
 
-  .companyText h3 {
-    font-size: 1.125rem;
+  .itemDetails {
+    flex-direction: column;
+    gap: var(--space-md);
   }
 
-  .companyText h4 {
-    font-size: 0.9375rem;
+  .line {
+    width: 100%;
+    height: 1px;
   }
 
-  .tools img {
-    width: 32px;
-    height: 32px;
+  .responsabilities li {
+    font-size: 0.875rem;
   }
 }
