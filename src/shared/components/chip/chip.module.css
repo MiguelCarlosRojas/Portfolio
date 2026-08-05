@@ -1,23 +1,30 @@
 .chip {
   list-style: none;
-  height: 30px;
+  height: 28px;
   width: max-content;
   display: grid;
   place-items: center;
-  padding: 0 15px;
-  border-radius: 500px;
-  background: var(--color-primary-light);
-  color: var(--color-primary);
-  font-weight: 900;
-  font-size: 14px;
-  letter-spacing: -0.5px;
+  padding: 0 var(--space-md);
+  border-radius: var(--radius-full);
+  background: var(--primary-50);
+  color: var(--primary-600);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
+  border: 1px solid var(--primary-100);
+  transition: all 0.2s ease;
 }
 
-@media (width <=768px) {
+.chip:hover {
+  background: var(--primary-100);
+  border-color: var(--primary-200);
+}
+
+@media (max-width: 768px) {
   .chip {
-    font-size: 12px;
-    padding: 0 12px;
+    font-size: 0.6875rem;
+    padding: 0 var(--space-sm);
     height: 24px;
   }
 }
