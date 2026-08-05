@@ -1,17 +1,19 @@
 .primaryButton {
   position: relative;
-  height: 60px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  padding-inline: 40px;
-  background: var(--color-primary);
-  color: var(--text-alternative);
-  font-weight: var(--active-label-weight);
-  border-radius: 500px;
+  gap: var(--space-sm);
+  padding-inline: var(--space-xl);
+  background: var(--gradient-primary);
+  color: var(--text-inverse);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-full);
   overflow: hidden;
-  transition: var(--dynamic-fast-transition);
+  transition: all 0.3s var(--ease-out-expo);
+  box-shadow: 0 4px 20px rgba(20, 184, 166, 0.3);
 }
 
 .primaryButton > * {
@@ -19,7 +21,7 @@
 }
 
 .primaryButton:active {
-  transform: scale(0.9);
+  transform: scale(0.97);
 }
 
 .primaryButton.disabled {
@@ -28,7 +30,7 @@
 
 .primaryButton svg path,
 .primaryButton svg line {
-  stroke: var(--text-alternative);
+  stroke: var(--text-inverse);
 }
 
 .primaryButton::before {
@@ -40,7 +42,13 @@
   width: 120%;
   height: 100px;
   border-radius: 50%;
-  background: var(--color-primary-dark);
+  background: rgba(255, 255, 255, 0.15);
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(20, 184, 166, 0.4);
 }
 
 .primaryButton:hover::before {
@@ -51,21 +59,12 @@
   animation: fallDown 0.4s forwards;
 }
 
-/* Animaciones */
 @keyframes riseUp {
-  from {
-    top: 100%;
-  }
-  to {
-    top: -20px;
-  }
+  from { top: 100%; }
+  to { top: -20px; }
 }
 
 @keyframes fallDown {
-  from {
-    top: -20px;
-  }
-  to {
-    top: calc(-100% - 60px);
-  }
+  from { top: -20px; }
+  to { top: calc(-100% - 60px); }
 }

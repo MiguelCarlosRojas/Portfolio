@@ -3,65 +3,23 @@
   left: 5vh;
   bottom: 5vh;
   min-width: 320px;
-  height: 55px;
-  border-radius: 20px;
-  background: var(--text-primary);
-  box-shadow: 5px 5px 10px #1d1d1d3b;
+  height: 56px;
+  border-radius: var(--radius-xl);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-xl);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: var(--space-md);
   flex-grow: 1;
-  padding-inline: 10px 0;
+  padding-inline: var(--space-md) 0;
   user-select: none;
   z-index: 1000;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(20px);
   pointer-events: none;
-  transition: var(--dynamic-fast-transition);
-
-  .title {
-    color: var(--surface-primary);
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .snackbarLeft {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .icon {
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
-    background: var(--surface-primary);
-    border-radius: 15px;
-  }
-
-  span svg path {
-    stroke: var(--text-primary);
-  }
-
-  .closeButton {
-    position: relative;
-    width: 55px;
-    height: 100%;
-    display: grid;
-    place-items: center;
-  }
-
-  .closeButton path {
-    stroke: var(--surface-primary);
-    opacity: 0.6;
-  }
-
-  .closeButton:hover path {
-    opacity: 1;
-  }
+  transition: all 0.4s var(--ease-out-expo);
 }
 
 .snackbar.visible {
@@ -70,14 +28,59 @@
   pointer-events: all;
 }
 
-/* MEDIA QUERIES */
-@media (width <= 768px) {
+.title {
+  color: var(--text-heading);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.snackbarLeft {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: var(--primary-50);
+  border-radius: var(--radius-md);
+}
+
+.icon svg path {
+  stroke: var(--primary-500);
+}
+
+.closeButton {
+  position: relative;
+  width: 48px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.closeButton path {
+  stroke: var(--text-muted);
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover path {
+  opacity: 1;
+  stroke: var(--text-heading);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
   .snackbar {
     width: calc(100vw - 8vw);
     bottom: calc(3vh + 60px);
     max-width: 320px;
     left: 50%;
-    transform: translate(-50%, 40px);
+    transform: translate(-50%, 20px);
   }
 
   .snackbar.visible {
