@@ -2,20 +2,21 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-block: 20px 70px;
+  margin-block: 40px 80px;
   position: relative;
 }
 
 .timeline {
   width: 100%;
   height: 1px;
-  background: var(--color-primary-light);
+  background: var(--gradient-primary);
+  opacity: 0.5;
 }
 
 .container {
   display: flex;
   align-items: end;
-  gap: 40px;
+  gap: 32px;
 }
 
 .careerItem {
@@ -31,16 +32,18 @@
   gap: 20px;
   flex: 1;
   margin-top: 70px;
-  padding: 20px 20px 30px 20px;
-  border-radius: 30px;
+  padding: 24px 24px 36px 24px;
+  border-radius: 24px;
   position: relative;
   user-select: none;
-  transition: background var(--dynamic-transition),
-    opacity var(--dynamic-medium-transition);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .careerItem:hover {
   background-position: 50% 0%;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
 }
 
 .careerItem::before {
@@ -51,7 +54,7 @@
   width: calc(100% - 2px);
   height: calc(100% - 2px);
   background: var(--surface-primary);
-  border-radius: 30px;
+  border-radius: 23px;
 }
 
 .careerItem > * {
@@ -83,7 +86,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 30px;
+  border-radius: 24px;
   overflow: hidden;
 }
 
@@ -92,16 +95,18 @@
   position: absolute;
   left: -80px;
   top: -120px;
-  width: 230px;
-  height: 130px;
+  width: 200px;
+  height: 120px;
   background: var(--color-career);
-  filter: blur(60px);
-  transition: var(--dynamic-transition);
+  filter: blur(50px);
+  opacity: 0.6;
+  transition: all 0.4s ease;
 }
 
 .careerItem:hover .glow::before {
-  width: 270px;
-  height: 180px;
+  width: 250px;
+  height: 160px;
+  opacity: 0.8;
 }
 
 .careerItem .timelineItem {
@@ -126,46 +131,49 @@
   bottom: 0;
   width: 1px;
   height: calc(100% - 40px);
-  background: var(--color-primary-light);
+  background: var(--color-neutral);
 }
 
 .timelineItem span {
-  padding: 5px 15px;
-  border-radius: 10px;
+  padding: 6px 14px;
+  border-radius: 8px;
   background: var(--color-primary-light);
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .careerItem .priority {
   position: absolute;
   height: 24px;
-  right: 30px;
+  right: 24px;
   top: -12px;
   display: grid;
   place-items: center;
   background: var(--surface-primary);
   color: var(--color-career);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
   border-radius: 50px;
-  padding-inline: 8px;
+  padding-inline: 10px;
   outline-offset: -1px;
+  letter-spacing: 0.05em;
 }
 
 .careerItem:nth-of-type(1) .priority {
   background: var(--color-career);
-  outline: 5px solid var(--surface-primary);
-  color: var(--surface-primary);
+  outline: 4px solid var(--surface-primary);
+  color: white;
   font-weight: 800;
-  padding-inline: 15px;
+  padding-inline: 14px;
 }
 
 .careerItem .header {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   height: 80px;
-  padding-block: 15px 10px;
-  border-bottom: 1px solid var(--text-primary-transparent);
+  padding-block: 16px 12px;
+  border-bottom: 1px solid var(--color-neutral);
 }
 
 .careerItem .image {
@@ -174,40 +182,41 @@
 }
 
 .careerItem .image img {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   object-fit: contain;
   user-select: none;
   pointer-events: none;
-  transition: var(--dynamic-medium-transition);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 15px;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 
 .careerItem > button {
   width: 100%;
-  max-width: 200px;
+  max-width: 180px;
   height: 40px;
   position: absolute;
   top: calc(100% - 2px);
   left: 50%;
   transform: translate(-50%, -50px);
-  border-radius: 0 0 15px 15px;
-  font-size: 16px;
-  font-weight: var(--title-weight);
-  background: var(--color-primary-light);
-  outline: 6px solid var(--surface-primary);
-  color: var(--color-primary);
+  border-radius: 0 0 12px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--color-primary);
+  outline: 4px solid var(--surface-primary);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
   z-index: -1;
-  transition: var(--dynamic-medium-transition);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .careerItem:hover > button {
@@ -215,25 +224,26 @@
 }
 
 .careerItem > button path {
-  stroke: var(--color-primary);
+  stroke: white;
   stroke-width: 2;
 }
 
 .careerItem > button:hover {
-  background: var(--hover-primary-light);
+  background: var(--color-primary-dark);
+  transform: translate(-50%, 2px);
 }
 
 .careerItem button:active {
-  transform: translate(-50%, 0) scale(0.9);
+  transform: translate(-50%, 0) scale(0.97);
 }
 
 @media (width >=1024px) {
   .container:has(.careerItem:hover) .careerItem:not(:hover) {
-    opacity: 0.4 !important;
+    opacity: 0.5 !important;
   }
 
   .careerItem:hover .image img {
-    transform: scale(1.2) translateX(-15px);
+    transform: scale(1.15) translateX(-10px);
   }
 }
 
@@ -284,7 +294,7 @@
 
 @media (width <=500px) {
   .careers {
-    margin-block: 20px 120px;
+    margin-block: 40px 120px;
   }
 
   .container {
