@@ -1,69 +1,48 @@
+.contactContainer {
+  width: 100%;
+  padding: 60px 0;
+  margin-top: 40px;
+}
+
 .contact {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-3xl);
+  gap: 60px;
+  padding-top: 20px;
 }
 
-/* HEAD */
-.contactHead {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-md);
-  text-align: center;
-}
-
-.contactHead h2 {
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  letter-spacing: -0.03em;
-}
-
-.contactHead p {
-  font-size: 1.0625rem;
-  color: var(--text-muted);
-  max-width: 520px;
-}
-
-/* MAIN */
-.contactMain {
-  display: flex;
-  gap: var(--space-2xl);
-}
-
-/* LEFT */
+/* CONTACT SOCIAL */
 .contactLeft {
   width: 40%;
   min-width: 360px;
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: 24px;
 }
 
 .contactLeft > span {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: 16px;
 }
 
-/* LINK BUTTONS */
 .linkButton {
   display: flex;
+  height: 72px;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-sm);
-  padding-right: var(--space-lg);
-  border-radius: var(--radius-xl);
-  background: var(--bg-card);
-  border: 1px solid var(--border-default);
-  transition: all 0.3s var(--ease-out-expo);
+  padding: 6px 24px 6px 6px;
+  border-radius: 18px;
+  background: var(--color-primary-light);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid transparent;
 }
 
 .linkButton:hover {
-  background: var(--bg-card-hover);
+  background: var(--hover-primary-light);
   transform: translateX(4px);
-  border-color: var(--primary-400);
-  box-shadow: var(--shadow-lg), 0 0 40px rgba(20, 184, 166, 0.08);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 20px rgba(20, 184, 166, 0.15);
 }
 
 .linkButton:active {
@@ -72,27 +51,28 @@
 
 .linkButton .info {
   display: flex;
+  height: 100%;
   align-items: center;
-  gap: var(--space-md);
   flex-grow: 1;
+  gap: 14px;
 }
 
 .linkButton .icon {
   width: 56px;
-  height: 56px;
+  height: 100%;
   display: grid;
   place-items: center;
-  border-radius: var(--radius-lg);
-  background: var(--primary-50);
+  background: var(--surface-primary);
+  border-radius: 14px;
   transition: all 0.3s ease;
 }
 
 .linkButton:hover .icon {
-  background: var(--gradient-primary);
+  background: var(--color-primary);
 }
 
 .linkButton .icon path {
-  fill: var(--primary-500);
+  fill: var(--color-primary);
   transition: fill 0.3s ease;
 }
 
@@ -103,14 +83,15 @@
 .linkButton .info span:not(.icon) {
   display: flex;
   flex-direction: column;
+  text-align: left;
   gap: 2px;
-  font-size: 0.8125rem;
+  font-size: 13px;
   color: var(--text-muted);
 }
 
 .linkButton .info h4 {
-  font-size: 1rem;
-  color: var(--primary-500);
+  font-size: 18px;
+  color: var(--color-primary);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -132,51 +113,49 @@
 }
 
 .linkButton:hover > svg path {
-  stroke: var(--primary-500);
+  stroke: var(--color-primary);
   opacity: 1;
 }
 
-/* SOCIAL */
-.social {
+.contactLeft .social {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 8px;
 }
 
-.social .separator {
+.contactLeft .social .separator {
   width: 1px;
   height: 28px;
-  background: var(--border-default);
-  margin-inline: var(--space-sm);
+  background: var(--color-neutral);
+  margin-inline: 8px;
 }
 
-/* RIGHT */
+/* CONTACT FORM */
 .contactRight {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: 24px;
   flex-grow: 1;
-  padding-left: var(--space-2xl);
-  border-left: 1px solid var(--border-default);
+  padding-left: 60px;
+  border-left: 1px solid var(--color-neutral);
 }
 
-/* FORM */
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  gap: 20px;
 }
 
 .form > span {
   display: flex;
-  gap: var(--space-md);
+  gap: 16px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .contactMain {
+/* MEDIA QUERIES */
+@media (width <= 1024px) {
+  .contact {
     flex-direction: column;
-    gap: var(--space-2xl);
+    gap: 40px;
   }
 
   .contactLeft {
@@ -188,7 +167,6 @@
   .contactLeft > span {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: var(--space-md);
   }
 
   .linkButton {
@@ -197,24 +175,19 @@
   }
 
   .contactRight {
-    padding-left: 0;
-    padding-top: var(--space-2xl);
-    border-left: none;
-    border-top: 1px solid var(--border-default);
+    padding: 50px 0 0 0;
+    border-top: 1px solid var(--color-neutral);
+    border-left: 0;
   }
 }
 
-@media (max-width: 500px) {
-  .contactLeft > span {
-    flex-direction: column;
-  }
-
+@media (width <= 500px) {
   .linkButton {
     max-width: 100%;
   }
 
   .linkButton .info h4 {
-    font-size: 0.9375rem;
+    font-size: 16px;
   }
 
   .form > span {

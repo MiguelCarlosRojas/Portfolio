@@ -1,152 +1,313 @@
 .careers {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3xl);
-}
-
-/* HEAD */
-.careersHead {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-md);
-  text-align: center;
-}
-
-.careersHead h2 {
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  letter-spacing: -0.03em;
-}
-
-.careersHead p {
-  font-size: 1.0625rem;
-  color: var(--text-muted);
-  max-width: 520px;
-}
-
-/* CARDS */
-.careersCards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  padding: var(--space-xl);
-  background: var(--bg-card);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-xl);
-  transition: all 0.4s var(--ease-out-expo);
+  margin-block: 40px 80px;
   position: relative;
-  overflow: hidden;
 }
 
-.card::before {
+.timeline {
+  width: 100%;
+  height: 1px;
+  background: var(--gradient-primary);
+  opacity: 0.5;
+}
+
+.container {
+  display: flex;
+  align-items: end;
+  gap: 32px;
+}
+
+.careerItem {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    to bottom,
+    var(--color-career),
+    var(--color-primary-light) 80%
+  );
+  background-size: 100% 200%;
+  background-position: 50% 100%;
+  gap: 20px;
+  flex: 1;
+  margin-top: 70px;
+  padding: 24px 24px 36px 24px;
+  border-radius: 24px;
+  position: relative;
+  user-select: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.careerItem:hover {
+  background-position: 50% 0%;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.careerItem::before {
   content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  background: var(--surface-primary);
+  border-radius: 23px;
+}
+
+.careerItem > * {
+  z-index: 2;
+}
+
+/* UXUI */
+.careerItem:nth-of-type(1) {
+  --color-career: var(--ruby-red);
+  margin-bottom: 100px;
+  height: max-content;
+  order: 2;
+}
+
+/* FRONTEND */
+.careerItem:nth-of-type(2) {
+  --color-career: var(--emerald-green);
+}
+
+/* GRAPHIC */
+.careerItem:nth-of-type(3) {
+  --color-career: var(--diamond-blue);
+  order: 3;
+}
+
+.careerItem .glow {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--gradient-primary);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
 }
 
-.card:hover {
-  border-color: var(--primary-400);
-  box-shadow: var(--shadow-lg), 0 0 40px rgba(20, 184, 166, 0.08);
-  transform: translateY(-4px);
+.glow::before {
+  content: "";
+  position: absolute;
+  left: -80px;
+  top: -120px;
+  width: 200px;
+  height: 120px;
+  background: var(--color-career);
+  filter: blur(50px);
+  opacity: 0.6;
+  transition: all 0.4s ease;
 }
 
-.card:hover::before {
-  opacity: 1;
+.careerItem:hover .glow::before {
+  width: 250px;
+  height: 160px;
+  opacity: 0.8;
 }
 
-.card > svg,
-.card > img {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-  padding: 10px;
-  border-radius: var(--radius-md);
-  background: var(--primary-50);
-}
-
-.card .cardText {
+.careerItem .timelineItem {
+  position: absolute;
+  bottom: calc(100% + 20px);
+  left: 50%;
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  align-items: center;
+  transform: translate(-50%);
+  height: 190px;
+  pointer-events: none;
 }
 
-.card .cardText h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+.careerItem:nth-of-type(1) .timelineItem {
+  height: 90px;
 }
 
-.card p {
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: var(--text-body);
+.timelineItem::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  height: calc(100% - 40px);
+  background: var(--color-neutral);
 }
 
-.card .years {
-  font-size: 0.8125rem;
+.timelineItem span {
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: var(--color-primary-light);
+  font-size: 13px;
   font-weight: 500;
-  color: var(--primary-500);
-  margin-top: auto;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1200px) {
-  .careersCards {
-    gap: var(--space-md);
+.careerItem .priority {
+  position: absolute;
+  height: 24px;
+  right: 24px;
+  top: -12px;
+  display: grid;
+  place-items: center;
+  background: var(--surface-primary);
+  color: var(--color-career);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 50px;
+  padding-inline: 10px;
+  outline-offset: -1px;
+  letter-spacing: 0.05em;
+}
+
+.careerItem:nth-of-type(1) .priority {
+  background: var(--color-career);
+  outline: 4px solid var(--surface-primary);
+  color: white;
+  font-weight: 800;
+  padding-inline: 14px;
+}
+
+.careerItem .header {
+  display: flex;
+  gap: 12px;
+  height: 80px;
+  padding-block: 16px 12px;
+  border-bottom: 1px solid var(--color-neutral);
+}
+
+.careerItem .image {
+  display: flex;
+  align-items: end;
+}
+
+.careerItem .image img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.careerItem > button {
+  width: 100%;
+  max-width: 180px;
+  height: 40px;
+  position: absolute;
+  top: calc(100% - 2px);
+  left: 50%;
+  transform: translate(-50%, -50px);
+  border-radius: 0 0 12px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--color-primary);
+  outline: 4px solid var(--surface-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: -1;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.careerItem:hover > button {
+  transform: translate(-50%, 0);
+}
+
+.careerItem > button path {
+  stroke: white;
+  stroke-width: 2;
+}
+
+.careerItem > button:hover {
+  background: var(--color-primary-dark);
+  transform: translate(-50%, 2px);
+}
+
+.careerItem button:active {
+  transform: translate(-50%, 0) scale(0.97);
+}
+
+@media (width >=1024px) {
+  .container:has(.careerItem:hover) .careerItem:not(:hover) {
+    opacity: 0.5 !important;
   }
 
-  .card {
-    padding: var(--space-lg);
+  .careerItem:hover .image img {
+    transform: scale(1.15) translateX(-10px);
   }
 }
 
-@media (max-width: 1024px) {
-  .careersCards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .careers {
-    gap: var(--space-2xl);
+@media (width <=1100px) {
+  .container {
+    flex-direction: column;
+    gap: 80px;
   }
 
-  .careersCards {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
+  .timeline {
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 
-  .card {
+  .careerItem {
+    margin: 0 !important;
+    flex-grow: 1 !important;
+    width: calc(100% - 100px);
+  }
+
+  .careerItem .timelineItem {
+    position: absolute;
+    top: -15px;
+    left: -230px;
+    bottom: auto;
+    transform: translate(0);
     flex-direction: row;
-    align-items: center;
-    gap: var(--space-md);
-    padding: var(--space-lg);
+    height: max-content;
   }
 
-  .card > svg,
-  .card > img {
-    flex-shrink: 0;
-    width: 48px;
-    height: 48px;
+  .careerItem:nth-of-type(1) .timelineItem {
+    height: max-content;
   }
 
-  .card .cardText {
-    gap: var(--space-xs);
+  .timelineItem::before {
+    position: static;
+    width: 150px;
+    height: 1px;
   }
 
-  .card .years {
-    margin-top: var(--space-xs);
+  .careerItem > button {
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (width <=500px) {
+  .careers {
+    margin-block: 40px 120px;
+  }
+
+  .container {
+    gap: 100px;
+  }
+
+  .careerItem {
+    margin: 70px 0 0 0 !important;
+    width: calc(100% - 30px);
+  }
+
+  .careerItem .timelineItem {
+    top: -85px;
+    left: -150px;
   }
 }

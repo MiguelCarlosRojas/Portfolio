@@ -1,72 +1,65 @@
 .link {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 50px;
   display: grid;
   place-items: center;
-  gap: var(--space-sm);
+  gap: 10px;
   font-weight: 700;
-  color: var(--primary-500);
-  background: var(--primary-50);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-subtle);
-  transition: all 0.3s var(--ease-out-expo);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  border-radius: 500px;
+  border: none !important;
+  transition: var(--dynamic-fast-transition);
 }
 
 .link:hover {
-  background: var(--gradient-primary);
-  border-color: transparent;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 15px rgba(20, 184, 166, 0.3);
+  background: var(--hover-primary-light);
 }
 
 .link:active {
-  transform: scale(0.95);
+  transform: scale(0.9);
 }
 
 .link svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
 }
 
 .link svg path {
-  fill: var(--primary-500);
-  transition: fill 0.3s ease;
-}
-
-.link:hover svg path {
-  fill: white;
+  fill: var(--color-primary);
 }
 
 .link.secondary {
+  width: 50px;
+  border-radius: 15px;
   background: transparent;
-  border: 1px solid var(--border-default);
 }
 
 .link.secondary svg {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
 }
 
 .link.secondary path {
   fill: var(--text-muted);
-  transition: all 0.3s ease;
+  transition: var(--dynamic-fast-transition);
 }
 
 .link.secondary:hover {
-  background: var(--primary-50);
-  border-color: var(--primary-400);
+  background: var(--color-primary-light);
 }
 
 .link.secondary:hover path {
-  fill: var(--primary-500);
+  fill: var(--color-primary);
 }
 
 button.link path {
   fill: none !important;
+}
+
+button.link path {
   stroke: var(--text-muted);
-  transition: all 0.3s ease;
 }
 
 button.link:hover path {
-  stroke: var(--primary-500);
+  stroke: var(--color-primary);
 }
