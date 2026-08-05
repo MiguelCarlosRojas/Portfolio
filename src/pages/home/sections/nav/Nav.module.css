@@ -28,17 +28,18 @@
 /* NAV LEFT */
 .navLeft,
 .navSetting {
-  height: 60px;
+  height: 56px;
   background: var(--surface-primary-transparent);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--color-primary-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-neutral);
   border-radius: 500px;
 }
 
 .navLeft {
   display: flex;
   align-items: center;
-  padding-left: 80px;
+  padding-left: 70px;
 }
 
 .logo {
@@ -54,63 +55,64 @@
 }
 
 .logo svg path {
-  stroke: var(--text-secondary);
+  stroke: var(--color-primary);
   stroke-width: 2px;
 }
 
 .navLink,
 .navSetting {
-  padding: 0 15px;
+  padding: 0 16px;
   height: 100%;
   display: flex;
   outline: 2px solid transparent;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   align-items: center;
   justify-content: center;
-  transition: var(--dynamic-fast-transition);
-  color: var(--text-secondary);
+  transition: all 0.25s ease;
+  font-weight: 500;
 }
 
 .navLink {
   position: relative;
-  font-size: 15px;
-  padding: 0 20px;
+  font-size: 14px;
+  padding: 0 18px;
+  letter-spacing: 0.01em;
 }
 
 .navLink::before {
   content: "";
   width: 0;
   height: 2px;
-  background: var(--color-primary);
+  background: var(--gradient-primary);
   border-radius: 500px;
   position: absolute;
   bottom: -1px;
   opacity: 0;
-  transition: var(--dynamic-fast-transition) width;
+  transition: all 0.25s ease;
 }
 
-.navLink:hover * {
+.navLink:hover {
   color: var(--text-primary);
-  stroke: var(--text-primary);
 }
 
 .navLink:hover::before {
   opacity: 1;
-  width: 100%;
+  width: 60%;
 }
 
 .navLeft > button:nth-of-type(2) {
-  margin-left: 70px;
+  margin-left: 60px;
 }
 
 /* NAV RIGHT */
 
 .navRight {
   display: flex;
+  gap: 8px;
 }
 
 .navRight svg {
-  width: 24px;
+  width: 20px;
 }
 
 .navSetting:not(.switchSetting) svg path {
@@ -126,10 +128,11 @@
 }
 
 .navSetting {
-  padding-inline: 30px;
+  padding-inline: 24px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  font-weight: 500;
 }
 
 .navSetting:hover {
@@ -138,11 +141,11 @@
 }
 
 .switchSetting {
-  width: 80px;
+  width: 72px;
   height: 100%;
   position: relative;
   overflow: hidden;
-  transition: var(--dynamic-fast-transition);
+  transition: all 0.25s ease;
 }
 
 .switchSetting .backdrop {
@@ -150,21 +153,21 @@
   align-items: center;
   gap: 20px;
   position: absolute;
-  transition: var(--dynamic-transition);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .switchSetting .icon {
   display: grid;
   place-items: center;
-  transition: var(--dynamic-fast-transition);
+  transition: all 0.25s ease;
 }
 
 .switchSetting.light .backdrop {
-  transform: translateX(-22px);
+  transform: translateX(-20px);
 }
 
 .switchSetting.dark .backdrop {
-  transform: translateX(22px);
+  transform: translateX(20px);
 }
 
 .switchSetting.dark .moon,
@@ -184,40 +187,41 @@
 }
 
 .menu span {
-  width: 24px;
+  width: 22px;
   height: 2px;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
   border-radius: 50px;
   background: var(--text-secondary);
-  transition: var(--dynamic-fast-transition);
+  transition: all 0.25s ease;
 }
 
 .menu span:nth-child(1) {
-  top: calc(50% - 8px);
+  top: calc(50% - 7px);
 }
 
 .menu span:nth-child(3) {
-  top: calc(50% + 8px);
+  top: calc(50% + 7px);
 }
 
 .navLeft.collapsed .menu {
   opacity: 1;
   transform: translateX(0);
   pointer-events: all;
-  transition: var(--dynamic-fast-transition);
+  transition: all 0.25s ease;
   transition-delay: 0.15s;
 }
 
 .links {
   display: flex;
-  width: 347px;
+  width: 340px;
   margin-left: -40px;
   margin-right: -20px;
   height: 100%;
-  transition: width var(--dynamic-medium-transition),
-    transform var(--dynamic-medium-transition), opacity 0.1s ease-in;
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.1s ease-in;
 }
 
 .navLeft.collapsed .links {
@@ -242,8 +246,9 @@
   justify-content: center;
   align-items: end;
   background: var(--surface-primary-transparent);
-  backdrop-filter: blur(5px);
-  transition: var(--dynamic-medium-transition);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: 0;
   pointer-events: none;
 }
@@ -266,11 +271,12 @@
   flex-direction: column;
   align-items: center;
   padding: 30px 20px 30px 20px;
-  border-radius: 20px 20px 0 0;
-  border: 3px solid var(--text-primary-transparent);
+  border-radius: 24px 24px 0 0;
+  border: 1px solid var(--color-neutral);
   border-bottom: 0;
   background: var(--surface-primary-transparent);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   clip-path: inset(100% 0 0 0);
   opacity: 0;
   pointer-events: none;
@@ -280,35 +286,35 @@
   clip-path: inset(0 0 0 0);
   opacity: 1;
   pointer-events: all;
-  transition: clip-path var(--dynamic-fast-transition);
+  transition: clip-path 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .navList::before {
   content: "";
   position: absolute;
-  width: 50px;
-  top: 15px;
+  width: 40px;
+  top: 12px;
   left: 50%;
   transform: translateX(-50%);
   height: 4px;
   border-radius: 10px;
-  background: var(--text-primary-transparent);
+  background: var(--color-neutral);
 }
 
 .navList .navLink {
   width: 100%;
-  height: 60px;
-  font-size: 16px;
+  height: 56px;
+  font-size: 15px;
   font-weight: 600;
-  border-bottom: 2px solid var(--text-primary-transparent);
+  border-bottom: 1px solid var(--color-neutral);
   opacity: 0;
   transform: translateY(10px);
 }
 
 .settingList {
   display: flex;
-  height: 60px;
-  margin-top: 20px;
+  height: 56px;
+  margin-top: 16px;
   display: none;
   gap: 10px;
   opacity: 0;
@@ -317,21 +323,21 @@
 
 .settingList .navSetting {
   background: none !important;
-  border: 2px solid var(--text-primary-transparent);
-  outline: 3px solid transparent;
+  border: 1px solid var(--color-neutral);
+  outline: 2px solid transparent;
 }
 
 .settingList .navSetting:hover {
   border-color: transparent;
-  outline: 3px solid var(--text-primary-transparent);
+  outline: 2px solid var(--color-primary-light);
 }
 
 .settingList svg {
-  width: 24px;
+  width: 20px;
 }
 
 .settingList .switchSetting {
-  width: 80px;
+  width: 72px;
 }
 
 /* NAV LIST ANIMATION */
